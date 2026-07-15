@@ -3,7 +3,12 @@ __pycache__/
 gf180mcu/
 gf180_drc.lyrdb
 sim_build/
-final/
+final/*.gds
+final/*.oas
+!final/*.gds.gz
+!final/*.json
+!final/README.md
+.signoff/
 img/
 *.lyrdb
 generated_defines.svh

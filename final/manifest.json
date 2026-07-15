@@ -1,0 +1,24 @@
+{
+  "artifact": "final/chip_top.gds.gz",
+  "artifact_sha256": "d3c5f18ced9e494170e3275005933f652b327e159ddf014dd199ab32b2aea2ba",
+  "source_original": "../gds/padring_test_structures.gds",
+  "source_original_sha256": "0f60a04b117d0fef323d54f841c97046dfb91351e209caac0684618063256f78",
+  "prepared_sha256": "8e9dcaa1c86a922634f2db2b0a7dba617e618cf9bf46abe03eea898794ac5636",
+  "sealed_uncompressed_sha256": "17d2c640fcfa999d586dc9861a66a8bf53fb37c6fb14802306400a17a401d179",
+  "top": "chip_top",
+  "slot": "1x0p5",
+  "bbox_um": [
+    0.0,
+    0.0,
+    3932.0,
+    2531.0
+  ],
+  "dbu_um": 0.001,
+  "guard_ring_marker": [
+    167,
+    5
+  ],
+  "source_geometry_preserved": true,
+  "padring_source": "external GDS only; no gf180characterization padring flow used",
+  "wafer_space_pdk_commit": "ac7d8696de96a4d708e768b607ae37f02207a354"
+}
