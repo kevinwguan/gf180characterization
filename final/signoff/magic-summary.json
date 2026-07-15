@@ -1,0 +1,17 @@
+{
+  "engine": "Magic",
+  "version": "8.3.530",
+  "style": "drc(full)",
+  "input": ".signoff/precheck-run/runs/final2/04-klayout-generateid/chip_top.gds",
+  "complete": true,
+  "total_error_boxes": 928,
+  "rule_families": [
+    "DF.3a: Diffusion spacing < 0.28um",
+    "M1.2b: Metal1 > 10um spacing to unrelated m1 < 0.3um"
+  ],
+  "import_warnings": [
+    "Layer 153/51 is unknown to the Magic importer"
+  ],
+  "librelane_wrapper_compatible": false,
+  "librelane_wrapper_error": "invalid command name units"
+}

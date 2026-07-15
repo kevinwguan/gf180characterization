@@ -18,3 +18,7 @@ Override `FINAL_GDS_SOURCE`, `FINAL_GDS_TOP`, or `FINAL_GDS_SLOT` when needed.
 `manifest.json` records hashes and verifies that all incoming geometry remains
 present in the sealed output. `chip_top.gds.md5` is regenerated with the GDS
 and can be checked with `md5sum -c final/chip_top.gds.md5`.
+
+The latest manufacturing-precheck evidence is under `signoff/`. Its README is
+authoritative: the current layout fails density, antenna, KLayout DRC, and
+Magic DRC and must not be treated as signed off.

@@ -10,4 +10,5 @@ final/*.oas
 .signoff/
 img/
 *.lyrdb
+!final/signoff/*.lyrdb
 generated_defines.svh

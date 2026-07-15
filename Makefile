@@ -175,7 +175,7 @@ signoff-final: final-gds $(SIGNOFF_DIR)/precheck/.git ## Run Wafer.Space GF180 p
 		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
 		--top $(FINAL_GDS_TOP) --slot $(FINAL_GDS_SLOT) \
 		--workers max --threads 1 \
-		--output $(FINAL_DIR)/$(FINAL_GDS_TOP).signedoff.gds
+		--output $(SIGNOFF_DIR)/precheck-output.gds
 .PHONY: signoff-final
 
 sim: clone-pdk defines ## Run RTL simulation with cocotb

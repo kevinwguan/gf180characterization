@@ -1,0 +1,2604 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report-database>
+ <description>GF180 ANTENNA DRC Run Report at</description>
+ <original-file/>
+ <generator>drc: script='/home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk/gf180mcuD/libs.tech/klayout/tech/drc/rule_decks/antenna.drc'</generator>
+ <top-cell>chip_top</top-cell>
+ <tags>
+  <tag>
+   <name>ANT_PERIMETER</name>
+   <description/>
+  </tag>
+  <tag>
+   <name>DIODES_AREA</name>
+   <description/>
+  </tag>
+  <tag>
+   <name>RATIO</name>
+   <description/>
+  </tag>
+  <tag>
+   <name>GATE_AREA</name>
+   <description/>
+  </tag>
+  <tag>
+   <name>ANT_AREA</name>
+   <description/>
+  </tag>
+ </tags>
+ <categories>
+  <category>
+   <name>ANT.1</name>
+   <description>ANT.1: Maximum ratio of Poly2 perimeter area to related gate oxide area: 200</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.8</name>
+   <description>ANT.8: Maximum ratio of contact area to related gate oxide area: 10</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.2</name>
+   <description>ANT.16_i_ANT.2: Maximum ratio of Metal1 perimeter
+                   area to related thin gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.2</name>
+   <description>ANT.16_ii_ANT.2: Maximum ratio of Metal1 perimeter
+                   area to related thick gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.9</name>
+   <description>ANT.16_i_ANT.9: Maximum ratio of Via1 area to related thin gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.9</name>
+   <description>ANT.16_ii_ANT.9: Maximum ratio of Via1 area to related thick gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.3</name>
+   <description>ANT.16_i_ANT.3: Maximum ratio of Metal2 perimeter area to related gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.3</name>
+   <description>ANT.16_ii_ANT.3: Maximum ratio of Metal2 perimeter area to related gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.10</name>
+   <description>ANT.16_i_ANT.10: Maximum ratio of Via2 area to related thin gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.10</name>
+   <description>ANT.16_ii_ANT.10: Maximum ratio of Via2 area to related thick gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.4</name>
+   <description>ANT.16_i_ANT.4: Maximum ratio of Metal3 perimeter area to related thin gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.4</name>
+   <description>ANT.16_ii_ANT.4: Maximum ratio of Metal3 perimeter area to related thick gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.11</name>
+   <description>ANT.16_i_ANT.11: Maximum ratio of Via3 area to related thin gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.11</name>
+   <description>ANT.16_ii_ANT.11: Maximum ratio of Via3 area to related thick gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.5</name>
+   <description>ANT.16_i_ANT.5: Maximum ratio of Metal4 perimeter area to related gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.5</name>
+   <description>ANT.16_ii_ANT.5: Maximum ratio of Metal4 perimeter area to related gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.12</name>
+   <description>ANT.16_i_ANT.12: Maximum ratio of Via4 area to related thin gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.12</name>
+   <description>ANT.16_ii_ANT.12: Maximum ratio of Via4 area to related thick gate oxide area: 20</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_i_ANT.7</name>
+   <description>ANT.16_i_ANT.7: Maximum ratio of Metaltop perimeter area to related thin gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_ii_ANT.7</name>
+   <description>ANT.16_ii_ANT.7: Maximum ratio of Metaltop perimeter area to related thick gate oxide area: 400</description>
+   <categories>
+   </categories>
+  </category>
+  <category>
+   <name>ANT.16_iii_ANT.14_MT_MIMB</name>
+   <description>ANT.16_iii_ANT.14_MT_MIMB: Maximum ratio of each of the Top metal layer perimeter
+                      area to related MIM area is 400</description>
+   <categories>
+   </categories>
+  </category>
+ </categories>
+ <cells>
+  <cell>
+   <name>chip_top</name>
+   <variant/>
+   <layout-name/>
+   <references>
+   </references>
+  </cell>
+  <cell>
+   <name>chip_top_content</name>
+   <variant/>
+   <layout-name>chip_top_content</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 48.5,48</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>TS_INTEGRATION</name>
+   <variant/>
+   <layout-name>TS_INTEGRATION</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 48.5,48</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>TEST_ASM</name>
+   <variant/>
+   <layout-name>TEST_ASM</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 48.5,48</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_w4</name>
+   <variant/>
+   <layout-name>ts_nfet_w4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 808.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_w8</name>
+   <variant/>
+   <layout-name>ts_nfet_w8</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1008.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_l4</name>
+   <variant/>
+   <layout-name>ts_nfet_l4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1208.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_w4l4</name>
+   <variant/>
+   <layout-name>ts_nfet_w4l4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1408.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_w2l4</name>
+   <variant/>
+   <layout-name>ts_nfet_w2l4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1608.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_w4</name>
+   <variant/>
+   <layout-name>ts_pfet_w4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1808.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_l4</name>
+   <variant/>
+   <layout-name>ts_pfet_l4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 2008.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_w2l2</name>
+   <variant/>
+   <layout-name>ts_pfet_w2l2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 2208.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_w8</name>
+   <variant/>
+   <layout-name>ts_pfet_w8</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 2408.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_6v_w2</name>
+   <variant/>
+   <layout-name>ts_nfet_6v_w2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 2608.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_6v_l2</name>
+   <variant/>
+   <layout-name>ts_nfet_6v_l2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 2808.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_6v_w4</name>
+   <variant/>
+   <layout-name>ts_nfet_6v_w4</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 3008.5,988</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_6v</name>
+   <variant/>
+   <layout-name>ts_pfet_6v</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 808.5,1188</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_6v_w2</name>
+   <variant/>
+   <layout-name>ts_pfet_6v_w2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1008.5,1188</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_pfet_6v_l2</name>
+   <variant/>
+   <layout-name>ts_pfet_6v_l2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1208.5,1188</trans>
+    </ref>
+   </references>
+  </cell>
+  <cell>
+   <name>ts_nfet_nvt_w2</name>
+   <variant/>
+   <layout-name>ts_nfet_nvt_w2</layout-name>
+   <references>
+    <ref>
+     <parent>chip_top</parent>
+     <trans>r0 *1 1408.5,1188</trans>
+    </ref>
+   </references>
+  </cell>
+ </cells>
+ <items>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7977.84428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2232.1764</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1993.01464286</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2230.0164</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 995.543035714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1994.46107143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2232.1764</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 498.253660714</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2233.2564</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 996.989464286</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2232.1764</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1993.01464286</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1994.46107143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2233.2564</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1993.97892857</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.3'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2230.0164</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 995.543035714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2233.2564</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1595.18314286</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1595.56885714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2232.1764</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 797.205857143</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 3191.13771429</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2233.2564</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1595.18314286</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2233.7964</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1595.56885714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.3'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#ANT_PERIMETER] float: 2233.4724</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 775.51125</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 97.5371428571</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.10'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 156.059428571</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 624.237714286</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.10'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 151.724444444</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 463.658705357</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.4'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 741.853928571</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 2967.41571429</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.4'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 721.246875</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 97.5371428571</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.11'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 156.059428571</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 624.237714286</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.11'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 151.724444444</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 7418.53928571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 463.658705357</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1854.63482143</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.5'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 927.317410714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 741.853928571</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 2967.41571429</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1483.70785714</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.5'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#ANT_PERIMETER] float: 2077.191</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 721.246875</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 1560.59428571</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_nfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_nfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_nfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_nfet_w4l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-2;-0.56,2;0.56,2;0.56,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 97.5371428571</value>
+    <value>[#GATE_AREA] float: 4.48</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_nfet_w2l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-1;-0.56,1;0.56,1;0.56,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_pfet_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-2;-0.14,2;0.14,2;0.14,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_pfet_l4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.56,-0.5;-0.56,0.5;0.56,0.5;0.56,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_pfet_w2l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.28,-1;-0.28,1;0.28,1;0.28,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 390.148571429</value>
+    <value>[#GATE_AREA] float: 1.12</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.12'</category>
+   <cell>ts_pfet_w8</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.14,-4;-0.14,4;0.14,4;0.14,-4)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 195.074285714</value>
+    <value>[#GATE_AREA] float: 2.24</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_nfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_nfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_nfet_6v_w4</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-2;-0.35,2;0.35,2;0.35,-2)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 156.059428571</value>
+    <value>[#GATE_AREA] float: 2.8</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 624.237714286</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_pfet_6v_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-1;-0.35,1;0.35,1;0.35,-1)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_pfet_6v_l2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.7,-0.5;-0.7,0.5;0.7,0.5;0.7,-0.5)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 312.118857143</value>
+    <value>[#GATE_AREA] float: 1.4</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.12'</category>
+   <cell>ts_nfet_nvt_w2</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.9,-0.8;-0.9,0.8;0.9,0.8;0.9,-0.8)</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#ANT_AREA] float: 436.9664</value>
+    <value>[#RATIO] float: 151.724444444</value>
+    <value>[#GATE_AREA] float: 2.88</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2559.86,1339.5;2559.86,1340.5;2560.14,1340.5;2560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2359.86,1339.5;2359.86,1340.5;2360.14,1340.5;2360.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (2159.86,1339.5;2159.86,1340.5;2160.14,1340.5;2160.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1559.86,1339.5;1559.86,1340.5;1560.14,1340.5;1560.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1759.86,1339.5;1759.86,1340.5;1760.14,1340.5;1760.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_i_ANT.7'</category>
+   <cell>TEST_ASM</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (1959.86,1339.5;1959.86,1340.5;1960.14,1340.5;1960.14,1339.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 1133.2625</value>
+    <value>[#GATE_AREA] float: 0.28</value>
+   </values>
+  </item>
+  <item>
+   <tags/>
+   <category>'ANT.16_ii_ANT.7'</category>
+   <cell>ts_pfet_6v</cell>
+   <visited>false</visited>
+   <multiplicity>1</multiplicity>
+   <comment/>
+   <image/>
+   <values>
+    <value>polygon: (-0.35,-0.5;-0.35,0.5;0.35,0.5;0.35,-0.5)</value>
+    <value>[#ANT_PERIMETER] float: 317.3135</value>
+    <value>[#DIODES_AREA] float: 0</value>
+    <value>[#RATIO] float: 453.305</value>
+    <value>[#GATE_AREA] float: 0.7</value>
+   </values>
+  </item>
+ </items>
+</report-database>
