@@ -1,0 +1,1 @@
+magic -dnull -noconsole -rcfile /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk/gf180mcuD/libs.tech/magic/gf180mcuD.magicrc /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/lib/python3.13/site-packages/librelane/scripts/magic/wrapper.tcl

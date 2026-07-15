@@ -1,0 +1,18 @@
+Authoritative environment: gf180characterization root flake.lock via nix develop
+Nix: 2.35.1
+Python: 3.13.9
+LibreLane: 3.1.0.dev2 (flake.lock rev f18a07aabb2dd3d6a7e3acc8c3b3621baa784a08)
+Magic: 8.3.660
+KLayout: 0.30.9
+Ciel: 2.5.0
+qrcode: 8.2
+procps/pmap: 4.0.4
+Wafer.Space PDK: ac7d8696de96a4d708e768b607ae37f02207a354
+Wafer.Space precheck: 59207bbebaf2f5e5bb5f3e9441199a71948b1fdc
+
+python3: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+librelane: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/librelane
+magic: /nix/store/h9v6fkcfxn33h9k016srwszwnkrqkv8d-magic-vlsi-8.3.660/bin/magic
+klayout: /nix/store/dljmpck53kb6zxhvd73b688286b0kwkn-klayout-0.30.9/bin/klayout
+ciel: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/ciel
+pmap: /nix/store/f2jq5q118yp4h5bk93lpd2ly66qyvfr5-procps-4.0.4/bin/pmap

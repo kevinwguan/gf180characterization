@@ -55,6 +55,8 @@
               gnumake
               gnugrep
               gawk
+              # Required by the GF180 density deck.
+              procps
 
               # Simulation
               iverilog
@@ -75,6 +77,9 @@
 
                 # For logo generation
                 pillow
+
+                # Required by the Wafer.Space precheck ID generator.
+                qrcode
               ];
           });
         }

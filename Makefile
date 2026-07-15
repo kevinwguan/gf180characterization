@@ -56,6 +56,7 @@ FINAL_DIE_WIDTH = $(if $(filter 1x1 1x0p5,$(FINAL_GDS_SLOT)),3932,1936)
 FINAL_DIE_HEIGHT = $(if $(filter 1x1 0p5x1,$(FINAL_GDS_SLOT)),5122,2531)
 FINAL_DIR ?= $(MAKEFILE_DIR)/final
 SIGNOFF_DIR ?= $(MAKEFILE_DIR)/.signoff
+PRECHECK_RUN_DIR ?= $(SIGNOFF_DIR)/precheck-run
 WS_PDK_REPO ?= https://github.com/wafer-space/gf180mcu.git
 WS_PDK_COMMIT ?= ac7d8696de96a4d708e768b607ae37f02207a354
 WS_PRECHECK_REPO ?= https://github.com/wafer-space/gf180mcu-precheck.git
@@ -170,11 +171,13 @@ final-gds: $(SIGNOFF_DIR)/pdk/.git ## Add only the GF180 seal ring to FINAL_GDS_
 .PHONY: final-gds
 
 signoff-final: final-gds $(SIGNOFF_DIR)/precheck/.git ## Run Wafer.Space GF180 precheck on the sealed external GDS
+	mkdir -p $(PRECHECK_RUN_DIR)
 	PDK_ROOT=$(SIGNOFF_DIR)/pdk PDK=gf180mcuD python3 \
 		$(SIGNOFF_DIR)/precheck/precheck.py \
 		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
 		--top $(FINAL_GDS_TOP) --slot $(FINAL_GDS_SLOT) \
 		--workers max --threads 1 \
+		--dir $(PRECHECK_RUN_DIR) \
 		--output $(SIGNOFF_DIR)/precheck-output.gds
 .PHONY: signoff-final
 
