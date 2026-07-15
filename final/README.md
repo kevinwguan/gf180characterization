@@ -4,8 +4,8 @@ This directory is produced by `make final-gds` and `make signoff-final`.
 
 The flow uses `../gds/padring_test_structures.gds` as the complete incoming
 layout. It does **not** generate, import, or merge the padring defined by this
-repository. The only geometry added before sign-off is the Wafer.Space GF180MCU
-seal ring from the pinned Wafer.Space PDK.
+repository. The incoming layout is centered in the slot, then the only geometry
+added before sign-off is the Wafer.Space GF180MCU seal ring from the pinned PDK.
 
 Run:
 

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Prepare an external GDS for seal-ring insertion and verify the result.
 
-This script never creates or imports a padring.  The prepare phase only renames
-the external layout's sole top cell.  The finish phase proves that all source
-geometry remains present, checks the Wafer.Space slot envelope and seal marker,
-then emits a compressed GDS and a hash-locked provenance manifest.
+This script never creates or imports a padring.  The prepare phase centers the
+external layout's sole top cell inside the selected slot.  The finish phase
+proves that all centered source geometry remains present, checks the
+Wafer.Space slot envelope and seal marker, then emits a GDS and a hash-locked
+provenance manifest.
 """
 
 from __future__ import annotations
@@ -65,12 +66,21 @@ def prepare(args: argparse.Namespace) -> None:
     width, height = SLOTS[args.slot]
     if box[0] < 0 or box[1] < 0 or box[2] > width or box[3] > height:
         raise SystemExit(f"source bbox {box} does not fit {args.slot} slot {width}x{height}")
-    layout.rename_cell(top.cell_index(), args.top)
+    content_width = box[2] - box[0]
+    content_height = box[3] - box[1]
+    dx = (width - content_width) / 2 - box[0]
+    dy = (height - content_height) / 2 - box[1]
+    layout.rename_cell(top.cell_index(), f"{args.top}_content")
+    wrapper = layout.create_cell(args.top)
+    wrapper.insert(db.DCellInstArray(top, db.DTrans(dx, dy)))
     output.parent.mkdir(parents=True, exist_ok=True)
     options = db.SaveLayoutOptions()
     options.write_context_info = False
     layout.write(str(output), options)
-    print(f"prepared external GDS only: {source} -> {output}; source bbox={box}")
+    print(
+        f"prepared external GDS only: {source} -> {output}; "
+        f"source bbox={box}; centered by ({dx}, {dy}) um"
+    )
 
 
 def assert_source_preserved(source: db.Layout, sealed: db.Layout) -> None:
@@ -141,6 +151,10 @@ def finish(args: argparse.Namespace) -> None:
     ).is_empty():
         raise SystemExit("sealed layout has no GUARD_RING_MK 167/5 geometry")
     assert_source_preserved(source, sealed)
+    original_layout = load(Path(args.source_original).resolve())
+    original_top = sole_top(original_layout)
+    centered_box = bbox_um(source_top, source.dbu)
+    original_box = bbox_um(original_top, original_layout.dbu)
 
     output.parent.mkdir(parents=True, exist_ok=True)
     with sealed_path.open("rb") as src, output.open("wb") as dst:
@@ -155,6 +169,11 @@ def finish(args: argparse.Namespace) -> None:
         "top": args.top,
         "slot": args.slot,
         "bbox_um": box,
+        "centered_content_bbox_um": centered_box,
+        "source_translation_um": [
+            centered_box[0] - original_box[0],
+            centered_box[1] - original_box[1],
+        ],
         "dbu_um": sealed.dbu,
         "guard_ring_marker": list(GUARD_RING_MK),
         "source_geometry_preserved": True,

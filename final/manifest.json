@@ -1,10 +1,10 @@
 {
   "artifact": "final/chip_top.gds",
-  "artifact_sha256": "17d2c640fcfa999d586dc9861a66a8bf53fb37c6fb14802306400a17a401d179",
+  "artifact_sha256": "8686a919f6e8b1c95f0a4cc105ad164be747bfbb8409fe5f3d3769d0f0a3d975",
   "source_original": "../gds/padring_test_structures.gds",
   "source_original_sha256": "0f60a04b117d0fef323d54f841c97046dfb91351e209caac0684618063256f78",
-  "prepared_sha256": "8e9dcaa1c86a922634f2db2b0a7dba617e618cf9bf46abe03eea898794ac5636",
-  "sealed_uncompressed_sha256": "17d2c640fcfa999d586dc9861a66a8bf53fb37c6fb14802306400a17a401d179",
+  "prepared_sha256": "3a357ca2aba5a8fab50a6ea9d0753f16998f303451aa8d3c52e6e004d9f87081",
+  "sealed_uncompressed_sha256": "8686a919f6e8b1c95f0a4cc105ad164be747bfbb8409fe5f3d3769d0f0a3d975",
   "top": "chip_top",
   "slot": "1x0p5",
   "bbox_um": [
@@ -12,6 +12,16 @@
     0.0,
     3932.0,
     2531.0
+  ],
+  "centered_content_bbox_um": [
+    48.5,
+    48.0,
+    3883.5,
+    2483.0
+  ],
+  "source_translation_um": [
+    48.5,
+    48.0
   ],
   "dbu_um": 0.001,
   "guard_ring_marker": [

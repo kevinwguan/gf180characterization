@@ -148,9 +148,9 @@ make signoff-final
 The default input is `../gds/padring_test_structures.gds`, the slot is `1x0p5`,
 and the output is `final/chip_top.gds`. The Wafer.Space PDK and precheck are
 cloned at pinned commits under the ignored `.signoff/` directory. The import
-step is fail-closed: it requires one top cell, 0.001 µm DBU, geometry within the
-selected slot, an exact post-seal slot boundary, a `GUARD_RING_MK` seal marker,
-and proof that no incoming geometry was dropped.
+step is fail-closed: it requires one top cell, 0.001 µm DBU, centers that layout
+inside the selected slot, requires an exact post-seal slot boundary and a
+`GUARD_RING_MK` seal marker, and proves that no incoming geometry was dropped.
 
 To use another completed layout:
 
