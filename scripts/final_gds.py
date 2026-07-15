@@ -37,6 +37,14 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def md5(path: Path) -> str:
+    digest = hashlib.md5(usedforsecurity=False)
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
 def load(path: Path) -> db.Layout:
     layout = db.Layout()
     layout.read(str(path))
@@ -159,9 +167,14 @@ def finish(args: argparse.Namespace) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     with sealed_path.open("rb") as src, output.open("wb") as dst:
         shutil.copyfileobj(src, dst, length=1024 * 1024)
+    artifact_md5 = md5(output)
+    checksum_path = output.with_suffix(output.suffix + ".md5")
+    checksum_path.write_text(f"{artifact_md5}  {os.path.relpath(output)}\n")
     record = {
         "artifact": os.path.relpath(output),
         "artifact_sha256": sha256(output),
+        "artifact_md5": artifact_md5,
+        "md5_file": os.path.relpath(checksum_path),
         "source_original": os.path.relpath(Path(args.source_original).resolve()),
         "source_original_sha256": sha256(Path(args.source_original).resolve()),
         "prepared_sha256": sha256(source_path),
