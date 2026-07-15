@@ -161,7 +161,7 @@ final-gds: $(SIGNOFF_DIR)/pdk/.git ## Add only the GF180 seal ring to FINAL_GDS_
 	python3 scripts/final_gds.py finish \
 		--source $(SIGNOFF_DIR)/prepared.gds \
 		--sealed $(SIGNOFF_DIR)/sealed.gds \
-		--output $(FINAL_DIR)/$(FINAL_GDS_TOP).gds.gz \
+		--output $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
 		--manifest $(FINAL_DIR)/manifest.json \
 		--top $(FINAL_GDS_TOP) \
 		--slot $(FINAL_GDS_SLOT) \
@@ -172,10 +172,10 @@ final-gds: $(SIGNOFF_DIR)/pdk/.git ## Add only the GF180 seal ring to FINAL_GDS_
 signoff-final: final-gds $(SIGNOFF_DIR)/precheck/.git ## Run Wafer.Space GF180 precheck on the sealed external GDS
 	PDK_ROOT=$(SIGNOFF_DIR)/pdk PDK=gf180mcuD python3 \
 		$(SIGNOFF_DIR)/precheck/precheck.py \
-		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds.gz \
+		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
 		--top $(FINAL_GDS_TOP) --slot $(FINAL_GDS_SLOT) \
 		--workers max --threads 1 \
-		--output $(FINAL_DIR)/$(FINAL_GDS_TOP).signedoff.gds.gz
+		--output $(FINAL_DIR)/$(FINAL_GDS_TOP).signedoff.gds
 .PHONY: signoff-final
 
 sim: clone-pdk defines ## Run RTL simulation with cocotb

@@ -10,7 +10,6 @@ then emits a compressed GDS and a hash-locked provenance manifest.
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import os
@@ -144,9 +143,8 @@ def finish(args: argparse.Namespace) -> None:
     assert_source_preserved(source, sealed)
 
     output.parent.mkdir(parents=True, exist_ok=True)
-    with sealed_path.open("rb") as src, output.open("wb") as raw:
-        with gzip.GzipFile(fileobj=raw, mode="wb", mtime=0) as dst:
-            shutil.copyfileobj(src, dst, length=1024 * 1024)
+    with sealed_path.open("rb") as src, output.open("wb") as dst:
+        shutil.copyfileobj(src, dst, length=1024 * 1024)
     record = {
         "artifact": os.path.relpath(output),
         "artifact_sha256": sha256(output),

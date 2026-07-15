@@ -1,6 +1,6 @@
 {
-  "artifact": "final/chip_top.gds.gz",
-  "artifact_sha256": "d3c5f18ced9e494170e3275005933f652b327e159ddf014dd199ab32b2aea2ba",
+  "artifact": "final/chip_top.gds",
+  "artifact_sha256": "17d2c640fcfa999d586dc9861a66a8bf53fb37c6fb14802306400a17a401d179",
   "source_original": "../gds/padring_test_structures.gds",
   "source_original_sha256": "0f60a04b117d0fef323d54f841c97046dfb91351e209caac0684618063256f78",
   "prepared_sha256": "8e9dcaa1c86a922634f2db2b0a7dba617e618cf9bf46abe03eea898794ac5636",
