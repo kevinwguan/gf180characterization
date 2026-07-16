@@ -13,10 +13,12 @@ the hierarchy-only upper-via cell renames. No repository padring is added.
 Run:
 
 ```sh
-nix develop
-make final-gds
-make signoff-final
+nix develop --accept-flake-config --command make final-gds
+nix develop --accept-flake-config --command make signoff-final
 ```
+
+The final-GDS and sign-off targets refuse host Python, Git, Magic, or KLayout
+and verify the pinned Wafer.Space dependency commits before running.
 
 Override `FINAL_GDS_SOURCE`, `FINAL_GDS_TOP`, or `FINAL_GDS_SLOT` when needed.
 `manifest.json` records hashes and verifies that all incoming geometry remains
@@ -27,6 +29,6 @@ the reviewed evidence from the latest authoritative run is committed under
 `signoff/`.
 
 The latest manufacturing-precheck evidence is under `signoff/`. Its README is
-authoritative: Magic DRC, antenna, and zero-area checks are clean, while two
-density rules remain and the full KLayout DRC stage was not rerun in the latest
-Magic-focused pass. The layout must not yet be treated as fully signed off.
+authoritative: Magic DRC, antenna, and zero-area checks are clean; complete
+KLayout main DRC reports 594 markers; and two density rules remain. The layout
+must not yet be treated as fully signed off.

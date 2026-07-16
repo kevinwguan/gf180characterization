@@ -58,6 +58,12 @@ FINAL_DIE_HEIGHT = $(if $(filter 1x1 0p5x1,$(FINAL_GDS_SLOT)),5122,2531)
 FINAL_DIR ?= $(MAKEFILE_DIR)/final
 SIGNOFF_DIR ?= $(MAKEFILE_DIR)/.signoff
 PRECHECK_RUN_DIR ?= $(SIGNOFF_DIR)/precheck-run
+KLAYOUT_DRC_VARIANT ?= D
+KLAYOUT_DRC_RUN_MODE ?= deep
+KLAYOUT_DRC_THREADS ?= 1
+KLAYOUT_DRC_RUN_TAG ?= RUN_$(shell date -u +%Y-%m-%d_%H-%M-%S)
+KLAYOUT_DRC_RUN_DIR ?= $(SIGNOFF_DIR)/klayout-drc-runs/$(KLAYOUT_DRC_RUN_TAG)
+KLAYOUT_DRC_INPUT ?= $(FINAL_DIR)/$(FINAL_GDS_TOP).gds
 WS_PDK_REPO ?= https://github.com/wafer-space/gf180mcu.git
 WS_PDK_COMMIT ?= ac7d8696de96a4d708e768b607ae37f02207a354
 WS_PRECHECK_REPO ?= https://github.com/wafer-space/gf180mcu-precheck.git
@@ -139,17 +145,34 @@ librelane-padring: clone-pdk defines ## Only create the padring
 	python3 scripts/padring.py ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS}
 .PHONY: librelane-padring
 
-$(SIGNOFF_DIR)/pdk/.git:
+check-nix-signoff-tools: ## Refuse host tools for final-GDS and sign-off work
+	python3 scripts/signoff_env.py \
+		--tool python3 --tool git --tool klayout
+.PHONY: check-nix-signoff-tools
+
+$(SIGNOFF_DIR)/pdk/.git: | check-nix-signoff-tools
 	mkdir -p $(SIGNOFF_DIR)
 	git clone $(WS_PDK_REPO) $(SIGNOFF_DIR)/pdk
 	git -C $(SIGNOFF_DIR)/pdk checkout --detach $(WS_PDK_COMMIT)
 
-$(SIGNOFF_DIR)/precheck/.git:
+$(SIGNOFF_DIR)/precheck/.git: | check-nix-signoff-tools
 	mkdir -p $(SIGNOFF_DIR)
 	git clone $(WS_PRECHECK_REPO) $(SIGNOFF_DIR)/precheck
 	git -C $(SIGNOFF_DIR)/precheck checkout --detach $(WS_PRECHECK_COMMIT)
 
-final-gds: $(SIGNOFF_DIR)/pdk/.git ## Repair Magic corner DRC and add only the GF180 seal ring
+check-final-gds-env: check-nix-signoff-tools $(SIGNOFF_DIR)/pdk/.git ## Require pinned Nix tools for final-GDS generation
+	python3 scripts/signoff_env.py \
+		--dependency $(SIGNOFF_DIR)/pdk $(WS_PDK_COMMIT)
+.PHONY: check-final-gds-env
+
+check-signoff-env: check-nix-signoff-tools $(SIGNOFF_DIR)/pdk/.git $(SIGNOFF_DIR)/precheck/.git ## Require pinned Nix tools and dependencies for sign-off
+	python3 scripts/signoff_env.py \
+		--tool magic \
+		--dependency $(SIGNOFF_DIR)/pdk $(WS_PDK_COMMIT) \
+		--dependency $(SIGNOFF_DIR)/precheck $(WS_PRECHECK_COMMIT)
+.PHONY: check-signoff-env
+
+final-gds: check-final-gds-env ## Repair Magic corner DRC and add only the GF180 seal ring
 	python3 scripts/final_gds.py prepare \
 		--input $(FINAL_GDS_SOURCE) \
 		--output $(SIGNOFF_DIR)/prepared.gds \
@@ -171,15 +194,47 @@ final-gds: $(SIGNOFF_DIR)/pdk/.git ## Repair Magic corner DRC and add only the G
 		--pdk-commit $(WS_PDK_COMMIT)
 .PHONY: final-gds
 
-signoff-final: final-gds $(SIGNOFF_DIR)/precheck/.git ## Run Wafer.Space GF180 precheck on the sealed external GDS
+klayout-drc-final: check-signoff-env ## Run the pinned PDK's complete KLayout main DRC on KLAYOUT_DRC_INPUT
+	python3 scripts/klayout_drc.py \
+		--input $(KLAYOUT_DRC_INPUT) \
+		--top $(FINAL_GDS_TOP) \
+		--pdk-root $(SIGNOFF_DIR)/pdk \
+		--pdk-commit $(WS_PDK_COMMIT) \
+		--run-dir $(KLAYOUT_DRC_RUN_DIR) \
+		--variant $(KLAYOUT_DRC_VARIANT) \
+		--run-mode $(KLAYOUT_DRC_RUN_MODE) \
+		--threads $(KLAYOUT_DRC_THREADS)
+.PHONY: klayout-drc-final
+
+signoff-final: final-gds check-signoff-env ## Run Wafer.Space precheck plus the pinned PDK's complete KLayout DRC
 	mkdir -p $(PRECHECK_RUN_DIR)
+	@rm -f $(SIGNOFF_DIR)/precheck-output.gds; \
+	precheck_status=0; klayout_status=0; \
 	PDK_ROOT=$(SIGNOFF_DIR)/pdk PDK=gf180mcuD python3 \
 		$(SIGNOFF_DIR)/precheck/precheck.py \
 		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
 		--top $(FINAL_GDS_TOP) --slot $(FINAL_GDS_SLOT) \
 		--workers max --threads 1 \
 		--dir $(PRECHECK_RUN_DIR) \
-		--output $(SIGNOFF_DIR)/precheck-output.gds
+		--output $(SIGNOFF_DIR)/precheck-output.gds \
+		--skip KLayout.DRC Checker.KLayoutDRC || precheck_status=$$?; \
+	if [ -f $(SIGNOFF_DIR)/precheck-output.gds ]; then \
+		python3 scripts/klayout_drc.py \
+			--input $(SIGNOFF_DIR)/precheck-output.gds \
+			--top $(FINAL_GDS_TOP) \
+			--pdk-root $(SIGNOFF_DIR)/pdk \
+			--pdk-commit $(WS_PDK_COMMIT) \
+			--run-dir $(KLAYOUT_DRC_RUN_DIR) \
+			--variant $(KLAYOUT_DRC_VARIANT) \
+			--run-mode $(KLAYOUT_DRC_RUN_MODE) \
+			--threads $(KLAYOUT_DRC_THREADS) || klayout_status=$$?; \
+	else \
+		echo "precheck did not produce $(SIGNOFF_DIR)/precheck-output.gds"; \
+		klayout_status=2; \
+	fi; \
+	echo "Wafer.Space precheck status: $$precheck_status"; \
+	echo "authoritative KLayout DRC status: $$klayout_status"; \
+	if [ $$precheck_status -ne 0 ] || [ $$klayout_status -ne 0 ]; then exit 2; fi
 .PHONY: signoff-final
 
 sim: clone-pdk defines ## Run RTL simulation with cocotb

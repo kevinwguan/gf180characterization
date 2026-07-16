@@ -1,3 +1,31 @@
+warning: Git tree '/home/flow/Vibe/tapeout/gf180characterization' is dirty
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+unpacking 'https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz' into the Git cache...
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+python3 scripts/signoff_env.py \
+	--tool python3 --tool git --tool klayout
+sign-off Python: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off python3: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off git: /nix/store/dh2yzrnp5raifh3knbphhljrsjqkcklr-git-2.51.2/bin/git
+sign-off klayout: /nix/store/dljmpck53kb6zxhvd73b688286b0kwkn-klayout-0.30.9/bin/klayout
+python3 scripts/signoff_env.py \
+	--tool magic \
+	--dependency /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk ac7d8696de96a4d708e768b607ae37f02207a354 \
+	--dependency /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck 59207bbebaf2f5e5bb5f3e9441199a71948b1fdc
+sign-off Python: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off magic: /nix/store/h9v6fkcfxn33h9k016srwszwnkrqkv8d-magic-vlsi-8.3.660/bin/magic
+sign-off dependency: /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk @ ac7d8696de96a4d708e768b607ae37f02207a354
+sign-off dependency: /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck @ 59207bbebaf2f5e5bb5f3e9441199a71948b1fdc
+python3 scripts/klayout_drc.py \
+	--input .signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/04-klayout-generateid/chip_top.gds \
+	--top chip_top \
+	--pdk-root /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk \
+	--pdk-commit ac7d8696de96a4d708e768b607ae37f02207a354 \
+	--run-dir /home/flow/Vibe/tapeout/gf180characterization/.signoff/klayout-drc-runs/KLAYOUT_SIGNOFF_2026-07-16 \
+	--variant D \
+	--run-mode deep \
+	--threads 1
 2026-07-16 19:16:04 +0000: Memory Usage (427096K) : Starting running GF180MCU Klayout DRC runset on /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/04-klayout-generateid/chip_top.gds
 2026-07-16 19:16:04 +0000: Memory Usage (427096K) : Ruby Version for klayout: 3.3.10
 2026-07-16 19:16:04 +0000: Memory Usage (480636K) : Loading database to memory is complete.
@@ -751,3 +779,6 @@
 2026-07-16 19:32:37 +0000: Memory Usage (1781832K) : Executing rule DE.3
 2026-07-16 19:32:37 +0000: Memory Usage (1781832K) : Executing rule DE.4
 2026-07-16 19:32:37 +0000: Memory Usage (1781832K) : main DRC Total Run time 993.40209304 seconds
+KLayout DRC rule categories: 649
+KLayout DRC total markers: 594
+make: *** [Makefile:198: klayout-drc-final] Error 1
