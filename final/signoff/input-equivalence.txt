@@ -1,23 +1,26 @@
 Final artifact SHA-256:
-6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be
+53b33f39fad23fa581bc7a9fd5e4adc875a57fa6ad75d29084dbf9b3e74b1bf9
 
 External source SHA-256:
 80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7
 
+Generated-ID main-DRC input SHA-256:
+a1fc8aa09d9703b633faf50682a2a1122c72a489502d0ebae7e917c9f635b305
+
 The precheck's exact KLayout.ReadLayout transformation was rerun on the final
-GDS after the Magic-focused precheck completed. SHA-256 was then computed over
+GDS after the current precheck completed. SHA-256 was then computed over
 every resulting GDS record after zeroing only BGNLIB and BGNSTR timestamp
 payloads.
 
 Precheck run ReadLayout normalized SHA-256:
-3cb1d37cb2b5909135952f6ec4f586fbb8f8fb30f831e8f9e49da22fc57a5604
+18056ef72083e77e3911532fe992d7f939b9160df2baec0a3c1f212fb9a6b518
 
 Committed final ReadLayout normalized SHA-256:
-3cb1d37cb2b5909135952f6ec4f586fbb8f8fb30f831e8f9e49da22fc57a5604
+18056ef72083e77e3911532fe992d7f939b9160df2baec0a3c1f212fb9a6b518
 
 Result: every non-timestamp GDS record presented to precheck is identical.
 
 Reproduce the comparison from the repository root while the raw run exists:
 
-  nix develop --command python3 .signoff/precheck/scripts/klayout/read_layout.py final/chip_top.gds .signoff/current-readlayout.gds
-  nix develop --command python3 scripts/gds_normalized_sha256.py .signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/01-klayout-readlayout/chip_top.gds .signoff/current-readlayout.gds
+  nix develop --accept-flake-config --no-write-lock-file --command python3 .signoff/precheck/scripts/klayout/read_layout.py final/chip_top.gds .signoff/current-readlayout.gds
+  nix develop --accept-flake-config --no-write-lock-file --command python3 scripts/gds_normalized_sha256.py .signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/01-klayout-readlayout/chip_top.gds .signoff/current-readlayout.gds

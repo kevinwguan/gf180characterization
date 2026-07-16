@@ -4323,6 +4323,6 @@ Loading DRC CIF style.
 No errors found.
 [INFO] COUNT: 0
 [INFO] Should be divided by 3 or 4
-[INFO] DRC Checking DONE (/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/12-magic-drc/reports/drc.magic.rpt)
-[INFO] Saving mag view with DRC errors (/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/12-magic-drc/views/chip_top.drc.mag)
+[INFO] DRC Checking DONE (/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/12-magic-drc/reports/drc.magic.rpt)
+[INFO] Saving mag view with DRC errors (/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/12-magic-drc/views/chip_top.drc.mag)
 [INFO] Saved

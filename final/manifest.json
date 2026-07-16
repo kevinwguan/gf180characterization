@@ -1,12 +1,12 @@
 {
   "artifact": "final/chip_top.gds",
-  "artifact_sha256": "6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be",
-  "artifact_md5": "4f233de57826c45bb0800aadf7c3d000",
+  "artifact_sha256": "53b33f39fad23fa581bc7a9fd5e4adc875a57fa6ad75d29084dbf9b3e74b1bf9",
+  "artifact_md5": "1c5109d6a668de69250925b70ce00889",
   "md5_file": "final/chip_top.gds.md5",
   "source_original": "../gds/padring_test_structures.gds",
   "source_original_sha256": "80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7",
-  "prepared_sha256": "2c90f175636083ca83296ff5e9667f8c06e455e68288907890329b05b6e30f38",
-  "sealed_uncompressed_sha256": "6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be",
+  "prepared_sha256": "96b10ab3035d391ff7b6d84193738ad83830974fabf1d26c4f53bb4727263f77",
+  "sealed_uncompressed_sha256": "53b33f39fad23fa581bc7a9fd5e4adc875a57fa6ad75d29084dbf9b3e74b1bf9",
   "top": "chip_top",
   "slot": "1x0p5",
   "bbox_um": [
@@ -56,6 +56,71 @@
     ],
     "corner_metal1_bridge_count": 3,
     "reason": "preserve legal foundry via generators across Magic GDS import and close three same-net M1.2b corner-rail notches"
+  },
+  "klayout_drc_repairs": {
+    "manhattan_grid_um": 0.005,
+    "bend_overlays": [
+      {
+        "cell": "ts_bend",
+        "source_polygon_bbox": [
+          -5250,
+          -5250,
+          5250,
+          5250
+        ],
+        "source_polygon_area_dbu2": 15707866,
+        "added_area_dbu2": 86650,
+        "overlay_polygon_count": 42,
+        "overlay_max_points": 178
+      },
+      {
+        "cell": "ts_bend_s",
+        "source_polygon_bbox": [
+          -5500,
+          -1400,
+          5500,
+          1400
+        ],
+        "source_polygon_area_dbu2": 11205917,
+        "added_area_dbu2": 60974,
+        "overlay_polygon_count": 14,
+        "overlay_max_points": 166
+      }
+    ],
+    "bend_overlay_count": 2,
+    "logo_cell": "gdsfactory_logo",
+    "logo_metal5_patches": [
+      [
+        [
+          285000,
+          12000
+        ],
+        [
+          286500,
+          12000
+        ],
+        [
+          286500,
+          13500
+        ]
+      ],
+      [
+        [
+          285000,
+          126000
+        ],
+        [
+          286500,
+          124500
+        ],
+        [
+          286500,
+          126000
+        ]
+      ]
+    ],
+    "logo_metal5_patch_count": 2,
+    "reason": "cover the original smooth Metal1 bends on the GF180 5 nm Manhattan grid and close two same-polygon Metal5 wide-rule staircase transitions"
   },
   "padring_source": "external GDS only; no gf180characterization padring flow used",
   "wafer_space_pdk_commit": "ac7d8696de96a4d708e768b607ae37f02207a354"

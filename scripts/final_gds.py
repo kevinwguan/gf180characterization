@@ -28,6 +28,7 @@ SLOTS = {
 }
 GUARD_RING_MK = (167, 5)
 METAL1 = (34, 0)
+METAL5 = (81, 0)
 
 # The Wafer.Space precheck flattens every cell matching ``*_CDNS_*`` before
 # running Magic.  Flattening the foundry M4/M3 and M5/M4 via generators makes
@@ -49,6 +50,44 @@ GF180_CORNER_M1_BRIDGES = (
     db.Box(128710, 165505, 129010, 165785),
     db.Box(128710, 164885, 129010, 165165),
     db.Box(190320, 103275, 190620, 103555),
+)
+
+# The two characterization bends were generated as smooth GDS polygons.  The
+# GF180 deck permits only 0/45/90-degree Metal1 edges on a 0.005 um grid.  A
+# minimal outward Manhattan cover on that exact grid preserves every original
+# point and the routed topology while replacing only the exposed boundary.
+KLAYOUT_MANHATTAN_GRID = 5
+KLAYOUT_OVERLAY_MAX_POINTS = 180
+KLAYOUT_BEND_SPECS = {
+    "ts_bend": {
+        "bbox": db.Box(-5250, -5250, 5250, 5250),
+        "area": 15707866,
+        "points": 124,
+        "direct_shapes": 3,
+    },
+    "ts_bend_s": {
+        "bbox": db.Box(-5500, -1400, 5500, 1400),
+        "area": 11205917,
+        "points": 198,
+        "direct_shapes": 3,
+    },
+}
+
+# The Metal5 gdsfactory logo has two staircase transitions where the pinned
+# deck's wide-metal reconstruction touches the original boundary and emits
+# MT.2b markers.  These 45-degree triangles remove only those two transitions;
+# each shares two boundary segments with the same original logo polygon.
+GDSFACTORY_LOGO_CELL = "gdsfactory_logo"
+GDSFACTORY_LOGO_BBOX = db.Box(0, 0, 1759500, 138000)
+GDSFACTORY_LOGO_TARGET = {
+    "bbox": db.Box(211500, 1500, 348000, 136500),
+    "area": 4108500000,
+    "points": 206,
+    "direct_shapes": 11,
+}
+GDSFACTORY_LOGO_M5_PATCHES = (
+    ((285000, 12000), (286500, 12000), (286500, 13500)),
+    ((285000, 126000), (286500, 124500), (286500, 126000)),
 )
 
 
@@ -100,6 +139,206 @@ def _bridge_is_same_net(region: db.Region, bridge: db.Box) -> bool:
         if _region_contains(connected, lower) and _region_contains(connected, upper):
             return True
     return False
+
+
+def _same_region(left: db.Region, right: db.Region) -> bool:
+    return (left - right).is_empty() and (right - left).is_empty()
+
+
+def _find_exact_polygon(
+    cell: db.Cell, layer_index: int, spec: dict, description: str
+) -> db.Polygon:
+    shapes = list(cell.shapes(layer_index).each())
+    if len(shapes) != spec["direct_shapes"]:
+        raise SystemExit(
+            f"unexpected {description} direct-shape count {len(shapes)}, "
+            f"expected {spec['direct_shapes']}"
+        )
+    matches = []
+    for shape in shapes:
+        if not shape.is_polygon():
+            continue
+        polygon = shape.polygon
+        if (
+            polygon.bbox() == spec["bbox"]
+            and polygon.area() == spec["area"]
+            and polygon.num_points_hull() == spec["points"]
+        ):
+            matches.append(polygon)
+    if len(matches) != 1:
+        raise SystemExit(
+            f"expected one exact {description} polygon, found {len(matches)}"
+        )
+    return matches[0]
+
+
+def _outward_manhattan_cover(original: db.Region) -> db.Region:
+    """Return the smallest horizontal-strip cover on the GF180 5 nm grid."""
+
+    grid = KLAYOUT_MANHATTAN_GRID
+    box = original.bbox()
+    y0 = (box.bottom // grid) * grid
+    y1 = -((-box.top) // grid) * grid
+    cover = db.Region()
+    for y in range(y0, y1, grid):
+        strip = db.Region(db.Box(box.left - grid, y, box.right + grid, y + grid))
+        for polygon in (original & strip).each():
+            cut_box = polygon.bbox()
+            x0 = (cut_box.left // grid) * grid
+            x1 = -((-cut_box.right) // grid) * grid
+            if x1 > x0:
+                cover.insert(db.Box(x0, y, x1, y + grid))
+    cover.merge()
+    if not (original - cover).is_empty():
+        raise SystemExit("Manhattan cover dropped original Metal1")
+    for polygon in cover.each():
+        for point in polygon.each_point_hull():
+            if point.x % grid or point.y % grid:
+                raise SystemExit(f"Manhattan cover contains off-grid point {point}")
+        for edge in polygon.each_edge():
+            if edge.p1.x != edge.p2.x and edge.p1.y != edge.p2.y:
+                raise SystemExit(f"Manhattan cover contains non-orthogonal edge {edge}")
+    return cover
+
+
+def _bounded_overlay_pieces(cover: db.Region) -> list[db.Polygon]:
+    reference = cover.dup()
+    pieces = cover.break_polygons(KLAYOUT_OVERLAY_MAX_POINTS, 0)
+    if not _same_region(reference, pieces):
+        raise SystemExit("breaking the Metal1 overlay changed its geometry")
+    result = list(pieces.each())
+    if not result or any(
+        polygon.num_points_hull() > KLAYOUT_OVERLAY_MAX_POINTS
+        for polygon in result
+    ):
+        raise SystemExit("Metal1 overlay could not be bounded for GDS output")
+    return result
+
+
+def _logo_patch_region() -> db.Region:
+    patches = db.Region()
+    for coordinates in GDSFACTORY_LOGO_M5_PATCHES:
+        polygon = db.Polygon([db.Point(x, y) for x, y in coordinates])
+        for edge in polygon.each_edge():
+            dx = abs(edge.p2.x - edge.p1.x)
+            dy = abs(edge.p2.y - edge.p1.y)
+            if dx and dy and dx != dy:
+                raise SystemExit(f"logo patch contains non-45-degree edge {edge}")
+        patches.insert(polygon)
+    return patches
+
+
+def apply_klayout_drc_repairs(layout: db.Layout) -> dict:
+    """Add only source-preserving covers for the four KLayout rule classes."""
+
+    present_bends = [
+        name for name in KLAYOUT_BEND_SPECS if layout.cell(name) is not None
+    ]
+    logo = layout.cell(GDSFACTORY_LOGO_CELL)
+    if not present_bends and logo is None:
+        return {
+            "manhattan_grid_um": KLAYOUT_MANHATTAN_GRID * layout.dbu,
+            "bend_overlays": [],
+            "bend_overlay_count": 0,
+            "logo_cell": None,
+            "logo_metal5_patches": [],
+            "logo_metal5_patch_count": 0,
+        }
+    if layout.dbu != 0.001:
+        raise SystemExit(f"KLayout repairs require 0.001 um dbu, got {layout.dbu}")
+
+    bend_records = []
+    metal1_index = layout.find_layer(*METAL1)
+    if present_bends and metal1_index is None:
+        raise SystemExit(f"KLayout bend repairs require Metal1 {METAL1}")
+    for name in present_bends:
+        cell = layout.cell(name)
+        assert cell is not None and metal1_index is not None
+        polygon = _find_exact_polygon(
+            cell, metal1_index, KLAYOUT_BEND_SPECS[name], f"{name} Metal1"
+        )
+        before = db.Region(cell.shapes(metal1_index))
+        before.merge()
+        if before.count() != 1:
+            raise SystemExit(f"{name} Metal1 is not one connected conductor")
+        cover = _outward_manhattan_cover(db.Region(polygon))
+        expected_additions = cover - before
+        pieces = _bounded_overlay_pieces(cover)
+        for piece in pieces:
+            cell.shapes(metal1_index).insert(piece)
+        after = db.Region(cell.shapes(metal1_index))
+        after.merge()
+        if not (before - after).is_empty():
+            raise SystemExit(f"{name} overlay removed original Metal1")
+        if not _same_region(after - before, expected_additions):
+            raise SystemExit(f"{name} overlay added unexpected Metal1")
+        if after.count() != 1:
+            raise SystemExit(f"{name} overlay split the Metal1 conductor")
+        bend_records.append(
+            {
+                "cell": name,
+                "source_polygon_bbox": [
+                    polygon.bbox().left,
+                    polygon.bbox().bottom,
+                    polygon.bbox().right,
+                    polygon.bbox().top,
+                ],
+                "source_polygon_area_dbu2": polygon.area(),
+                "added_area_dbu2": expected_additions.area(),
+                "overlay_polygon_count": len(pieces),
+                "overlay_max_points": max(
+                    piece.num_points_hull() for piece in pieces
+                ),
+            }
+        )
+
+    logo_patches = []
+    if logo is not None:
+        if logo.bbox() != GDSFACTORY_LOGO_BBOX:
+            raise SystemExit(
+                f"unexpected {GDSFACTORY_LOGO_CELL} bbox {logo.bbox()}, "
+                f"expected {GDSFACTORY_LOGO_BBOX}"
+            )
+        metal5_index = layout.find_layer(*METAL5)
+        if metal5_index is None:
+            raise SystemExit(f"logo repair requires Metal5 {METAL5}")
+        _find_exact_polygon(
+            logo,
+            metal5_index,
+            GDSFACTORY_LOGO_TARGET,
+            f"{GDSFACTORY_LOGO_CELL} Metal5 target",
+        )
+        before = db.Region(logo.shapes(metal5_index))
+        before.merge()
+        if before.count() != GDSFACTORY_LOGO_TARGET["direct_shapes"]:
+            raise SystemExit("unexpected connected-component count in Metal5 logo")
+        patches = _logo_patch_region()
+        combined = before + patches
+        combined.merge()
+        if combined.count() != before.count():
+            raise SystemExit("logo patches connect previously separate Metal5 shapes")
+        expected_additions = patches - before
+        if expected_additions.area() != patches.area():
+            raise SystemExit("logo patches unexpectedly overlap existing Metal5 area")
+        for patch in patches.each():
+            logo.shapes(metal5_index).insert(patch)
+        after = db.Region(logo.shapes(metal5_index))
+        after.merge()
+        if not _same_region(after - before, expected_additions):
+            raise SystemExit("logo repair added unexpected Metal5")
+        logo_patches = [
+            [[x, y] for x, y in coordinates]
+            for coordinates in GDSFACTORY_LOGO_M5_PATCHES
+        ]
+
+    return {
+        "manhattan_grid_um": KLAYOUT_MANHATTAN_GRID * layout.dbu,
+        "bend_overlays": bend_records,
+        "bend_overlay_count": len(bend_records),
+        "logo_cell": GDSFACTORY_LOGO_CELL if logo is not None else None,
+        "logo_metal5_patches": logo_patches,
+        "logo_metal5_patch_count": len(logo_patches),
+    }
 
 
 def apply_magic_drc_repairs(layout: db.Layout) -> dict:
@@ -246,6 +485,109 @@ def verify_magic_drc_repairs(original: db.Layout, repaired: db.Layout) -> dict:
     }
 
 
+def verify_klayout_drc_repairs(original: db.Layout, repaired: db.Layout) -> dict:
+    """Verify exact bend/logo additions and prove no source mask was removed."""
+
+    if original.dbu != repaired.dbu:
+        raise SystemExit("cannot compare KLayout repairs across mismatched DBUs")
+    if original.dbu != 0.001:
+        raise SystemExit("KLayout repair verification requires 0.001 um dbu")
+
+    bend_records = []
+    original_m1 = original.find_layer(*METAL1)
+    repaired_m1 = repaired.find_layer(*METAL1)
+    for name, spec in KLAYOUT_BEND_SPECS.items():
+        source_cell = original.cell(name)
+        result_cell = repaired.cell(name)
+        if source_cell is None:
+            if result_cell is not None:
+                raise SystemExit(f"prepared GDS unexpectedly added cell {name}")
+            continue
+        if result_cell is None or original_m1 is None or repaired_m1 is None:
+            raise SystemExit(f"prepared GDS cannot verify {name} Metal1 repair")
+        polygon = _find_exact_polygon(
+            source_cell, original_m1, spec, f"original {name} Metal1"
+        )
+        before = db.Region(source_cell.shapes(original_m1))
+        after = db.Region(result_cell.shapes(repaired_m1))
+        before.merge()
+        after.merge()
+        cover = _outward_manhattan_cover(db.Region(polygon))
+        expected_additions = cover - before
+        if not (before - after).is_empty():
+            raise SystemExit(f"prepared GDS removed original {name} Metal1")
+        if not _same_region(after - before, expected_additions):
+            raise SystemExit(f"prepared GDS changed {name} outside its overlay")
+        if after.count() != 1:
+            raise SystemExit(f"prepared GDS split the {name} Metal1 conductor")
+        pieces = _bounded_overlay_pieces(cover)
+        bend_records.append(
+            {
+                "cell": name,
+                "source_polygon_bbox": [
+                    polygon.bbox().left,
+                    polygon.bbox().bottom,
+                    polygon.bbox().right,
+                    polygon.bbox().top,
+                ],
+                "source_polygon_area_dbu2": polygon.area(),
+                "added_area_dbu2": expected_additions.area(),
+                "overlay_polygon_count": len(pieces),
+                "overlay_max_points": max(
+                    piece.num_points_hull() for piece in pieces
+                ),
+            }
+        )
+
+    source_logo = original.cell(GDSFACTORY_LOGO_CELL)
+    result_logo = repaired.cell(GDSFACTORY_LOGO_CELL)
+    logo_patches = []
+    if source_logo is None:
+        if result_logo is not None:
+            raise SystemExit(
+                f"prepared GDS unexpectedly added cell {GDSFACTORY_LOGO_CELL}"
+            )
+    else:
+        if result_logo is None:
+            raise SystemExit(f"prepared GDS dropped cell {GDSFACTORY_LOGO_CELL}")
+        if source_logo.bbox() != GDSFACTORY_LOGO_BBOX:
+            raise SystemExit(f"unexpected original logo bbox {source_logo.bbox()}")
+        original_m5 = original.find_layer(*METAL5)
+        repaired_m5 = repaired.find_layer(*METAL5)
+        if original_m5 is None or repaired_m5 is None:
+            raise SystemExit("prepared GDS cannot verify the Metal5 logo repair")
+        _find_exact_polygon(
+            source_logo,
+            original_m5,
+            GDSFACTORY_LOGO_TARGET,
+            f"original {GDSFACTORY_LOGO_CELL} Metal5 target",
+        )
+        before = db.Region(source_logo.shapes(original_m5))
+        after = db.Region(result_logo.shapes(repaired_m5))
+        before.merge()
+        after.merge()
+        expected_additions = _logo_patch_region() - before
+        if not (before - after).is_empty():
+            raise SystemExit("prepared GDS removed original logo Metal5")
+        if not _same_region(after - before, expected_additions):
+            raise SystemExit("prepared GDS changed logo Metal5 outside its patches")
+        if after.count() != before.count():
+            raise SystemExit("prepared GDS connected separate logo Metal5 shapes")
+        logo_patches = [
+            [[x, y] for x, y in coordinates]
+            for coordinates in GDSFACTORY_LOGO_M5_PATCHES
+        ]
+
+    return {
+        "manhattan_grid_um": KLAYOUT_MANHATTAN_GRID * original.dbu,
+        "bend_overlays": bend_records,
+        "bend_overlay_count": len(bend_records),
+        "logo_cell": GDSFACTORY_LOGO_CELL if source_logo is not None else None,
+        "logo_metal5_patches": logo_patches,
+        "logo_metal5_patch_count": len(logo_patches),
+    }
+
+
 def prepare(args: argparse.Namespace) -> None:
     source = Path(args.input).resolve()
     output = Path(args.output).resolve()
@@ -253,7 +595,8 @@ def prepare(args: argparse.Namespace) -> None:
     top = sole_top(layout)
     if layout.dbu != 0.001:
         raise SystemExit(f"source dbu must be 0.001 um, got {layout.dbu}")
-    repairs = apply_magic_drc_repairs(layout)
+    magic_repairs = apply_magic_drc_repairs(layout)
+    klayout_repairs = apply_klayout_drc_repairs(layout)
     box = bbox_um(top, layout.dbu)
     width, height = SLOTS[args.slot]
     if box[0] < 0 or box[1] < 0 or box[2] > width or box[3] > height:
@@ -272,8 +615,11 @@ def prepare(args: argparse.Namespace) -> None:
     print(
         f"prepared external GDS only: {source} -> {output}; "
         f"source bbox={box}; centered by ({dx}, {dy}) um; "
-        f"Magic repairs={repairs['corner_metal1_bridge_count']} Metal1 bridges, "
-        f"{repairs['hierarchical_via_cells_renamed']} hierarchy-safe via cells"
+        f"Magic repairs={magic_repairs['corner_metal1_bridge_count']} Metal1 "
+        f"bridges, {magic_repairs['hierarchical_via_cells_renamed']} "
+        f"hierarchy-safe via cells; KLayout repairs="
+        f"{klayout_repairs['bend_overlay_count']} bend overlays, "
+        f"{klayout_repairs['logo_metal5_patch_count']} logo patches"
     )
 
 
@@ -347,16 +693,19 @@ def finish(args: argparse.Namespace) -> None:
     assert_source_preserved(source, sealed)
     original_layout = load(Path(args.source_original).resolve())
     original_top = sole_top(original_layout)
-    verified_repairs = verify_magic_drc_repairs(original_layout, source)
+    verified_magic_repairs = verify_magic_drc_repairs(original_layout, source)
+    verified_klayout_repairs = verify_klayout_drc_repairs(original_layout, source)
     centered_box = bbox_um(source_top, source.dbu)
     original_box = bbox_um(original_top, original_layout.dbu)
     repair_record = {
-        "hierarchical_via_cells_renamed": verified_repairs[
+        "hierarchical_via_cells_renamed": verified_magic_repairs[
             "hierarchical_via_cells_renamed"
         ],
-        "corner_cell": verified_repairs["corner_cell"],
-        "corner_metal1_bridges": verified_repairs["corner_metal1_bridges"],
-        "corner_metal1_bridge_count": verified_repairs[
+        "corner_cell": verified_magic_repairs["corner_cell"],
+        "corner_metal1_bridges": verified_magic_repairs[
+            "corner_metal1_bridges"
+        ],
+        "corner_metal1_bridge_count": verified_magic_repairs[
             "corner_metal1_bridge_count"
         ],
         "reason": (
@@ -392,6 +741,14 @@ def finish(args: argparse.Namespace) -> None:
         "guard_ring_marker": list(GUARD_RING_MK),
         "source_geometry_preserved": True,
         "magic_drc_repairs": repair_record,
+        "klayout_drc_repairs": {
+            **verified_klayout_repairs,
+            "reason": (
+                "cover the original smooth Metal1 bends on the GF180 5 nm "
+                "Manhattan grid and close two same-polygon Metal5 wide-rule "
+                "staircase transitions"
+            ),
+        },
         "padring_source": "external GDS only; no gf180characterization padring flow used",
         "wafer_space_pdk_commit": args.pdk_commit,
     }

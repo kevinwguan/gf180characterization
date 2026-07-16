@@ -18,29 +18,30 @@ nix develop --accept-flake-config --no-write-lock-file --command \
   python3 .signoff/precheck/precheck.py \
   --input final/chip_top.gds --top chip_top --slot 1x0p5 \
   --workers max --threads 1 --dir .signoff/precheck-run \
-  --run-tag MAGIC_FIX_2026-07-16 --to Checker.MagicDRC
+  --run-tag KLAYOUT_FIX_2026-07-16 --to Checker.MagicDRC
 ```
 
 The authoritative KLayout main DRC then ran on that flow's exact generated-ID
 layout:
 
 ```sh
-nix develop --accept-flake-config --command \
+nix develop --accept-flake-config --no-write-lock-file --command \
   make klayout-drc-final \
-  KLAYOUT_DRC_INPUT=.signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/04-klayout-generateid/chip_top.gds \
-  KLAYOUT_DRC_RUN_TAG=KLAYOUT_SIGNOFF_2026-07-16
+  KLAYOUT_DRC_INPUT=.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/04-klayout-generateid/chip_top.gds \
+  KLAYOUT_DRC_RUN_TAG=KLAYOUT_DRC_FIX_2026-07-16
 ```
 
 Both commands used only Nix-store tools and the pinned dependencies below this
 repository's ignored `.signoff/` directory. Exact versions and store paths are
-recorded in `toolchain.txt`. Nonzero command status reflects the reported DRC
-or density markers, not a tool or deck crash.
+recorded in `toolchain.txt`. The precheck command reached and passed the Magic
+checker, then returned 1 solely because the two density findings were deferred.
+The authoritative KLayout command returned 0.
 
 ## Verdict
 
-**Magic DRC passes with 0 errors. Complete KLayout main DRC reports 594
-markers, and two density rules fail.** The artifact is not fully signed off;
-no DRC violations were waived.
+**Magic DRC and complete KLayout main DRC both pass with 0 errors. Two density
+rules remain intentionally deferred.** The artifact is not fully signed off
+until density is resolved; no DRC violation was waived.
 
 Current-artifact results executed in this run:
 
@@ -50,11 +51,11 @@ Current-artifact results executed in this run:
 - zero zero-area polygons;
 - antenna: 0 violations;
 - Magic 8.3.660 `drc(full)`: 0 violations;
-- KLayout 0.30.9 main DRC: 594 markers across 649 rule categories;
+- KLayout 0.30.9 main DRC: 0 markers across 649 rule categories;
 - density: 2 violations — Poly2 `9.841374%` versus `≥14%` (`PL.8`) and
-  Metal1 `26.505625%` versus `>30%` (`M1.4`).
+  Metal1 `26.505627%` versus `>30%` (`M1.4`), intentionally deferred.
 
-## KLayout correction and result
+## KLayout correction and repair
 
 The old KLayout zero was invalid. The generic precheck adapter passed
 `decks=all,-antenna,-density,-cup`, `variant=gf180mcuD`, `workers=max`, and
@@ -68,22 +69,41 @@ selects variant D (`11K`, `5LM`, MIM-B), uses the PDK macro's documented deep
 mode, enables FEOL/BEOL/off-grid, disables connectivity, and runs one Nix-store
 KLayout thread. Antenna and density remain their separate precheck stages. The
 input SHA-256 is
-`dd51cc765bce378758807413ed802d9c7989601194ca572a22a2b84fe291417d`, and the
+`a1fc8aa09d9703b633faf50682a2a1122c72a489502d0ebae7e917c9f635b305`, and the
 pinned source-deck SHA-256 is
 `c613376efb0eb6a250073247225cc5d5d6935b73d10f85a8d1a8d221b6090568`.
 
-The 594 markers are:
+The previous complete run's 594 markers were:
 
 - `metal1_angle`: 300;
 - `metal1_OFFGRID`: 286;
 - `M1.1`: 6;
 - `MT.2b`: 2.
 
+The final-GDS builder now identifies the exact smooth Metal1 polygon in each of
+`ts_bend` and `ts_bend_s` by cell, bbox, area, point count, and direct-shape
+count. It inserts the smallest outward horizontal-strip cover on the GF180
+5 nm grid, preserves every original Metal1 point, proves the conductor remains
+one component, and bounds each output polygon to 180 points. The two covers add
+only `0.086650 µm²` and `0.060974 µm²`, respectively, and clear all 592 Metal1
+angle, grid, and minimum-width markers.
+
+The two `MT.2b` markers came from staircase transitions on one Metal5 polygon
+in `gdsfactory_logo`. Two 45-degree triangles of `1.125 µm²` each close those
+transitions. The builder proves that they do not overlap prior Metal5 or join
+separate components. `final/manifest.json` records every addition, and the
+finish phase independently proves that no original mask geometry was removed
+and that no other Metal1 or Metal5 geometry was added in the repaired cells.
+
+The completed deep run took `949.716708 s`, evaluated all 649 emitted rule
+categories, and reports 0 markers. The JSON and marker database are both
+committed below.
+
 The supplied 2,409-marker vendor figure was not reproduced on the current GDS.
 A flat-mode diagnostic spent one hour expanding 4,743,368 contacts and did not
 finish rule `CO.6`; it is not presented as sign-off evidence. The completed
-deep run is the repository default and its count is the only complete current
-artifact result.
+deep run is the repository default and its count is the only complete
+current-artifact result.
 
 ## Magic repair
 
@@ -107,8 +127,8 @@ warnings during GDS import; those warnings are preserved in the log and are
 not counted as DRC markers.
 
 The final artifact has SHA-256
-`6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be`, MD5
-`4f233de57826c45bb0800aadf7c3d000`, and source SHA-256
+`53b33f39fad23fa581bc7a9fd5e4adc875a57fa6ad75d29084dbf9b3e74b1bf9`, MD5
+`1c5109d6a668de69250925b70ce00889`, and source SHA-256
 `80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7`.
 It contains the centered external layout plus the pinned Wafer.Space seal ring;
 the `gf180characterization` padring target was not used. See
@@ -117,7 +137,7 @@ GDS to the exact layout read by this precheck run.
 
 `metrics.json` and `drc.klayout.json` preserve the combined machine-readable
 result. `flow.log` and `resolved.json` describe the pinned precheck stages
-through Magic; they do not supersede the corrected KLayout JSON. The
+through Magic; they do not supersede the authoritative KLayout JSON. The
 `nix-signoff.log` file is the Magic flow console transcript, while
 `klayout-nix-signoff.log` is the corrected KLayout transcript. The
 corresponding `*.command.txt` files preserve the exact subprocess commands,

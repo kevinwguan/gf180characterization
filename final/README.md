@@ -7,8 +7,10 @@ layout. It does **not** generate, import, or merge the padring defined by this
 repository. The incoming layout is centered in the slot, then the only geometry
 merged around it is the Wafer.Space GF180MCU seal ring from the pinned PDK. The
 current source also receives three fail-closed, same-net Metal1 notch fills in
-its GF180 foundry corner master; `manifest.json` records those DRC repairs and
-the hierarchy-only upper-via cell renames. No repository padring is added.
+its GF180 foundry corner master, GF180-grid covers over two smooth Metal1 bends,
+and two same-polygon Metal5 logo patches. `manifest.json` records those DRC
+repairs and the hierarchy-only upper-via cell renames. No repository padring is
+added.
 
 Run:
 
@@ -23,12 +25,13 @@ and verify the pinned Wafer.Space dependency commits before running.
 Override `FINAL_GDS_SOURCE`, `FINAL_GDS_TOP`, or `FINAL_GDS_SLOT` when needed.
 `manifest.json` records hashes and verifies that all incoming geometry remains
 present in the sealed output. `chip_top.gds.md5` is regenerated with the GDS
-and can be checked with `md5sum -c final/chip_top.gds.md5`.
+and can be checked with `md5sum -c final/chip_top.gds.md5`. The `.gds` remains
+uncompressed and is tracked through Git LFS.
 Raw precheck runs remain under the ignored `.signoff/precheck-run/` directory;
 the reviewed evidence from the latest authoritative run is committed under
 `signoff/`.
 
 The latest manufacturing-precheck evidence is under `signoff/`. Its README is
-authoritative: Magic DRC, antenna, and zero-area checks are clean; complete
-KLayout main DRC reports 594 markers; and two density rules remain. The layout
-must not yet be treated as fully signed off.
+authoritative: Magic DRC, complete KLayout main DRC, antenna, and zero-area
+checks are clean. Two density rules remain intentionally deferred, so the
+layout must not yet be treated as fully signed off.

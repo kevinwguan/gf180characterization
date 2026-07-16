@@ -2,6 +2,21 @@ warning: Git tree '/home/flow/Vibe/tapeout/gf180characterization' is dirty
 warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
 warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
 warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+python3 scripts/signoff_env.py \
+	--tool python3 --tool git --tool klayout
+sign-off Python: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off python3: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off git: /nix/store/dh2yzrnp5raifh3knbphhljrsjqkcklr-git-2.51.2/bin/git
+sign-off klayout: /nix/store/dljmpck53kb6zxhvd73b688286b0kwkn-klayout-0.30.9/bin/klayout
+python3 scripts/signoff_env.py \
+	--tool magic \
+	--dependency /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk ac7d8696de96a4d708e768b607ae37f02207a354 \
+	--dependency /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck 59207bbebaf2f5e5bb5f3e9441199a71948b1fdc
+sign-off Python: /nix/store/dn1mrhvx3riw0f1gsx4ha50igxk2znw5-python3-3.13.9-env/bin/python3.13
+sign-off magic: /nix/store/h9v6fkcfxn33h9k016srwszwnkrqkv8d-magic-vlsi-8.3.660/bin/magic
+sign-off git: /nix/store/dh2yzrnp5raifh3knbphhljrsjqkcklr-git-2.51.2/bin/git
+sign-off dependency: /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk @ ac7d8696de96a4d708e768b607ae37f02207a354
+sign-off dependency: /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck @ 59207bbebaf2f5e5bb5f3e9441199a71948b1fdc
 None
 PDK_ROOT = /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk
 PDK = gf180mcuD
@@ -11,35 +26,36 @@ cob: False
 slot: 1x0p5
 threads: 1
 workers: max
-[16:15:19] INFO     Starting a new run of the 'PrecheckFlow' flow    flow.py:654
-                    with the tag 'MAGIC_FIX_2026-07-16'.                        
-[16:15:20] INFO     Starting…                                  sequential.py:339
+[20:56:14] INFO     Starting a new run of the 'PrecheckFlow' flow    flow.py:654
+                    with the tag 'KLAYOUT_FIX_2026-07-16'.                      
+[20:56:14] INFO     Starting…                                  sequential.py:339
 ─────────────────────────────── Read the Layout ────────────────────────────────
-[16:15:20] VERBOSE  Running 'KLayout.ReadLayout' at                 step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/01-klayout-readlayout'…                                   
-[16:15:20] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/01-klayout-readlayout/klayout-readlayout.log'             
-                    …                                                           
+[20:56:14] VERBOSE  Running 'KLayout.ReadLayout' at                 step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/01-klayout-readlayout'…                                 
+[20:56:14] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/01-klayout-readlayout/klayout-readlayout.lo             
+                    g'…                                                         
 ───────────────────────────── Check Top-Level Name ─────────────────────────────
-[16:15:21] VERBOSE  Running 'KLayout.CheckTopLevel' at              step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/02-klayout-checktoplevel'…                                
-[16:15:21] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/02-klayout-checktoplevel/klayout-checktopleve             
-                    l.log'…                                                     
+[20:56:16] VERBOSE  Running 'KLayout.CheckTopLevel' at              step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/02-klayout-checktoplevel'…                              
+[20:56:16] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/02-klayout-checktoplevel/klayout-checktople             
+                    vel.log'…                                                   
 Design name 'chip_top' matches top-level cell in                                
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
-IX_2026-07-16/01-klayout-readlayout/chip_top.gds.                               
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT
+_FIX_2026-07-16/01-klayout-readlayout/chip_top.gds.                             
 ─────────────────────────────── Check Slot Size ────────────────────────────────
-[16:15:22] VERBOSE  Running 'KLayout.CheckSize' at                  step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/03-klayout-checksize'…                                    
-[16:15:22] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/03-klayout-checksize/klayout-checksize.log'…              
+[20:56:17] VERBOSE  Running 'KLayout.CheckSize' at                  step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/03-klayout-checksize'…                                  
+[20:56:17] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/03-klayout-checksize/klayout-checksize.log'             
+                    …                                                           
 Layout size:                                                                    
 layout width:  3932.0                                                           
 layout height: 2531.0                                                           
@@ -48,13 +64,13 @@ slot width:  3932.0
 slot height: 2531.0                                                             
 Layout dimension matches the selected slot size 1x0p5.                          
 ───────────────────────────────── Generate ID ──────────────────────────────────
-[16:15:23] VERBOSE  Running 'KLayout.GenerateID' at                 step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/04-klayout-generateid'…                                   
-[16:15:23] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/04-klayout-generateid/klayout-generateid.log'             
-                    …                                                           
+[20:56:18] VERBOSE  Running 'KLayout.GenerateID' at                 step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/04-klayout-generateid'…                                 
+[20:56:18] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/04-klayout-generateid/klayout-generateid.lo             
+                    g'…                                                         
 Width: 21, Height: 21                                                           
 > ██████████████    ██████    ██████████████                                    
 > ██          ██    ██        ██          ██                                    
@@ -79,294 +95,294 @@ Width: 21, Height: 21
 > ██████████████        ██    ██  ████████                                      
 Inserted ID: FFFFFFFF                                                           
 ────────────────────────── Render Image (w/ KLayout) ───────────────────────────
-[16:15:25] VERBOSE  Running 'KLayout.Render' at                     step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/05-klayout-render'…                                       
-[16:15:25] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/05-klayout-render/klayout-render.log'…                    
+[20:56:20] VERBOSE  Running 'KLayout.Render' at                     step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/05-klayout-render'…                                     
+[20:56:20] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/05-klayout-render/klayout-render.log'…                  
 ──────────────────────────────── Density Check ─────────────────────────────────
-[16:15:28] VERBOSE  Running 'KLayout.Density' at                    step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/06-klayout-density'…                                      
-[16:15:28] INFO     Running KLayout density check with 16        klayout.py:1222
+[20:56:23] VERBOSE  Running 'KLayout.Density' at                    step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/06-klayout-density'…                                    
+[20:56:23] INFO     Running KLayout density check with 16        klayout.py:1222
                     threads…                                                    
-[16:15:28] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/06-klayout-density/klayout-density.log'…                  
-2026-07-16 16:15:29 +0000: Memory Usage (423932K) : Starting running GF180MCU   
+[20:56:23] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/06-klayout-density/klayout-density.log'…                
+2026-07-16 20:56:24 +0000: Memory Usage (424000K) : Starting running GF180MCU   
 Klayout DRC runset on                                                           
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
-IX_2026-07-16/04-klayout-generateid/chip_top.gds                                
-2026-07-16 16:15:29 +0000: Memory Usage (423932K) : Ruby Version for klayout:   
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT
+_FIX_2026-07-16/04-klayout-generateid/chip_top.gds                              
+2026-07-16 20:56:24 +0000: Memory Usage (424000K) : Ruby Version for klayout:   
 3.3.10                                                                          
-2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Loading database to memory  
+2026-07-16 20:56:24 +0000: Memory Usage (481384K) : Loading database to memory  
 is complete.                                                                    
-2026-07-16 16:15:29 +0000: Memory Usage (481056K) : GF180MCU Klayout density DRC
+2026-07-16 20:56:24 +0000: Memory Usage (481384K) : GF180MCU Klayout density DRC
 runset output at:                                                               
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
-IX_2026-07-16/06-klayout-density/reports/density.klayout.lyrdb                  
-2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Evaluate switches.          
-2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Number of threads to use 16 
-2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Verbose mode:               
-2026-07-16 16:15:29 +0000: Memory Usage (481696K) : flat  mode is enabled.      
-2026-07-16 16:15:29 +0000: Memory Usage (481696K) : METAL_TOP Selected is 9K    
-2026-07-16 16:15:29 +0000: Memory Usage (481696K) : METAL_STACK Selected is 5LM 
-2026-07-16 16:15:29 +0000: Memory Usage (481696K) : Read in polygons from       
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT
+_FIX_2026-07-16/06-klayout-density/reports/density.klayout.lyrdb                
+2026-07-16 20:56:24 +0000: Memory Usage (481384K) : Evaluate switches.          
+2026-07-16 20:56:24 +0000: Memory Usage (481384K) : Number of threads to use 16 
+2026-07-16 20:56:24 +0000: Memory Usage (481384K) : Verbose mode:               
+2026-07-16 20:56:24 +0000: Memory Usage (482116K) : flat  mode is enabled.      
+2026-07-16 20:56:24 +0000: Memory Usage (482116K) : METAL_TOP Selected is 9K    
+2026-07-16 20:56:24 +0000: Memory Usage (482116K) : METAL_STACK Selected is 5LM 
+2026-07-16 20:56:24 +0000: Memory Usage (482116K) : Read in polygons from       
 layers.                                                                         
-2026-07-16 16:15:30 +0000: Memory Usage (484708K) : comp_drawn has 7907 polygons
-2026-07-16 16:15:30 +0000: Memory Usage (484708K) : comp_dummy has 0 polygons   
-2026-07-16 16:15:30 +0000: Memory Usage (485092K) : dualgate has 2321 polygons  
-2026-07-16 16:15:30 +0000: Memory Usage (486244K) : poly2_drawn has 4099        
+2026-07-16 20:56:24 +0000: Memory Usage (485160K) : comp_drawn has 7907 polygons
+2026-07-16 20:56:24 +0000: Memory Usage (485160K) : comp_dummy has 0 polygons   
+2026-07-16 20:56:24 +0000: Memory Usage (485288K) : dualgate has 2321 polygons  
+2026-07-16 20:56:25 +0000: Memory Usage (486344K) : poly2_drawn has 4099        
 polygons                                                                        
-2026-07-16 16:15:30 +0000: Memory Usage (486244K) : poly2_dummy has 0 polygons  
-2026-07-16 16:15:40 +0000: Memory Usage (1204596K) : contact has 4743368        
+2026-07-16 20:56:25 +0000: Memory Usage (486344K) : poly2_dummy has 0 polygons  
+2026-07-16 20:56:35 +0000: Memory Usage (1205228K) : contact has 4743368        
 polygons                                                                        
-2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_drawn has 8018      
+2026-07-16 20:56:36 +0000: Memory Usage (1205228K) : metal1_drawn has 8018      
 polygons                                                                        
-2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_dummy has 0 polygons
-2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_label has 0 polygons
-2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_slot has 0 polygons 
-2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_blk has 0 polygons  
-2026-07-16 16:15:43 +0000: Memory Usage (1231892K) : via1 has 1147443 polygons  
-2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_drawn has 3283      
+2026-07-16 20:56:36 +0000: Memory Usage (1205228K) : metal1_dummy has 0 polygons
+2026-07-16 20:56:36 +0000: Memory Usage (1205228K) : metal1_label has 0 polygons
+2026-07-16 20:56:36 +0000: Memory Usage (1205228K) : metal1_slot has 0 polygons 
+2026-07-16 20:56:36 +0000: Memory Usage (1205228K) : metal1_blk has 0 polygons  
+2026-07-16 20:56:38 +0000: Memory Usage (1232476K) : via1 has 1147443 polygons  
+2026-07-16 20:56:39 +0000: Memory Usage (1232476K) : metal2_drawn has 3283      
 polygons                                                                        
-2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_dummy has 0 polygons
-2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_label has 494       
+2026-07-16 20:56:39 +0000: Memory Usage (1232476K) : metal2_dummy has 0 polygons
+2026-07-16 20:56:39 +0000: Memory Usage (1232476K) : metal2_label has 494       
 polygons                                                                        
-2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_slot has 0 polygons 
-2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_blk has 0 polygons  
-2026-07-16 16:15:52 +0000: Memory Usage (1556400K) : via2 has 3579511 polygons  
-2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_drawn has 436       
+2026-07-16 20:56:39 +0000: Memory Usage (1232476K) : metal2_slot has 0 polygons 
+2026-07-16 20:56:39 +0000: Memory Usage (1232476K) : metal2_blk has 0 polygons  
+2026-07-16 20:56:47 +0000: Memory Usage (1556724K) : via2 has 3579511 polygons  
+2026-07-16 20:56:48 +0000: Memory Usage (1556724K) : metal3_drawn has 436       
 polygons                                                                        
-2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_dummy has 0 polygons
-2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_label has 0 polygons
-2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_slot has 0 polygons 
-2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_blk has 0 polygons  
-2026-07-16 16:16:11 +0000: Memory Usage (2296648K) : via3 has 7322621 polygons  
-2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_drawn has 352       
+2026-07-16 20:56:48 +0000: Memory Usage (1556724K) : metal3_dummy has 0 polygons
+2026-07-16 20:56:48 +0000: Memory Usage (1556724K) : metal3_label has 0 polygons
+2026-07-16 20:56:48 +0000: Memory Usage (1556724K) : metal3_slot has 0 polygons 
+2026-07-16 20:56:48 +0000: Memory Usage (1556724K) : metal3_blk has 0 polygons  
+2026-07-16 20:57:07 +0000: Memory Usage (2332440K) : via3 has 7322621 polygons  
+2026-07-16 20:57:09 +0000: Memory Usage (2332440K) : metal4_drawn has 352       
 polygons                                                                        
-2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_dummy has 0 polygons
-2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_label has 0 polygons
-2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_slot has 0 polygons 
-2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_blk has 0 polygons  
-2026-07-16 16:16:29 +0000: Memory Usage (3099760K) : via4 has 7329116 polygons  
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_drawn has 352       
+2026-07-16 20:57:09 +0000: Memory Usage (2332440K) : metal4_dummy has 0 polygons
+2026-07-16 20:57:09 +0000: Memory Usage (2332440K) : metal4_label has 0 polygons
+2026-07-16 20:57:09 +0000: Memory Usage (2332440K) : metal4_slot has 0 polygons 
+2026-07-16 20:57:09 +0000: Memory Usage (2332440K) : metal4_blk has 0 polygons  
+2026-07-16 20:57:25 +0000: Memory Usage (3100172K) : via4 has 7329116 polygons  
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : metal5_drawn has 352       
 polygons                                                                        
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_dummy has 0 polygons
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_label has 0 polygons
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_slot has 0 polygons 
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_blk has 0 polygons  
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Starting GF180MCU DENSITY  
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : metal5_dummy has 0 polygons
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : metal5_label has 0 polygons
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : metal5_slot has 0 polygons 
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : metal5_blk has 0 polygons  
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Starting GF180MCU DENSITY  
 layer derivations.                                                              
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Starting GF180MCU DENSITY  
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Starting GF180MCU DENSITY  
 DRC rules.                                                                      
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule DCF.1b      
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : COMP ratio:                
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Executing rule DCF.1b      
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : COMP ratio:                
 25.729617663656317 %                                                            
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule DCF.1d      
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule PL.8        
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Poly2 ratio:               
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Executing rule DCF.1d      
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Executing rule PL.8        
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : Poly2 ratio:               
 9.841373692560168 %                                                             
-2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : [ERROR] PL.8 : Poly2       
+2026-07-16 20:57:26 +0000: Memory Usage (3100172K) : [ERROR] PL.8 : Poly2       
 coverage over the entire die shall be >= 14%                                    
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M1.4        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal1 ratio:              
-26.505625400506755 %                                                            
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : [ERROR] M1.4 : Metal1      
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule M1.4        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Metal1 ratio:              
+26.50562693003501 %                                                             
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : [ERROR] M1.4 : Metal1      
 coverage over the entire die shall be >30%                                      
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M2.4        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal2 ratio:              
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule M2.4        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Metal2 ratio:              
 37.943237945729315 %                                                            
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M3.4        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal3 ratio:              
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule M3.4        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Metal3 ratio:              
 42.26958829844616 %                                                             
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M4.4        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal4 ratio:              
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule M4.4        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Metal4 ratio:              
 42.13280013595405 %                                                             
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M5.4        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal5 ratio:              
-44.0122031238482 %                                                              
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule MT.3        
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : MetalTop ratio:            
-44.0122031238482 %                                                              
-2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : DRC Total Run time         
-60.850983 seconds                                                               
-[16:16:31] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/06-klayout-density/xml_drc_report_to_json.log             
-                    '…                                                          
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule M5.4        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Metal5 ratio:              
+44.01222573261446 %                                                             
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : Executing rule MT.3        
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : MetalTop ratio:            
+44.01222573261446 %                                                             
+2026-07-16 20:57:26 +0000: Memory Usage (3100300K) : DRC Total Run time         
+61.903506 seconds                                                               
+[20:57:27] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/06-klayout-density/xml_drc_report_to_json.l             
+                    og'…                                                        
 ─────────────────────────── KLayout Density Checker ────────────────────────────
-[16:16:32] VERBOSE  Running 'Checker.KLayoutDensity' at             step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/07-checker-klayoutdensity'…                               
-[16:16:32] ERROR    2 KLayout density errors found. - deferred    checker.py:124
+[20:57:28] VERBOSE  Running 'Checker.KLayoutDensity' at             step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/07-checker-klayoutdensity'…                             
+[20:57:28] ERROR    2 KLayout density errors found. - deferred    checker.py:124
 ─────────────────────────── Find Zero Area Polygons ────────────────────────────
-[16:16:32] VERBOSE  Running 'KLayout.ZeroAreaPolygons' at           step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/08-klayout-zeroareapolygons'…                             
-[16:16:32] INFO     Running KLayout zero area polygons check…    precheck.py:306
-[16:16:32] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/08-klayout-zeroareapolygons/klayout-zeroareap             
-                    olygons.log'…                                               
-[16:16:39] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/08-klayout-zeroareapolygons/xml_drc_report_to             
-                    _json.log'…                                                 
+[20:57:28] VERBOSE  Running 'KLayout.ZeroAreaPolygons' at           step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/08-klayout-zeroareapolygons'…                           
+[20:57:28] INFO     Running KLayout zero area polygons check…    precheck.py:306
+[20:57:28] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/08-klayout-zeroareapolygons/klayout-zeroare             
+                    apolygons.log'…                                             
+[20:57:35] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/08-klayout-zeroareapolygons/xml_drc_report_             
+                    to_json.log'…                                               
 ────────────────────── KLayout Zero Area Polygons Checker ──────────────────────
-[16:16:39] VERBOSE  Running 'Checker.KLayoutZeroAreaPolygons' at    step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/09-checker-klayoutzeroareapolygons'…                      
-[16:16:39] INFO     Check for KLayout zero area polygons count    checker.py:131
+[20:57:35] VERBOSE  Running 'Checker.KLayoutZeroAreaPolygons' at    step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/09-checker-klayoutzeroareapolygons'…                    
+[20:57:35] INFO     Check for KLayout zero area polygons count    checker.py:131
                     clear.                                                      
 ──────────────────────────────── Antenna Check ─────────────────────────────────
-[16:16:39] VERBOSE  Running 'KLayout.Antenna' at                    step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/10-klayout-antenna'…                                      
-[16:16:39] INFO     Running KLayout antenna check…               klayout.py:1325
-[16:16:39] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/10-klayout-antenna/klayout-antenna.log'…                  
-2026-07-16 16:16:40 +0000: Memory Usage (424052K) : Starting running GF180MCU   
+[20:57:35] VERBOSE  Running 'KLayout.Antenna' at                    step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/10-klayout-antenna'…                                    
+[20:57:35] INFO     Running KLayout antenna check…               klayout.py:1325
+[20:57:35] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/10-klayout-antenna/klayout-antenna.log'…                
+2026-07-16 20:57:36 +0000: Memory Usage (423752K) : Starting running GF180MCU   
 Klayout DRC runset on                                                           
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
-IX_2026-07-16/04-klayout-generateid/chip_top.gds                                
-2026-07-16 16:16:40 +0000: Memory Usage (424052K) : Ruby Version for klayout:   
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT
+_FIX_2026-07-16/04-klayout-generateid/chip_top.gds                              
+2026-07-16 20:57:36 +0000: Memory Usage (423752K) : Ruby Version for klayout:   
 3.3.10                                                                          
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Loading database to memory  
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : Loading database to memory  
 is complete.                                                                    
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : GF180MCU Klayout antenna DRC
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : GF180MCU Klayout antenna DRC
 runset output at:                                                               
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
-IX_2026-07-16/10-klayout-antenna/reports/antenna.klayout.lyrdb                  
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Evaluate switches.          
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Number of threads to use    
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Verbose mode: false         
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : deep mode is enabled.       
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : METAL_TOP Selected is 11K   
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : METAL_STACK Selected is 5LM 
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : MIM Option selected: B      
-2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Read in polygons from       
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT
+_FIX_2026-07-16/10-klayout-antenna/reports/antenna.klayout.lyrdb                
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : Evaluate switches.          
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : Number of threads to use    
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : Verbose mode: false         
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : deep mode is enabled.       
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : METAL_TOP Selected is 11K   
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : METAL_STACK Selected is 5LM 
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : MIM Option selected: B      
+2026-07-16 20:57:36 +0000: Memory Usage (480932K) : Read in polygons from       
 layers.                                                                         
-2026-07-16 16:16:40 +0000: Memory Usage (484156K) : nwell has 3729 polygons     
-2026-07-16 16:16:40 +0000: Memory Usage (485732K) : comp has 30307 polygons     
-2026-07-16 16:16:40 +0000: Memory Usage (485860K) : dualgate has 5209 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (485988K) : poly2 has 9299 polygons     
-2026-07-16 16:16:40 +0000: Memory Usage (486116K) : nplus has 9511 polygons     
-2026-07-16 16:16:40 +0000: Memory Usage (486372K) : pplus has 18771 polygons    
-2026-07-16 16:16:40 +0000: Memory Usage (491748K) : contact has 4747976 polygons
-2026-07-16 16:16:40 +0000: Memory Usage (491748K) : metal1 has 115831 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (491748K) : metal1_label has 0 polygons 
-2026-07-16 16:16:40 +0000: Memory Usage (491876K) : metal1_slot has 0 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (491876K) : metal1_blk has 0 polygons   
-2026-07-16 16:16:40 +0000: Memory Usage (494052K) : via1 has 1241032 polygons   
-2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2 has 102541 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_label has 494        
+2026-07-16 20:57:36 +0000: Memory Usage (483724K) : nwell has 3729 polygons     
+2026-07-16 20:57:36 +0000: Memory Usage (485432K) : comp has 30307 polygons     
+2026-07-16 20:57:36 +0000: Memory Usage (485432K) : dualgate has 5209 polygons  
+2026-07-16 20:57:36 +0000: Memory Usage (485560K) : poly2 has 9299 polygons     
+2026-07-16 20:57:36 +0000: Memory Usage (485688K) : nplus has 9511 polygons     
+2026-07-16 20:57:36 +0000: Memory Usage (485944K) : pplus has 18771 polygons    
+2026-07-16 20:57:36 +0000: Memory Usage (491320K) : contact has 4747976 polygons
+2026-07-16 20:57:36 +0000: Memory Usage (491320K) : metal1 has 116504 polygons  
+2026-07-16 20:57:36 +0000: Memory Usage (491320K) : metal1_label has 0 polygons 
+2026-07-16 20:57:36 +0000: Memory Usage (491448K) : metal1_slot has 0 polygons  
+2026-07-16 20:57:36 +0000: Memory Usage (491448K) : metal1_blk has 0 polygons   
+2026-07-16 20:57:36 +0000: Memory Usage (493624K) : via1 has 1241032 polygons   
+2026-07-16 20:57:36 +0000: Memory Usage (493624K) : metal2 has 102541 polygons  
+2026-07-16 20:57:36 +0000: Memory Usage (493624K) : metal2_label has 494        
 polygons                                                                        
-2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_slot has 0 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_blk has 0 polygons   
-2026-07-16 16:16:40 +0000: Memory Usage (502372K) : via2 has 4201255 polygons   
-2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3 has 197449 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_label has 0 polygons 
-2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_slot has 0 polygons  
-2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_blk has 0 polygons   
-2026-07-16 16:16:41 +0000: Memory Usage (511972K) : via3 has 8959997 polygons   
-2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4 has 252793 polygons  
-2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_label has 0 polygons 
-2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_slot has 0 polygons  
-2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_blk has 0 polygons   
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : via4 has 7389116 polygons   
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5 has 158957 polygons  
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_label has 0 polygons 
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_slot has 0 polygons  
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_blk has 0 polygons   
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : res_mk has 238 polygons     
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : fusetop has 8 polygons      
-2026-07-16 16:16:41 +0000: Memory Usage (522724K) : Starting GF180MCU ANTENNA   
+2026-07-16 20:57:36 +0000: Memory Usage (493624K) : metal2_slot has 0 polygons  
+2026-07-16 20:57:36 +0000: Memory Usage (493624K) : metal2_blk has 0 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (502328K) : via2 has 4201255 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (502328K) : metal3 has 197449 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (502328K) : metal3_label has 0 polygons 
+2026-07-16 20:57:37 +0000: Memory Usage (502328K) : metal3_slot has 0 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (502328K) : metal3_blk has 0 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (511672K) : via3 has 8959997 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (511672K) : metal4 has 252793 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (511672K) : metal4_label has 0 polygons 
+2026-07-16 20:57:37 +0000: Memory Usage (511672K) : metal4_slot has 0 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (511672K) : metal4_blk has 0 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : via4 has 7389116 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : metal5 has 158959 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : metal5_label has 0 polygons 
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : metal5_slot has 0 polygons  
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : metal5_blk has 0 polygons   
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : res_mk has 238 polygons     
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : fusetop has 8 polygons      
+2026-07-16 20:57:37 +0000: Memory Usage (522808K) : Starting GF180MCU ANTENNA   
 layer derivations.                                                              
-2026-07-16 16:16:41 +0000: Memory Usage (540512K) : Starting GF180MCU ANTENNA   
+2026-07-16 20:57:37 +0000: Memory Usage (541784K) : Starting GF180MCU ANTENNA   
 DRC rules.                                                                      
-2026-07-16 16:16:41 +0000: Memory Usage (540512K) : Construct connectivity for  
+2026-07-16 20:57:37 +0000: Memory Usage (541784K) : Construct connectivity for  
 POLY                                                                            
-2026-07-16 16:16:41 +0000: Memory Usage (540656K) : Executing rule ANT.1        
-2026-07-16 16:16:41 +0000: Memory Usage (542980K) : Construct connectivity for  
+2026-07-16 20:57:37 +0000: Memory Usage (541784K) : Executing rule ANT.1        
+2026-07-16 20:57:37 +0000: Memory Usage (544264K) : Construct connectivity for  
 CONTACT                                                                         
-2026-07-16 16:16:41 +0000: Memory Usage (542980K) : Executing rule ANT.8        
-2026-07-16 16:16:43 +0000: Memory Usage (656148K) : Construct connectivity for  
+2026-07-16 20:57:37 +0000: Memory Usage (544264K) : Executing rule ANT.8        
+2026-07-16 20:57:40 +0000: Memory Usage (657320K) : Construct connectivity for  
 METAL1                                                                          
-2026-07-16 16:16:43 +0000: Memory Usage (638764K) : Executing rule              
+2026-07-16 20:57:40 +0000: Memory Usage (639908K) : Executing rule              
 ANT.16_i_ANT.2                                                                  
-2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Executing rule              
+2026-07-16 20:57:41 +0000: Memory Usage (641700K) : Executing rule              
 ANT.16_ii_ANT.2                                                                 
-2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Construct connectivity for  
+2026-07-16 20:57:41 +0000: Memory Usage (641700K) : Construct connectivity for  
 VIA1                                                                            
-2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Executing rule              
+2026-07-16 20:57:41 +0000: Memory Usage (641700K) : Executing rule              
 ANT.16_i_ANT.9                                                                  
-2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:42 +0000: Memory Usage (642340K) : Executing rule              
 ANT.16_ii_ANT.9                                                                 
-2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Construct connectivity for  
+2026-07-16 20:57:42 +0000: Memory Usage (642340K) : Construct connectivity for  
 METAL2                                                                          
-2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:42 +0000: Memory Usage (642340K) : Executing rule              
 ANT.16_i_ANT.3                                                                  
-2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:43 +0000: Memory Usage (642468K) : Executing rule              
 ANT.16_ii_ANT.3                                                                 
-2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Construct connectivity for  
+2026-07-16 20:57:43 +0000: Memory Usage (642468K) : Construct connectivity for  
 VIA2                                                                            
-2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:43 +0000: Memory Usage (642468K) : Executing rule              
 ANT.16_i_ANT.10                                                                 
-2026-07-16 16:16:49 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:46 +0000: Memory Usage (642468K) : Executing rule              
 ANT.16_ii_ANT.10                                                                
-2026-07-16 16:16:50 +0000: Memory Usage (641480K) : Construct connectivity for  
+2026-07-16 20:57:46 +0000: Memory Usage (642468K) : Construct connectivity for  
 METAL3                                                                          
-2026-07-16 16:16:50 +0000: Memory Usage (641480K) : Executing rule              
+2026-07-16 20:57:46 +0000: Memory Usage (642468K) : Executing rule              
 ANT.16_i_ANT.4                                                                  
-2026-07-16 16:16:54 +0000: Memory Usage (731080K) : Executing rule              
+2026-07-16 20:57:50 +0000: Memory Usage (732452K) : Executing rule              
 ANT.16_ii_ANT.4                                                                 
-2026-07-16 16:16:54 +0000: Memory Usage (735432K) : Construct connectivity for  
+2026-07-16 20:57:51 +0000: Memory Usage (734500K) : Construct connectivity for  
 VIA3                                                                            
-2026-07-16 16:16:54 +0000: Memory Usage (735432K) : Executing rule              
+2026-07-16 20:57:51 +0000: Memory Usage (734500K) : Executing rule              
 ANT.16_i_ANT.11                                                                 
-2026-07-16 16:17:00 +0000: Memory Usage (752200K) : Executing rule              
+2026-07-16 20:57:57 +0000: Memory Usage (752036K) : Executing rule              
 ANT.16_ii_ANT.11                                                                
-2026-07-16 16:17:06 +0000: Memory Usage (752128K) : Construct connectivity for  
+2026-07-16 20:58:03 +0000: Memory Usage (752028K) : Construct connectivity for  
 METAL4                                                                          
-2026-07-16 16:17:06 +0000: Memory Usage (752128K) : Executing rule              
+2026-07-16 20:58:03 +0000: Memory Usage (752028K) : Executing rule              
 ANT.16_i_ANT.5                                                                  
-2026-07-16 16:17:13 +0000: Memory Usage (755712K) : Executing rule              
+2026-07-16 20:58:10 +0000: Memory Usage (754972K) : Executing rule              
 ANT.16_ii_ANT.5                                                                 
-2026-07-16 16:17:14 +0000: Memory Usage (757376K) : Construct connectivity for  
+2026-07-16 20:58:11 +0000: Memory Usage (759964K) : Construct connectivity for  
 VIA4                                                                            
-2026-07-16 16:17:14 +0000: Memory Usage (757376K) : Executing rule              
+2026-07-16 20:58:11 +0000: Memory Usage (759964K) : Executing rule              
 ANT.16_i_ANT.12                                                                 
-2026-07-16 16:17:24 +0000: Memory Usage (768568K) : Executing rule              
+2026-07-16 20:58:21 +0000: Memory Usage (773660K) : Executing rule              
 ANT.16_ii_ANT.12                                                                
-2026-07-16 16:17:29 +0000: Memory Usage (768592K) : Construct connectivity for  
+2026-07-16 20:58:26 +0000: Memory Usage (773884K) : Construct connectivity for  
 METAL5                                                                          
-2026-07-16 16:17:29 +0000: Memory Usage (768592K) : Executing rule              
+2026-07-16 20:58:27 +0000: Memory Usage (773884K) : Executing rule              
 ANT.16_i_ANT.7                                                                  
-2026-07-16 16:17:40 +0000: Memory Usage (771152K) : Executing rule              
+2026-07-16 20:58:38 +0000: Memory Usage (774012K) : Executing rule              
 ANT.16_ii_ANT.7                                                                 
-2026-07-16 16:17:41 +0000: Memory Usage (772816K) : Executing rule              
+2026-07-16 20:58:39 +0000: Memory Usage (774012K) : Executing rule              
 ANT.16_iii_ANT.14_MT_MIMB                                                       
-2026-07-16 16:17:52 +0000: Memory Usage (773968K) : Antenna DRC total Run time: 
-72.193314405 seconds                                                            
-[16:17:52] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/10-klayout-antenna/xml_drc_report_to_json.log             
-                    '…                                                          
+2026-07-16 20:58:50 +0000: Memory Usage (774908K) : Antenna DRC total Run time: 
+74.213728829 seconds                                                            
+[20:58:51] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/10-klayout-antenna/xml_drc_report_to_json.l             
+                    og'…                                                        
 ─────────────────────────── KLayout Antenna Checker ────────────────────────────
-[16:17:53] VERBOSE  Running 'Checker.KLayoutAntenna' at             step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/11-checker-klayoutantenna'…                               
-[16:17:53] INFO     Check for KLayout antenna errors clear.       checker.py:131
+[20:58:51] VERBOSE  Running 'Checker.KLayoutAntenna' at             step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/11-checker-klayoutantenna'…                             
+[20:58:51] INFO     Check for KLayout antenna errors clear.       checker.py:131
 ────────────────────────────── Design Rule Checks ──────────────────────────────
-[16:17:53] VERBOSE  Running 'Magic.DRC' at                          step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/12-magic-drc'…                                            
-[16:17:53] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/12-magic-drc/magic-drc.log'…                              
+[20:58:51] VERBOSE  Running 'Magic.DRC' at                          step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/12-magic-drc'…                                          
+[20:58:51] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/12-magic-drc/magic-drc.log'…                            
                                                                                 
 Magic 8.3 revision 660 - Compiled on Mon Jun  8 08:14:47 UTC 2026.              
 Starting magic under Tcl interpreter                                            
@@ -5066,26 +5082,26 @@ No errors found.
 [INFO] COUNT: 0                                                                 
 [INFO] Should be divided by 3 or 4                                              
 [INFO] DRC Checking DONE                                                        
-(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_
-FIX_2026-07-16/12-magic-drc/reports/drc.magic.rpt)                              
+(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOU
+T_FIX_2026-07-16/12-magic-drc/reports/drc.magic.rpt)                            
 [INFO] Saving mag view with DRC errors                                          
-(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_
-FIX_2026-07-16/12-magic-drc/views/chip_top.drc.mag)                             
+(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOU
+T_FIX_2026-07-16/12-magic-drc/views/chip_top.drc.mag)                           
 [INFO] Saved                                                                    
 ────────────────────────── Magic Design Rule Checker ───────────────────────────
-[16:25:52] VERBOSE  Running 'Checker.MagicDRC' at                   step.py:1138
-                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
-                    6/13-checker-magicdrc'…                                     
-[16:25:52] INFO     Check for Magic DRC errors clear.             checker.py:131
-[16:25:52] INFO     Skipping step 'Design Rule Check           sequential.py:370
+[21:07:38] VERBOSE  Running 'Checker.MagicDRC' at                   step.py:1138
+                    '.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07             
+                    -16/13-checker-magicdrc'…                                   
+[21:07:38] INFO     Check for Magic DRC errors clear.             checker.py:131
+[21:07:38] INFO     Skipping step 'Design Rule Check           sequential.py:370
                     (KLayout)'…                                                 
-[16:25:52] INFO     Skipping step 'KLayout DRC Checker'…       sequential.py:370
-[16:25:52] INFO     Skipping step 'Write the Layout'…          sequential.py:370
-[16:25:52] INFO     Saving views to                                 state.py:209
+[21:07:38] INFO     Skipping step 'KLayout DRC Checker'…       sequential.py:370
+[21:07:38] INFO     Skipping step 'Write the Layout'…          sequential.py:370
+[21:07:38] INFO     Saving views to                                 state.py:209
                     '/home/flow/Vibe/tapeout/gf180characterization/             
-                    .signoff/precheck-run/runs/MAGIC_FIX_2026-07-16             
-                    /final'…                                                    
-PrecheckFlow - Stage 16 - Write the Layout ━━━━━━━━━━━━━━━━━━━━━━━ 16/16 0:10:32
+                    .signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-             
+                    16/final'…                                                  
+PrecheckFlow - Stage 16 - Write the Layout ━━━━━━━━━━━━━━━━━━━━━━━ 16/16 0:11:23
 Error: The precheck failed with the following exception: 
 One or more deferred errors were encountered:
 2 KLayout density errors found.

@@ -154,7 +154,10 @@ inside the selected slot, requires an exact post-seal slot boundary and a
 `GUARD_RING_MK` seal marker, and proves that no incoming geometry was dropped.
 For the current GF180 foundry corner hierarchy it also preserves legal upper-via
 generators across Magic import and closes three documented same-net Metal1
-notches; the exact repairs are recorded in `final/manifest.json`.
+notches. It covers the two smooth Metal1 characterization bends on the GF180
+5 nm Manhattan grid and closes two same-polygon Metal5 logo transitions. Every
+repair is source-preserving and guarded by exact source-geometry checks; the
+details are recorded in `final/manifest.json`.
 
 These targets fail closed outside this repository's root Nix shell and verify
 that the Wafer.Space PDK and precheck clones are at the commits pinned in the
@@ -164,6 +167,11 @@ that deck with its native switches: variant D (11K/5LM/MIM-B), deep mode,
 FEOL/BEOL/off-grid enabled, connectivity disabled, and CUP/antenna/density
 excluded. The exact command, marker database, JSON summary, and logs are kept
 under `final/signoff/`.
+
+The committed current-artifact evidence reports zero Magic DRC markers and zero
+KLayout main-DRC markers across 649 categories. Antenna and zero-area checks are
+also clean. The separate density stage remains intentionally deferred with two
+findings, so `make signoff-final` still exits nonzero until density is resolved.
 
 To use another completed layout:
 

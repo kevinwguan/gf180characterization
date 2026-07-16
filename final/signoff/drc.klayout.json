@@ -1,12 +1,12 @@
 {
-  "input": "/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/04-klayout-generateid/chip_top.gds",
-  "input_sha256": "dd51cc765bce378758807413ed802d9c7989601194ca572a22a2b84fe291417d",
+  "input": "/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/04-klayout-generateid/chip_top.gds",
+  "input_sha256": "a1fc8aa09d9703b633faf50682a2a1122c72a489502d0ebae7e917c9f635b305",
   "top": "chip_top",
   "pdk_commit": "ac7d8696de96a4d708e768b607ae37f02207a354",
   "klayout": "/nix/store/dljmpck53kb6zxhvd73b688286b0kwkn-klayout-0.30.9/bin/klayout",
   "source_deck": "/home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk/gf180mcuD/libs.tech/klayout/tech/drc/gf180mcu.drc",
   "source_deck_sha256": "c613376efb0eb6a250073247225cc5d5d6935b73d10f85a8d1a8d221b6090568",
-  "deck": "/home/flow/Vibe/tapeout/gf180characterization/.signoff/klayout-drc-runs/KLAYOUT_SIGNOFF_2026-07-16/gf180mcu.filtered.drc",
+  "deck": "/home/flow/Vibe/tapeout/gf180characterization/.signoff/klayout-drc-runs/KLAYOUT_DRC_FIX_2026-07-16/gf180mcu.filtered.drc",
   "deck_generation": "pinned raw gf180mcu.drc with disabled includes removed",
   "deck_exit_code": 0,
   "configuration": {
@@ -244,7 +244,7 @@
     "LRES.9a": 0,
     "LRES.9b": 0,
     "LVS_BJT.1": 0,
-    "M1.1": 6,
+    "M1.1": 0,
     "M1.2a": 0,
     "M1.2b": 0,
     "M1.3": 0,
@@ -357,7 +357,7 @@
     "MSLOT.9": 0,
     "MT.1": 0,
     "MT.2a": 0,
-    "MT.2b": 2,
+    "MT.2b": 0,
     "MT.4": 0,
     "NAT.1": 0,
     "NAT.10": 0,
@@ -618,8 +618,8 @@
     "mcell_feol_mk_angle": 0,
     "mdiode_OFFGRID": 0,
     "mdiode_angle": 0,
-    "metal1_OFFGRID": 286,
-    "metal1_angle": 300,
+    "metal1_OFFGRID": 0,
+    "metal1_angle": 0,
     "metal1_blk_OFFGRID": 0,
     "metal1_blk_angle": 0,
     "metal1_label_OFFGRID": 0,
@@ -747,5 +747,5 @@
     "zener_OFFGRID": 0,
     "zener_angle": 0
   },
-  "total": 594
+  "total": 0
 }
