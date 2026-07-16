@@ -1,12 +1,12 @@
 {
   "artifact": "final/chip_top.gds",
-  "artifact_sha256": "3c2da6d44d631fdf6156987dbd6fedfb299b1746c29ae18d6b0d27cdf8a6435f",
-  "artifact_md5": "da3a2fd7038bb649f482e29861a79aa1",
+  "artifact_sha256": "6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be",
+  "artifact_md5": "4f233de57826c45bb0800aadf7c3d000",
   "md5_file": "final/chip_top.gds.md5",
   "source_original": "../gds/padring_test_structures.gds",
   "source_original_sha256": "80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7",
-  "prepared_sha256": "0129ea49d234384d55c06a32b749fc3f6cdbd128b718ab79352ed5f8bd6fc317",
-  "sealed_uncompressed_sha256": "3c2da6d44d631fdf6156987dbd6fedfb299b1746c29ae18d6b0d27cdf8a6435f",
+  "prepared_sha256": "2c90f175636083ca83296ff5e9667f8c06e455e68288907890329b05b6e30f38",
+  "sealed_uncompressed_sha256": "6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be",
   "top": "chip_top",
   "slot": "1x0p5",
   "bbox_um": [
@@ -31,6 +31,32 @@
     5
   ],
   "source_geometry_preserved": true,
+  "magic_drc_repairs": {
+    "hierarchical_via_cells_renamed": 302,
+    "corner_cell": "gf180mcu_fd_io__cor",
+    "corner_metal1_bridges": [
+      [
+        128710,
+        165505,
+        129010,
+        165785
+      ],
+      [
+        128710,
+        164885,
+        129010,
+        165165
+      ],
+      [
+        190320,
+        103275,
+        190620,
+        103555
+      ]
+    ],
+    "corner_metal1_bridge_count": 3,
+    "reason": "preserve legal foundry via generators across Magic GDS import and close three same-net M1.2b corner-rail notches"
+  },
   "padring_source": "external GDS only; no gf180characterization padring flow used",
   "wafer_space_pdk_commit": "ac7d8696de96a4d708e768b607ae37f02207a354"
 }

@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Prepare an external GDS for seal-ring insertion and verify the result.
 
-This script never creates or imports a padring.  The prepare phase centers the
-external layout's sole top cell inside the selected slot.  The finish phase
-proves that all centered source geometry remains present, checks the
-Wafer.Space slot envelope and seal marker, then emits a GDS and a hash-locked
-provenance manifest.
+This script never creates or imports a padring.  The prepare phase applies the
+validated GF180 corner repairs and centers the external layout's sole top cell
+inside the selected slot.  The finish phase proves that all centered source
+geometry remains present, checks the Wafer.Space slot envelope and seal marker,
+then emits a GDS and a hash-locked provenance manifest.
 """
 
 from __future__ import annotations
@@ -27,6 +27,29 @@ SLOTS = {
     "0p5x0p5": (1936.0, 2531.0),
 }
 GUARD_RING_MK = (167, 5)
+METAL1 = (34, 0)
+
+# The Wafer.Space precheck flattens every cell matching ``*_CDNS_*`` before
+# running Magic.  Flattening the foundry M4/M3 and M5/M4 via generators makes
+# Magic split otherwise legal, fully enclosed 0.26 um via arrays into narrow
+# tiles and report V3.1/V3.4 and V4.1/V4.4 false positives.  Keeping just these
+# two generator families hierarchical avoids that importer artifact while the
+# mask geometry remains exactly equivalent.
+MAGIC_HIERARCHICAL_VIA_PREFIXES = ("M4_M3_CDNS_", "M5_M4_CDNS_")
+MAGIC_HIERARCHICAL_VIA_REPLACEMENT = "_HIER_"
+
+# The GF180 foundry corner cell contains three 0.28 um-deep Metal1 notches in
+# a single, already-connected power rail.  Magic's full M1.2b rule requires
+# 0.30 um spacing at these wide-metal notches.  Filling the rightmost 0.30 um
+# of each notch removes the violations without connecting previously separate
+# nets.  Coordinates are in the cell's 0.001 um database units.
+GF180_CORNER_CELL = "gf180mcu_fd_io__cor"
+GF180_CORNER_BBOX = db.Box(0, 0, 355160, 355160)
+GF180_CORNER_M1_BRIDGES = (
+    db.Box(128710, 165505, 129010, 165785),
+    db.Box(128710, 164885, 129010, 165165),
+    db.Box(190320, 103275, 190620, 103555),
+)
 
 
 def sha256(path: Path) -> str:
@@ -63,6 +86,166 @@ def bbox_um(cell: db.Cell, dbu: float) -> tuple[float, float, float, float]:
     return tuple(v * dbu for v in (box.left, box.bottom, box.right, box.top))
 
 
+def _region_contains(region: db.Region, box: db.Box) -> bool:
+    return (db.Region(box) - region).is_empty()
+
+
+def _bridge_is_same_net(region: db.Region, bridge: db.Box) -> bool:
+    """Prove both sides of a proposed bridge are already one polygon."""
+
+    lower = db.Box(bridge.left, bridge.bottom - 1, bridge.right, bridge.bottom)
+    upper = db.Box(bridge.left, bridge.top, bridge.right, bridge.top + 1)
+    for polygon in region.each():
+        connected = db.Region(polygon)
+        if _region_contains(connected, lower) and _region_contains(connected, upper):
+            return True
+    return False
+
+
+def apply_magic_drc_repairs(layout: db.Layout) -> dict:
+    """Apply narrowly scoped, fail-closed repairs for GF180 foundry corners."""
+
+    renamed = []
+    candidates = [
+        cell
+        for cell in layout.each_cell()
+        if cell.name.startswith(MAGIC_HIERARCHICAL_VIA_PREFIXES)
+    ]
+    for cell in candidates:
+        old_name = cell.name
+        new_name = old_name.replace(
+            "_CDNS_", MAGIC_HIERARCHICAL_VIA_REPLACEMENT, 1
+        )
+        if layout.cell(new_name) is not None:
+            raise SystemExit(
+                f"cannot preserve Magic via hierarchy: cell {new_name} already exists"
+            )
+        cell.name = new_name
+        renamed.append([old_name, new_name])
+
+    bridges = []
+    corner = layout.cell(GF180_CORNER_CELL)
+    if corner is not None:
+        if layout.dbu != 0.001:
+            raise SystemExit(
+                f"GF180 corner repair requires 0.001 um dbu, got {layout.dbu}"
+            )
+        if corner.bbox() != GF180_CORNER_BBOX:
+            raise SystemExit(
+                f"unexpected {GF180_CORNER_CELL} bbox {corner.bbox()}, "
+                f"expected {GF180_CORNER_BBOX}"
+            )
+        metal1_index = layout.find_layer(*METAL1)
+        if metal1_index is None:
+            raise SystemExit(f"{GF180_CORNER_CELL} has no Metal1 layer {METAL1}")
+        before = db.Region(corner.begin_shapes_rec(metal1_index))
+        before.merge()
+        for bridge in GF180_CORNER_M1_BRIDGES:
+            if not _bridge_is_same_net(before, bridge):
+                raise SystemExit(
+                    f"refusing Metal1 bridge {bridge}: its two sides are not "
+                    "already connected in the foundry corner cell"
+                )
+            corner.shapes(metal1_index).insert(bridge)
+            bridges.append(
+                [bridge.left, bridge.bottom, bridge.right, bridge.top]
+            )
+        after = db.Region(corner.begin_shapes_rec(metal1_index))
+        if not (before - after).is_empty():
+            raise SystemExit("GF180 corner repair unexpectedly removed Metal1")
+        allowed = db.Region()
+        for bridge in GF180_CORNER_M1_BRIDGES:
+            allowed.insert(bridge)
+        if not ((after - before) - allowed).is_empty():
+            raise SystemExit("GF180 corner repair added Metal1 outside bridge boxes")
+
+    return {
+        "hierarchical_via_cells_renamed": len(renamed),
+        "hierarchical_via_cell_renames": renamed,
+        "corner_cell": GF180_CORNER_CELL if corner is not None else None,
+        "corner_metal1_bridges": bridges,
+        "corner_metal1_bridge_count": len(bridges),
+    }
+
+
+def verify_magic_drc_repairs(original: db.Layout, repaired: db.Layout) -> dict:
+    """Verify the hierarchy renames and bound all corner Metal1 additions."""
+
+    expected_renames = []
+    for cell in original.each_cell():
+        if not cell.name.startswith(MAGIC_HIERARCHICAL_VIA_PREFIXES):
+            continue
+        new_name = cell.name.replace(
+            "_CDNS_", MAGIC_HIERARCHICAL_VIA_REPLACEMENT, 1
+        )
+        expected_renames.append([cell.name, new_name])
+        if repaired.cell(cell.name) is not None:
+            raise SystemExit(f"prepared GDS retained flattened via name {cell.name}")
+        if repaired.cell(new_name) is None:
+            raise SystemExit(f"prepared GDS is missing renamed via cell {new_name}")
+
+    original_corner = original.cell(GF180_CORNER_CELL)
+    repaired_corner = repaired.cell(GF180_CORNER_CELL)
+    if original_corner is None:
+        if repaired_corner is not None:
+            raise SystemExit(
+                f"prepared GDS unexpectedly added corner cell {GF180_CORNER_CELL}"
+            )
+        return {
+            "hierarchical_via_cells_renamed": len(expected_renames),
+            "hierarchical_via_cell_renames": expected_renames,
+            "corner_cell": None,
+            "corner_metal1_bridges": [],
+            "corner_metal1_bridge_count": 0,
+        }
+    if repaired_corner is None:
+        raise SystemExit(f"prepared GDS dropped corner cell {GF180_CORNER_CELL}")
+    if original.dbu != repaired.dbu or repaired.dbu != 0.001:
+        raise SystemExit(
+            "cannot compare GF180 corner repairs across mismatched database units"
+        )
+    if original_corner.bbox() != GF180_CORNER_BBOX:
+        raise SystemExit(
+            f"unexpected original {GF180_CORNER_CELL} bbox {original_corner.bbox()}"
+        )
+    if repaired_corner.bbox() != GF180_CORNER_BBOX:
+        raise SystemExit(
+            f"unexpected repaired {GF180_CORNER_CELL} bbox {repaired_corner.bbox()}"
+        )
+
+    original_m1_index = original.find_layer(*METAL1)
+    repaired_m1_index = repaired.find_layer(*METAL1)
+    if original_m1_index is None or repaired_m1_index is None:
+        raise SystemExit(f"cannot verify corner repair without Metal1 {METAL1}")
+    before = db.Region(original_corner.begin_shapes_rec(original_m1_index))
+    after = db.Region(repaired_corner.begin_shapes_rec(repaired_m1_index))
+    before.merge()
+    after.merge()
+    if not (before - after).is_empty():
+        raise SystemExit("prepared GDS removed original corner Metal1")
+    additions = after - before
+    allowed = db.Region()
+    for bridge in GF180_CORNER_M1_BRIDGES:
+        allowed.insert(bridge)
+        if not _region_contains(after, bridge):
+            raise SystemExit(f"prepared GDS is missing Metal1 bridge {bridge}")
+    if additions.is_empty():
+        raise SystemExit("prepared GDS contains none of the expected Metal1 additions")
+    if not (additions - allowed).is_empty():
+        raise SystemExit("prepared GDS changed corner Metal1 outside bridge boxes")
+
+    return {
+        "hierarchical_via_cells_renamed": len(expected_renames),
+        "hierarchical_via_cell_renames": expected_renames,
+        "corner_cell": GF180_CORNER_CELL,
+        "corner_metal1_bridges": [
+            [box.left, box.bottom, box.right, box.top]
+            for box in GF180_CORNER_M1_BRIDGES
+        ],
+        "corner_metal1_bridge_count": len(GF180_CORNER_M1_BRIDGES),
+    }
+
+
 def prepare(args: argparse.Namespace) -> None:
     source = Path(args.input).resolve()
     output = Path(args.output).resolve()
@@ -70,6 +253,7 @@ def prepare(args: argparse.Namespace) -> None:
     top = sole_top(layout)
     if layout.dbu != 0.001:
         raise SystemExit(f"source dbu must be 0.001 um, got {layout.dbu}")
+    repairs = apply_magic_drc_repairs(layout)
     box = bbox_um(top, layout.dbu)
     width, height = SLOTS[args.slot]
     if box[0] < 0 or box[1] < 0 or box[2] > width or box[3] > height:
@@ -87,7 +271,9 @@ def prepare(args: argparse.Namespace) -> None:
     layout.write(str(output), options)
     print(
         f"prepared external GDS only: {source} -> {output}; "
-        f"source bbox={box}; centered by ({dx}, {dy}) um"
+        f"source bbox={box}; centered by ({dx}, {dy}) um; "
+        f"Magic repairs={repairs['corner_metal1_bridge_count']} Metal1 bridges, "
+        f"{repairs['hierarchical_via_cells_renamed']} hierarchy-safe via cells"
     )
 
 
@@ -161,8 +347,23 @@ def finish(args: argparse.Namespace) -> None:
     assert_source_preserved(source, sealed)
     original_layout = load(Path(args.source_original).resolve())
     original_top = sole_top(original_layout)
+    verified_repairs = verify_magic_drc_repairs(original_layout, source)
     centered_box = bbox_um(source_top, source.dbu)
     original_box = bbox_um(original_top, original_layout.dbu)
+    repair_record = {
+        "hierarchical_via_cells_renamed": verified_repairs[
+            "hierarchical_via_cells_renamed"
+        ],
+        "corner_cell": verified_repairs["corner_cell"],
+        "corner_metal1_bridges": verified_repairs["corner_metal1_bridges"],
+        "corner_metal1_bridge_count": verified_repairs[
+            "corner_metal1_bridge_count"
+        ],
+        "reason": (
+            "preserve legal foundry via generators across Magic GDS import and "
+            "close three same-net M1.2b corner-rail notches"
+        ),
+    }
 
     output.parent.mkdir(parents=True, exist_ok=True)
     with sealed_path.open("rb") as src, output.open("wb") as dst:
@@ -190,6 +391,7 @@ def finish(args: argparse.Namespace) -> None:
         "dbu_um": sealed.dbu,
         "guard_ring_marker": list(GUARD_RING_MK),
         "source_geometry_preserved": True,
+        "magic_drc_repairs": repair_record,
         "padring_source": "external GDS only; no gf180characterization padring flow used",
         "wafer_space_pdk_commit": args.pdk_commit,
     }

@@ -1,24 +1,23 @@
 Final artifact SHA-256:
-3c2da6d44d631fdf6156987dbd6fedfb299b1746c29ae18d6b0d27cdf8a6435f
+6cf77628966360504b24e8b2424784fed049df08e7d65e502d5c57e4c3f944be
 
 External source SHA-256:
 80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7
 
-The final GDS was regenerated from the same stable source while the precheck was
-running, changing GDS library/structure timestamps but not layout content. The
-precheck's exact KLayout.ReadLayout transformation was rerun on the committed
-final GDS. SHA-256 was then computed over every resulting GDS record after
-zeroing only BGNLIB and BGNSTR timestamp payloads.
+The precheck's exact KLayout.ReadLayout transformation was rerun on the final
+GDS after the Magic-focused precheck completed. SHA-256 was then computed over
+every resulting GDS record after zeroing only BGNLIB and BGNSTR timestamp
+payloads.
 
 Precheck run ReadLayout normalized SHA-256:
-6e9dadc2ae4cf71b8e2d3d8cdce80e059e203fe359b4b4079f5fda9b24111784
+3cb1d37cb2b5909135952f6ec4f586fbb8f8fb30f831e8f9e49da22fc57a5604
 
 Committed final ReadLayout normalized SHA-256:
-6e9dadc2ae4cf71b8e2d3d8cdce80e059e203fe359b4b4079f5fda9b24111784
+3cb1d37cb2b5909135952f6ec4f586fbb8f8fb30f831e8f9e49da22fc57a5604
 
 Result: every non-timestamp GDS record presented to precheck is identical.
 
 Reproduce the comparison from the repository root while the raw run exists:
 
   nix develop --command python3 .signoff/precheck/scripts/klayout/read_layout.py final/chip_top.gds .signoff/current-readlayout.gds
-  nix develop --command python3 scripts/gds_normalized_sha256.py .signoff/precheck-run/runs/RUN_2026-07-15_17-53-26/01-klayout-readlayout/chip_top.gds .signoff/current-readlayout.gds
+  nix develop --command python3 scripts/gds_normalized_sha256.py .signoff/precheck-run/runs/MAGIC_FIX_2026-07-16/01-klayout-readlayout/chip_top.gds .signoff/current-readlayout.gds

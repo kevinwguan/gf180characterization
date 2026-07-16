@@ -152,6 +152,9 @@ precheck runs are kept under `.signoff/precheck-run/`. The import
 step is fail-closed: it requires one top cell, 0.001 µm DBU, centers that layout
 inside the selected slot, requires an exact post-seal slot boundary and a
 `GUARD_RING_MK` seal marker, and proves that no incoming geometry was dropped.
+For the current GF180 foundry corner hierarchy it also preserves legal upper-via
+generators across Magic import and closes three documented same-net Metal1
+notches; the exact repairs are recorded in `final/manifest.json`.
 
 To use another completed layout:
 

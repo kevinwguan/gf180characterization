@@ -5,7 +5,10 @@ This directory is produced by `make final-gds` and `make signoff-final`.
 The flow uses `../gds/padring_test_structures.gds` as the complete incoming
 layout. It does **not** generate, import, or merge the padring defined by this
 repository. The incoming layout is centered in the slot, then the only geometry
-added before sign-off is the Wafer.Space GF180MCU seal ring from the pinned PDK.
+merged around it is the Wafer.Space GF180MCU seal ring from the pinned PDK. The
+current source also receives three fail-closed, same-net Metal1 notch fills in
+its GF180 foundry corner master; `manifest.json` records those DRC repairs and
+the hierarchy-only upper-via cell renames. No repository padring is added.
 
 Run:
 
@@ -24,5 +27,6 @@ the reviewed evidence from the latest authoritative run is committed under
 `signoff/`.
 
 The latest manufacturing-precheck evidence is under `signoff/`. Its README is
-authoritative: antenna and KLayout DRC are clean, while density and Magic DRC
-remain; the layout must not yet be treated as fully signed off.
+authoritative: Magic DRC, antenna, and zero-area checks are clean, while two
+density rules remain and the full KLayout DRC stage was not rerun in the latest
+Magic-focused pass. The layout must not yet be treated as fully signed off.

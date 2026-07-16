@@ -1,32 +1,7 @@
-python3 scripts/final_gds.py prepare \
-	--input /home/flow/Vibe/tapeout/gf180characterization/../gds/padring_test_structures.gds \
-	--output /home/flow/Vibe/tapeout/gf180characterization/.signoff/prepared.gds \
-	--top chip_top \
-	--slot 1x0p5
-prepared external GDS only: /home/flow/Vibe/tapeout/gds/padring_test_structures.gds -> /home/flow/Vibe/tapeout/gf180characterization/.signoff/prepared.gds; source bbox=(0.0, 0.0, 3835.0, 2435.0); centered by (48.5, 48.0) um
-PDK_ROOT=/home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk PDK=gf180mcuD python3 \
-	/home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk/gf180mcuD/libs.tech/klayout/tech/scripts/sealring.py \
-	--input /home/flow/Vibe/tapeout/gf180characterization/.signoff/prepared.gds \
-	--output /home/flow/Vibe/tapeout/gf180characterization/.signoff/sealed.gds \
-	--die-width 3932 --die-height 2531
-python3 scripts/final_gds.py finish \
-	--source /home/flow/Vibe/tapeout/gf180characterization/.signoff/prepared.gds \
-	--sealed /home/flow/Vibe/tapeout/gf180characterization/.signoff/sealed.gds \
-	--output /home/flow/Vibe/tapeout/gf180characterization/final/chip_top.gds \
-	--manifest /home/flow/Vibe/tapeout/gf180characterization/final/manifest.json \
-	--top chip_top \
-	--slot 1x0p5 \
-	--source-original /home/flow/Vibe/tapeout/gf180characterization/../gds/padring_test_structures.gds \
-	--pdk-commit ac7d8696de96a4d708e768b607ae37f02207a354
-final sealed GDS: /home/flow/Vibe/tapeout/gf180characterization/final/chip_top.gds sha256=1cca5ac9431c8c4fcc884dfcb7c28f4361602966572cd83524a19c9ca7224b85
-mkdir -p /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run
-PDK_ROOT=/home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk PDK=gf180mcuD python3 \
-	/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck/precheck.py \
-	--input /home/flow/Vibe/tapeout/gf180characterization/final/chip_top.gds \
-	--top chip_top --slot 1x0p5 \
-	--workers max --threads 1 \
-	--dir /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run \
-	--output /home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-output.gds
+warning: Git tree '/home/flow/Vibe/tapeout/gf180characterization' is dirty
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
+warning: ignoring the client-specified setting 'trusted-public-keys', because it is a restricted setting and you are not a trusted user
 None
 PDK_ROOT = /home/flow/Vibe/tapeout/gf180characterization/.signoff/pdk
 PDK = gf180mcuD
@@ -36,36 +11,35 @@ cob: False
 slot: 1x0p5
 threads: 1
 workers: max
-[17:53:26] INFO     Starting a new run of the 'PrecheckFlow' flow    flow.py:654
-                    with the tag 'RUN_2026-07-15_17-53-26'.                     
-[17:53:26] INFO     Starting…                                  sequential.py:339
+[16:15:19] INFO     Starting a new run of the 'PrecheckFlow' flow    flow.py:654
+                    with the tag 'MAGIC_FIX_2026-07-16'.                        
+[16:15:20] INFO     Starting…                                  sequential.py:339
 ─────────────────────────────── Read the Layout ────────────────────────────────
-[17:53:26] VERBOSE  Running 'KLayout.ReadLayout' at                 step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/01-klayout-readlayout'…                                
-[17:53:26] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/01-klayout-readlayout/klayout-readlayout.l             
-                    og'…                                                        
+[16:15:20] VERBOSE  Running 'KLayout.ReadLayout' at                 step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/01-klayout-readlayout'…                                   
+[16:15:20] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/01-klayout-readlayout/klayout-readlayout.log'             
+                    …                                                           
 ───────────────────────────── Check Top-Level Name ─────────────────────────────
-[17:53:28] VERBOSE  Running 'KLayout.CheckTopLevel' at              step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/02-klayout-checktoplevel'…                             
-[17:53:28] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/02-klayout-checktoplevel/klayout-checktopl             
-                    evel.log'…                                                  
+[16:15:21] VERBOSE  Running 'KLayout.CheckTopLevel' at              step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/02-klayout-checktoplevel'…                                
+[16:15:21] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/02-klayout-checktoplevel/klayout-checktopleve             
+                    l.log'…                                                     
 Design name 'chip_top' matches top-level cell in                                
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/01-klayout-readlayout/chip_top.gds.                            
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
+IX_2026-07-16/01-klayout-readlayout/chip_top.gds.                               
 ─────────────────────────────── Check Slot Size ────────────────────────────────
-[17:53:29] VERBOSE  Running 'KLayout.CheckSize' at                  step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/03-klayout-checksize'…                                 
-[17:53:29] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/03-klayout-checksize/klayout-checksize.log             
-                    '…                                                          
+[16:15:22] VERBOSE  Running 'KLayout.CheckSize' at                  step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/03-klayout-checksize'…                                    
+[16:15:22] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/03-klayout-checksize/klayout-checksize.log'…              
 Layout size:                                                                    
 layout width:  3932.0                                                           
 layout height: 2531.0                                                           
@@ -74,13 +48,13 @@ slot width:  3932.0
 slot height: 2531.0                                                             
 Layout dimension matches the selected slot size 1x0p5.                          
 ───────────────────────────────── Generate ID ──────────────────────────────────
-[17:53:30] VERBOSE  Running 'KLayout.GenerateID' at                 step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/04-klayout-generateid'…                                
-[17:53:30] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/04-klayout-generateid/klayout-generateid.l             
-                    og'…                                                        
+[16:15:23] VERBOSE  Running 'KLayout.GenerateID' at                 step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/04-klayout-generateid'…                                   
+[16:15:23] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/04-klayout-generateid/klayout-generateid.log'             
+                    …                                                           
 Width: 21, Height: 21                                                           
 > ██████████████    ██████    ██████████████                                    
 > ██          ██    ██        ██          ██                                    
@@ -105,294 +79,294 @@ Width: 21, Height: 21
 > ██████████████        ██    ██  ████████                                      
 Inserted ID: FFFFFFFF                                                           
 ────────────────────────── Render Image (w/ KLayout) ───────────────────────────
-[17:53:32] VERBOSE  Running 'KLayout.Render' at                     step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/05-klayout-render'…                                    
-[17:53:32] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/05-klayout-render/klayout-render.log'…                 
+[16:15:25] VERBOSE  Running 'KLayout.Render' at                     step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/05-klayout-render'…                                       
+[16:15:25] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/05-klayout-render/klayout-render.log'…                    
 ──────────────────────────────── Density Check ─────────────────────────────────
-[17:53:35] VERBOSE  Running 'KLayout.Density' at                    step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/06-klayout-density'…                                   
-[17:53:35] INFO     Running KLayout density check with 16        klayout.py:1222
+[16:15:28] VERBOSE  Running 'KLayout.Density' at                    step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/06-klayout-density'…                                      
+[16:15:28] INFO     Running KLayout density check with 16        klayout.py:1222
                     threads…                                                    
-[17:53:35] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/06-klayout-density/klayout-density.log'…               
-2026-07-15 17:53:37 +0000: Memory Usage (424060K) : Starting running GF180MCU   
+[16:15:28] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/06-klayout-density/klayout-density.log'…                  
+2026-07-16 16:15:29 +0000: Memory Usage (423932K) : Starting running GF180MCU   
 Klayout DRC runset on                                                           
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/04-klayout-generateid/chip_top.gds                             
-2026-07-15 17:53:37 +0000: Memory Usage (424188K) : Ruby Version for klayout:   
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
+IX_2026-07-16/04-klayout-generateid/chip_top.gds                                
+2026-07-16 16:15:29 +0000: Memory Usage (423932K) : Ruby Version for klayout:   
 3.3.10                                                                          
-2026-07-15 17:53:37 +0000: Memory Usage (481108K) : Loading database to memory  
+2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Loading database to memory  
 is complete.                                                                    
-2026-07-15 17:53:37 +0000: Memory Usage (481108K) : GF180MCU Klayout density DRC
+2026-07-16 16:15:29 +0000: Memory Usage (481056K) : GF180MCU Klayout density DRC
 runset output at:                                                               
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/06-klayout-density/reports/density.klayout.lyrdb               
-2026-07-15 17:53:37 +0000: Memory Usage (481108K) : Evaluate switches.          
-2026-07-15 17:53:37 +0000: Memory Usage (481108K) : Number of threads to use 16 
-2026-07-15 17:53:37 +0000: Memory Usage (481108K) : Verbose mode:               
-2026-07-15 17:53:37 +0000: Memory Usage (481748K) : flat  mode is enabled.      
-2026-07-15 17:53:37 +0000: Memory Usage (481748K) : METAL_TOP Selected is 9K    
-2026-07-15 17:53:37 +0000: Memory Usage (481748K) : METAL_STACK Selected is 5LM 
-2026-07-15 17:53:37 +0000: Memory Usage (481748K) : Read in polygons from       
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
+IX_2026-07-16/06-klayout-density/reports/density.klayout.lyrdb                  
+2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Evaluate switches.          
+2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Number of threads to use 16 
+2026-07-16 16:15:29 +0000: Memory Usage (481056K) : Verbose mode:               
+2026-07-16 16:15:29 +0000: Memory Usage (481696K) : flat  mode is enabled.      
+2026-07-16 16:15:29 +0000: Memory Usage (481696K) : METAL_TOP Selected is 9K    
+2026-07-16 16:15:29 +0000: Memory Usage (481696K) : METAL_STACK Selected is 5LM 
+2026-07-16 16:15:29 +0000: Memory Usage (481696K) : Read in polygons from       
 layers.                                                                         
-2026-07-15 17:53:37 +0000: Memory Usage (484520K) : comp_drawn has 7907 polygons
-2026-07-15 17:53:37 +0000: Memory Usage (484680K) : comp_dummy has 0 polygons   
-2026-07-15 17:53:37 +0000: Memory Usage (484808K) : dualgate has 2321 polygons  
-2026-07-15 17:53:37 +0000: Memory Usage (485576K) : poly2_drawn has 4099        
+2026-07-16 16:15:30 +0000: Memory Usage (484708K) : comp_drawn has 7907 polygons
+2026-07-16 16:15:30 +0000: Memory Usage (484708K) : comp_dummy has 0 polygons   
+2026-07-16 16:15:30 +0000: Memory Usage (485092K) : dualgate has 2321 polygons  
+2026-07-16 16:15:30 +0000: Memory Usage (486244K) : poly2_drawn has 4099        
 polygons                                                                        
-2026-07-15 17:53:37 +0000: Memory Usage (485576K) : poly2_dummy has 0 polygons  
-2026-07-15 17:53:48 +0000: Memory Usage (1204568K) : contact has 4743368        
+2026-07-16 16:15:30 +0000: Memory Usage (486244K) : poly2_dummy has 0 polygons  
+2026-07-16 16:15:40 +0000: Memory Usage (1204596K) : contact has 4743368        
 polygons                                                                        
-2026-07-15 17:53:49 +0000: Memory Usage (1204568K) : metal1_drawn has 8018      
+2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_drawn has 8018      
 polygons                                                                        
-2026-07-15 17:53:49 +0000: Memory Usage (1204568K) : metal1_dummy has 0 polygons
-2026-07-15 17:53:49 +0000: Memory Usage (1204568K) : metal1_label has 0 polygons
-2026-07-15 17:53:49 +0000: Memory Usage (1204568K) : metal1_slot has 0 polygons 
-2026-07-15 17:53:49 +0000: Memory Usage (1204568K) : metal1_blk has 0 polygons  
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : via1 has 1147443 polygons  
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : metal2_drawn has 3283      
+2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_dummy has 0 polygons
+2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_label has 0 polygons
+2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_slot has 0 polygons 
+2026-07-16 16:15:41 +0000: Memory Usage (1204596K) : metal1_blk has 0 polygons  
+2026-07-16 16:15:43 +0000: Memory Usage (1231892K) : via1 has 1147443 polygons  
+2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_drawn has 3283      
 polygons                                                                        
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : metal2_dummy has 0 polygons
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : metal2_label has 494       
+2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_dummy has 0 polygons
+2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_label has 494       
 polygons                                                                        
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : metal2_slot has 0 polygons 
-2026-07-15 17:53:52 +0000: Memory Usage (1231644K) : metal2_blk has 0 polygons  
-2026-07-15 17:54:00 +0000: Memory Usage (1556416K) : via2 has 3579511 polygons  
-2026-07-15 17:54:02 +0000: Memory Usage (1556416K) : metal3_drawn has 436       
+2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_slot has 0 polygons 
+2026-07-16 16:15:44 +0000: Memory Usage (1231892K) : metal2_blk has 0 polygons  
+2026-07-16 16:15:52 +0000: Memory Usage (1556400K) : via2 has 3579511 polygons  
+2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_drawn has 436       
 polygons                                                                        
-2026-07-15 17:54:02 +0000: Memory Usage (1556416K) : metal3_dummy has 0 polygons
-2026-07-15 17:54:02 +0000: Memory Usage (1556416K) : metal3_label has 0 polygons
-2026-07-15 17:54:02 +0000: Memory Usage (1556416K) : metal3_slot has 0 polygons 
-2026-07-15 17:54:02 +0000: Memory Usage (1556416K) : metal3_blk has 0 polygons  
-2026-07-15 17:54:21 +0000: Memory Usage (2297008K) : via3 has 7322621 polygons  
-2026-07-15 17:54:23 +0000: Memory Usage (2297008K) : metal4_drawn has 352       
+2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_dummy has 0 polygons
+2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_label has 0 polygons
+2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_slot has 0 polygons 
+2026-07-16 16:15:53 +0000: Memory Usage (1556400K) : metal3_blk has 0 polygons  
+2026-07-16 16:16:11 +0000: Memory Usage (2296648K) : via3 has 7322621 polygons  
+2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_drawn has 352       
 polygons                                                                        
-2026-07-15 17:54:23 +0000: Memory Usage (2297008K) : metal4_dummy has 0 polygons
-2026-07-15 17:54:23 +0000: Memory Usage (2297008K) : metal4_label has 0 polygons
-2026-07-15 17:54:23 +0000: Memory Usage (2297008K) : metal4_slot has 0 polygons 
-2026-07-15 17:54:23 +0000: Memory Usage (2297008K) : metal4_blk has 0 polygons  
-2026-07-15 17:54:40 +0000: Memory Usage (3099736K) : via4 has 7329116 polygons  
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : metal5_drawn has 352       
+2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_dummy has 0 polygons
+2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_label has 0 polygons
+2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_slot has 0 polygons 
+2026-07-16 16:16:13 +0000: Memory Usage (2296648K) : metal4_blk has 0 polygons  
+2026-07-16 16:16:29 +0000: Memory Usage (3099760K) : via4 has 7329116 polygons  
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_drawn has 352       
 polygons                                                                        
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : metal5_dummy has 0 polygons
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : metal5_label has 0 polygons
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : metal5_slot has 0 polygons 
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : metal5_blk has 0 polygons  
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Starting GF180MCU DENSITY  
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_dummy has 0 polygons
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_label has 0 polygons
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_slot has 0 polygons 
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : metal5_blk has 0 polygons  
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Starting GF180MCU DENSITY  
 layer derivations.                                                              
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Starting GF180MCU DENSITY  
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Starting GF180MCU DENSITY  
 DRC rules.                                                                      
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Executing rule DCF.1b      
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : COMP ratio:                
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule DCF.1b      
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : COMP ratio:                
 25.729617663656317 %                                                            
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Executing rule DCF.1d      
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Executing rule PL.8        
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : Poly2 ratio:               
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule DCF.1d      
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Executing rule PL.8        
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : Poly2 ratio:               
 9.841373692560168 %                                                             
-2026-07-15 17:54:41 +0000: Memory Usage (3099736K) : [ERROR] PL.8 : Poly2       
+2026-07-16 16:16:30 +0000: Memory Usage (3099760K) : [ERROR] PL.8 : Poly2       
 coverage over the entire die shall be >= 14%                                    
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule M1.4        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Metal1 ratio:              
-26.505615271779476 %                                                            
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : [ERROR] M1.4 : Metal1      
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M1.4        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal1 ratio:              
+26.505625400506755 %                                                            
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : [ERROR] M1.4 : Metal1      
 coverage over the entire die shall be >30%                                      
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule M2.4        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Metal2 ratio:              
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M2.4        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal2 ratio:              
 37.943237945729315 %                                                            
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule M3.4        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Metal3 ratio:              
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M3.4        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal3 ratio:              
 42.26958829844616 %                                                             
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule M4.4        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Metal4 ratio:              
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M4.4        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal4 ratio:              
 42.13280013595405 %                                                             
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule M5.4        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Metal5 ratio:              
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule M5.4        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Metal5 ratio:              
 44.0122031238482 %                                                              
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : Executing rule MT.3        
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : MetalTop ratio:            
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : Executing rule MT.3        
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : MetalTop ratio:            
 44.0122031238482 %                                                              
-2026-07-15 17:54:41 +0000: Memory Usage (3099924K) : DRC Total Run time         
-64.304677 seconds                                                               
-[17:54:42] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/06-klayout-density/xml_drc_report_to_json.             
-                    log'…                                                       
+2026-07-16 16:16:30 +0000: Memory Usage (3099916K) : DRC Total Run time         
+60.850983 seconds                                                               
+[16:16:31] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/06-klayout-density/xml_drc_report_to_json.log             
+                    '…                                                          
 ─────────────────────────── KLayout Density Checker ────────────────────────────
-[17:54:43] VERBOSE  Running 'Checker.KLayoutDensity' at             step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/07-checker-klayoutdensity'…                            
-[17:54:43] ERROR    2 KLayout density errors found. - deferred    checker.py:124
+[16:16:32] VERBOSE  Running 'Checker.KLayoutDensity' at             step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/07-checker-klayoutdensity'…                               
+[16:16:32] ERROR    2 KLayout density errors found. - deferred    checker.py:124
 ─────────────────────────── Find Zero Area Polygons ────────────────────────────
-[17:54:43] VERBOSE  Running 'KLayout.ZeroAreaPolygons' at           step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/08-klayout-zeroareapolygons'…                          
-[17:54:43] INFO     Running KLayout zero area polygons check…    precheck.py:306
-[17:54:43] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/08-klayout-zeroareapolygons/klayout-zeroar             
-                    eapolygons.log'…                                            
-[17:54:50] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/08-klayout-zeroareapolygons/xml_drc_report             
-                    _to_json.log'…                                              
+[16:16:32] VERBOSE  Running 'KLayout.ZeroAreaPolygons' at           step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/08-klayout-zeroareapolygons'…                             
+[16:16:32] INFO     Running KLayout zero area polygons check…    precheck.py:306
+[16:16:32] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/08-klayout-zeroareapolygons/klayout-zeroareap             
+                    olygons.log'…                                               
+[16:16:39] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/08-klayout-zeroareapolygons/xml_drc_report_to             
+                    _json.log'…                                                 
 ────────────────────── KLayout Zero Area Polygons Checker ──────────────────────
-[17:54:50] VERBOSE  Running 'Checker.KLayoutZeroAreaPolygons' at    step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/09-checker-klayoutzeroareapolygons'…                   
-[17:54:50] INFO     Check for KLayout zero area polygons count    checker.py:131
+[16:16:39] VERBOSE  Running 'Checker.KLayoutZeroAreaPolygons' at    step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/09-checker-klayoutzeroareapolygons'…                      
+[16:16:39] INFO     Check for KLayout zero area polygons count    checker.py:131
                     clear.                                                      
 ──────────────────────────────── Antenna Check ─────────────────────────────────
-[17:54:50] VERBOSE  Running 'KLayout.Antenna' at                    step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/10-klayout-antenna'…                                   
-[17:54:50] INFO     Running KLayout antenna check…               klayout.py:1325
-[17:54:50] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/10-klayout-antenna/klayout-antenna.log'…               
-2026-07-15 17:54:51 +0000: Memory Usage (424256K) : Starting running GF180MCU   
+[16:16:39] VERBOSE  Running 'KLayout.Antenna' at                    step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/10-klayout-antenna'…                                      
+[16:16:39] INFO     Running KLayout antenna check…               klayout.py:1325
+[16:16:39] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/10-klayout-antenna/klayout-antenna.log'…                  
+2026-07-16 16:16:40 +0000: Memory Usage (424052K) : Starting running GF180MCU   
 Klayout DRC runset on                                                           
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/04-klayout-generateid/chip_top.gds                             
-2026-07-15 17:54:51 +0000: Memory Usage (424256K) : Ruby Version for klayout:   
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
+IX_2026-07-16/04-klayout-generateid/chip_top.gds                                
+2026-07-16 16:16:40 +0000: Memory Usage (424052K) : Ruby Version for klayout:   
 3.3.10                                                                          
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : Loading database to memory  
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Loading database to memory  
 is complete.                                                                    
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : GF180MCU Klayout antenna DRC
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : GF180MCU Klayout antenna DRC
 runset output at:                                                               
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/10-klayout-antenna/reports/antenna.klayout.lyrdb               
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : Evaluate switches.          
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : Number of threads to use    
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : Verbose mode: false         
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : deep mode is enabled.       
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : METAL_TOP Selected is 11K   
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : METAL_STACK Selected is 5LM 
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : MIM Option selected: B      
-2026-07-15 17:54:51 +0000: Memory Usage (481516K) : Read in polygons from       
+/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_F
+IX_2026-07-16/10-klayout-antenna/reports/antenna.klayout.lyrdb                  
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Evaluate switches.          
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Number of threads to use    
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Verbose mode: false         
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : deep mode is enabled.       
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : METAL_TOP Selected is 11K   
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : METAL_STACK Selected is 5LM 
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : MIM Option selected: B      
+2026-07-16 16:16:40 +0000: Memory Usage (481056K) : Read in polygons from       
 layers.                                                                         
-2026-07-15 17:54:51 +0000: Memory Usage (484588K) : nwell has 3729 polygons     
-2026-07-15 17:54:51 +0000: Memory Usage (486380K) : comp has 30307 polygons     
-2026-07-15 17:54:51 +0000: Memory Usage (486380K) : dualgate has 5209 polygons  
-2026-07-15 17:54:51 +0000: Memory Usage (486380K) : poly2 has 9299 polygons     
-2026-07-15 17:54:51 +0000: Memory Usage (486508K) : nplus has 9511 polygons     
-2026-07-15 17:54:51 +0000: Memory Usage (486892K) : pplus has 18771 polygons    
-2026-07-15 17:54:52 +0000: Memory Usage (492140K) : contact has 4747976 polygons
-2026-07-15 17:54:52 +0000: Memory Usage (492140K) : metal1 has 115819 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (492140K) : metal1_label has 0 polygons 
-2026-07-15 17:54:52 +0000: Memory Usage (492268K) : metal1_slot has 0 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (492268K) : metal1_blk has 0 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (494444K) : via1 has 1241032 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (494444K) : metal2 has 102541 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (494444K) : metal2_label has 494        
+2026-07-16 16:16:40 +0000: Memory Usage (484156K) : nwell has 3729 polygons     
+2026-07-16 16:16:40 +0000: Memory Usage (485732K) : comp has 30307 polygons     
+2026-07-16 16:16:40 +0000: Memory Usage (485860K) : dualgate has 5209 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (485988K) : poly2 has 9299 polygons     
+2026-07-16 16:16:40 +0000: Memory Usage (486116K) : nplus has 9511 polygons     
+2026-07-16 16:16:40 +0000: Memory Usage (486372K) : pplus has 18771 polygons    
+2026-07-16 16:16:40 +0000: Memory Usage (491748K) : contact has 4747976 polygons
+2026-07-16 16:16:40 +0000: Memory Usage (491748K) : metal1 has 115831 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (491748K) : metal1_label has 0 polygons 
+2026-07-16 16:16:40 +0000: Memory Usage (491876K) : metal1_slot has 0 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (491876K) : metal1_blk has 0 polygons   
+2026-07-16 16:16:40 +0000: Memory Usage (494052K) : via1 has 1241032 polygons   
+2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2 has 102541 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_label has 494        
 polygons                                                                        
-2026-07-15 17:54:52 +0000: Memory Usage (494444K) : metal2_slot has 0 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (494444K) : metal2_blk has 0 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (502892K) : via2 has 4201255 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (502892K) : metal3 has 197449 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (502892K) : metal3_label has 0 polygons 
-2026-07-15 17:54:52 +0000: Memory Usage (502892K) : metal3_slot has 0 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (502892K) : metal3_blk has 0 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (512236K) : via3 has 8959997 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (512236K) : metal4 has 252793 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (512236K) : metal4_label has 0 polygons 
-2026-07-15 17:54:52 +0000: Memory Usage (512236K) : metal4_slot has 0 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (512236K) : metal4_blk has 0 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : via4 has 7389116 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : metal5 has 158957 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : metal5_label has 0 polygons 
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : metal5_slot has 0 polygons  
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : metal5_blk has 0 polygons   
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : res_mk has 238 polygons     
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : fusetop has 8 polygons      
-2026-07-15 17:54:52 +0000: Memory Usage (522988K) : Starting GF180MCU ANTENNA   
+2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_slot has 0 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (494052K) : metal2_blk has 0 polygons   
+2026-07-16 16:16:40 +0000: Memory Usage (502372K) : via2 has 4201255 polygons   
+2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3 has 197449 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_label has 0 polygons 
+2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_slot has 0 polygons  
+2026-07-16 16:16:40 +0000: Memory Usage (502372K) : metal3_blk has 0 polygons   
+2026-07-16 16:16:41 +0000: Memory Usage (511972K) : via3 has 8959997 polygons   
+2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4 has 252793 polygons  
+2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_label has 0 polygons 
+2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_slot has 0 polygons  
+2026-07-16 16:16:41 +0000: Memory Usage (511972K) : metal4_blk has 0 polygons   
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : via4 has 7389116 polygons   
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5 has 158957 polygons  
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_label has 0 polygons 
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_slot has 0 polygons  
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : metal5_blk has 0 polygons   
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : res_mk has 238 polygons     
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : fusetop has 8 polygons      
+2026-07-16 16:16:41 +0000: Memory Usage (522724K) : Starting GF180MCU ANTENNA   
 layer derivations.                                                              
-2026-07-15 17:54:53 +0000: Memory Usage (540848K) : Starting GF180MCU ANTENNA   
+2026-07-16 16:16:41 +0000: Memory Usage (540512K) : Starting GF180MCU ANTENNA   
 DRC rules.                                                                      
-2026-07-15 17:54:53 +0000: Memory Usage (540848K) : Construct connectivity for  
+2026-07-16 16:16:41 +0000: Memory Usage (540512K) : Construct connectivity for  
 POLY                                                                            
-2026-07-15 17:54:53 +0000: Memory Usage (540976K) : Executing rule ANT.1        
-2026-07-15 17:54:53 +0000: Memory Usage (543288K) : Construct connectivity for  
+2026-07-16 16:16:41 +0000: Memory Usage (540656K) : Executing rule ANT.1        
+2026-07-16 16:16:41 +0000: Memory Usage (542980K) : Construct connectivity for  
 CONTACT                                                                         
-2026-07-15 17:54:53 +0000: Memory Usage (543288K) : Executing rule ANT.8        
-2026-07-15 17:54:55 +0000: Memory Usage (656532K) : Construct connectivity for  
+2026-07-16 16:16:41 +0000: Memory Usage (542980K) : Executing rule ANT.8        
+2026-07-16 16:16:43 +0000: Memory Usage (656148K) : Construct connectivity for  
 METAL1                                                                          
-2026-07-15 17:54:55 +0000: Memory Usage (639160K) : Executing rule              
+2026-07-16 16:16:43 +0000: Memory Usage (638764K) : Executing rule              
 ANT.16_i_ANT.2                                                                  
-2026-07-15 17:54:56 +0000: Memory Usage (641720K) : Executing rule              
+2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Executing rule              
 ANT.16_ii_ANT.2                                                                 
-2026-07-15 17:54:56 +0000: Memory Usage (641720K) : Construct connectivity for  
+2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Construct connectivity for  
 VIA1                                                                            
-2026-07-15 17:54:56 +0000: Memory Usage (641720K) : Executing rule              
+2026-07-16 16:16:44 +0000: Memory Usage (640456K) : Executing rule              
 ANT.16_i_ANT.9                                                                  
-2026-07-15 17:54:57 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_ii_ANT.9                                                                 
-2026-07-15 17:54:57 +0000: Memory Usage (641848K) : Construct connectivity for  
+2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Construct connectivity for  
 METAL2                                                                          
-2026-07-15 17:54:57 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:45 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_i_ANT.3                                                                  
-2026-07-15 17:54:59 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_ii_ANT.3                                                                 
-2026-07-15 17:54:59 +0000: Memory Usage (641848K) : Construct connectivity for  
+2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Construct connectivity for  
 VIA2                                                                            
-2026-07-15 17:54:59 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:47 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_i_ANT.10                                                                 
-2026-07-15 17:55:01 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:49 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_ii_ANT.10                                                                
-2026-07-15 17:55:02 +0000: Memory Usage (641848K) : Construct connectivity for  
+2026-07-16 16:16:50 +0000: Memory Usage (641480K) : Construct connectivity for  
 METAL3                                                                          
-2026-07-15 17:55:02 +0000: Memory Usage (641848K) : Executing rule              
+2026-07-16 16:16:50 +0000: Memory Usage (641480K) : Executing rule              
 ANT.16_i_ANT.4                                                                  
-2026-07-15 17:55:06 +0000: Memory Usage (731448K) : Executing rule              
+2026-07-16 16:16:54 +0000: Memory Usage (731080K) : Executing rule              
 ANT.16_ii_ANT.4                                                                 
-2026-07-15 17:55:06 +0000: Memory Usage (733880K) : Construct connectivity for  
+2026-07-16 16:16:54 +0000: Memory Usage (735432K) : Construct connectivity for  
 VIA3                                                                            
-2026-07-15 17:55:07 +0000: Memory Usage (733880K) : Executing rule              
+2026-07-16 16:16:54 +0000: Memory Usage (735432K) : Executing rule              
 ANT.16_i_ANT.11                                                                 
-2026-07-15 17:55:13 +0000: Memory Usage (750648K) : Executing rule              
+2026-07-16 16:17:00 +0000: Memory Usage (752200K) : Executing rule              
 ANT.16_ii_ANT.11                                                                
-2026-07-15 17:55:19 +0000: Memory Usage (750724K) : Construct connectivity for  
+2026-07-16 16:17:06 +0000: Memory Usage (752128K) : Construct connectivity for  
 METAL4                                                                          
-2026-07-15 17:55:19 +0000: Memory Usage (750724K) : Executing rule              
+2026-07-16 16:17:06 +0000: Memory Usage (752128K) : Executing rule              
 ANT.16_i_ANT.5                                                                  
-2026-07-15 17:55:27 +0000: Memory Usage (760708K) : Executing rule              
+2026-07-16 16:17:13 +0000: Memory Usage (755712K) : Executing rule              
 ANT.16_ii_ANT.5                                                                 
-2026-07-15 17:55:27 +0000: Memory Usage (765060K) : Construct connectivity for  
+2026-07-16 16:17:14 +0000: Memory Usage (757376K) : Construct connectivity for  
 VIA4                                                                            
-2026-07-15 17:55:28 +0000: Memory Usage (765060K) : Executing rule              
+2026-07-16 16:17:14 +0000: Memory Usage (757376K) : Executing rule              
 ANT.16_i_ANT.12                                                                 
-2026-07-15 17:55:38 +0000: Memory Usage (773124K) : Executing rule              
+2026-07-16 16:17:24 +0000: Memory Usage (768568K) : Executing rule              
 ANT.16_ii_ANT.12                                                                
-2026-07-15 17:55:43 +0000: Memory Usage (772936K) : Construct connectivity for  
+2026-07-16 16:17:29 +0000: Memory Usage (768592K) : Construct connectivity for  
 METAL5                                                                          
-2026-07-15 17:55:43 +0000: Memory Usage (772936K) : Executing rule              
+2026-07-16 16:17:29 +0000: Memory Usage (768592K) : Executing rule              
 ANT.16_i_ANT.7                                                                  
-2026-07-15 17:55:55 +0000: Memory Usage (773576K) : Executing rule              
+2026-07-16 16:17:40 +0000: Memory Usage (771152K) : Executing rule              
 ANT.16_ii_ANT.7                                                                 
-2026-07-15 17:55:56 +0000: Memory Usage (773576K) : Executing rule              
+2026-07-16 16:17:41 +0000: Memory Usage (772816K) : Executing rule              
 ANT.16_iii_ANT.14_MT_MIMB                                                       
-2026-07-15 17:56:08 +0000: Memory Usage (773704K) : Antenna DRC total Run time: 
-76.421206373 seconds                                                            
-[17:56:08] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/10-klayout-antenna/xml_drc_report_to_json.             
-                    log'…                                                       
+2026-07-16 16:17:52 +0000: Memory Usage (773968K) : Antenna DRC total Run time: 
+72.193314405 seconds                                                            
+[16:17:52] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/10-klayout-antenna/xml_drc_report_to_json.log             
+                    '…                                                          
 ─────────────────────────── KLayout Antenna Checker ────────────────────────────
-[17:56:08] VERBOSE  Running 'Checker.KLayoutAntenna' at             step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/11-checker-klayoutantenna'…                            
-[17:56:08] INFO     Check for KLayout antenna errors clear.       checker.py:131
+[16:17:53] VERBOSE  Running 'Checker.KLayoutAntenna' at             step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/11-checker-klayoutantenna'…                               
+[16:17:53] INFO     Check for KLayout antenna errors clear.       checker.py:131
 ────────────────────────────── Design Rule Checks ──────────────────────────────
-[17:56:08] VERBOSE  Running 'Magic.DRC' at                          step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/12-magic-drc'…                                         
-[17:56:08] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/12-magic-drc/magic-drc.log'…                           
+[16:17:53] VERBOSE  Running 'Magic.DRC' at                          step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/12-magic-drc'…                                            
+[16:17:53] VERBOSE  Logging subprocess to                           step.py:1338
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/12-magic-drc/magic-drc.log'…                              
                                                                                 
 Magic 8.3 revision 660 - Compiled on Mon Jun  8 08:14:47 UTC 2026.              
 Starting magic under Tcl interpreter                                            
@@ -487,12 +461,9 @@ Reading "M1_PSUB_CDNS_406619531455$3".
 Saving contents of cell M1_PSUB_CDNS_406619531455$3                             
 Reading "M1_PSUB_CDNS_4066195314563$3".                                         
 Saving contents of cell M1_PSUB_CDNS_4066195314563$3                            
-Reading "M4_M3_CDNS_4066195314557".                                             
-Saving contents of cell M4_M3_CDNS_4066195314557                                
-Reading "M4_M3_CDNS_4066195314558".                                             
-Saving contents of cell M4_M3_CDNS_4066195314558                                
-Reading "M4_M3_CDNS_4066195314562".                                             
-Saving contents of cell M4_M3_CDNS_4066195314562                                
+Reading "M4_M3_HIER_4066195314557".                                             
+Reading "M4_M3_HIER_4066195314558".                                             
+Reading "M4_M3_HIER_4066195314562".                                             
 Reading "3LM_METAL_RAIL".                                                       
 CIF file read warning: CIF style import: units rescaled by factor of 5 / 1      
 Reading "M1_PSUB_CDNS_40661953145673".                                          
@@ -640,12 +611,9 @@ Reading "M2_M1_CDNS_4066195314574$1".
 Saving contents of cell M2_M1_CDNS_4066195314574$1                              
 Reading "M2_M1_CDNS_40661953145141$1".                                          
 Saving contents of cell M2_M1_CDNS_40661953145141$1                             
-Reading "M4_M3_CDNS_4066195314557$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314557$2                              
-Reading "M4_M3_CDNS_4066195314558$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314558$2                              
-Reading "M4_M3_CDNS_4066195314562$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314562$2                              
+Reading "M4_M3_HIER_4066195314557$2".                                           
+Reading "M4_M3_HIER_4066195314558$2".                                           
+Reading "M4_M3_HIER_4066195314562$2".                                           
 Reading "3LM_METAL_RAIL$2".                                                     
 Reading "M1_PSUB_CDNS_40661953145130$2".                                        
 Saving contents of cell M1_PSUB_CDNS_40661953145130$2                           
@@ -691,12 +659,9 @@ Reading "M2_M1_CDNS_4066195314586$1".
 Saving contents of cell M2_M1_CDNS_4066195314586$1                              
 Reading "M2_M1_CDNS_4066195314574$2".                                           
 Saving contents of cell M2_M1_CDNS_4066195314574$2                              
-Reading "M4_M3_CDNS_4066195314557$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314557$3                              
-Reading "M4_M3_CDNS_4066195314558$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314558$3                              
-Reading "M4_M3_CDNS_4066195314562$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314562$3                              
+Reading "M4_M3_HIER_4066195314557$3".                                           
+Reading "M4_M3_HIER_4066195314558$3".                                           
+Reading "M4_M3_HIER_4066195314562$3".                                           
 Reading "3LM_METAL_RAIL$3".                                                     
 Reading "M2_M1_CDNS_4066195314574".                                             
 Saving contents of cell M2_M1_CDNS_4066195314574                                
@@ -750,29 +715,18 @@ Reading "M2_M1_CDNS_40661953145385".
 Saving contents of cell M2_M1_CDNS_40661953145385                               
 Reading "M2_M1_CDNS_40661953145386".                                            
 Saving contents of cell M2_M1_CDNS_40661953145386                               
-Reading "M5_M4_CDNS_4066195314560".                                             
-Saving contents of cell M5_M4_CDNS_4066195314560                                
-Reading "M5_M4_CDNS_4066195314559".                                             
-Saving contents of cell M5_M4_CDNS_4066195314559                                
-Reading "M5_M4_CDNS_4066195314561".                                             
-Saving contents of cell M5_M4_CDNS_4066195314561                                
+Reading "M5_M4_HIER_4066195314560".                                             
+Reading "M5_M4_HIER_4066195314559".                                             
+Reading "M5_M4_HIER_4066195314561".                                             
 Reading "4LM_METAL_RAIL".                                                       
-Reading "M5_M4_CDNS_4066195314553".                                             
-Saving contents of cell M5_M4_CDNS_4066195314553                                
-Reading "M5_M4_CDNS_4066195314554".                                             
-Saving contents of cell M5_M4_CDNS_4066195314554                                
-Reading "M5_M4_CDNS_4066195314555".                                             
-Saving contents of cell M5_M4_CDNS_4066195314555                                
-Reading "M5_M4_CDNS_4066195314556".                                             
-Saving contents of cell M5_M4_CDNS_4066195314556                                
-Reading "M4_M3_CDNS_4066195314546".                                             
-Saving contents of cell M4_M3_CDNS_4066195314546                                
-Reading "M4_M3_CDNS_4066195314547".                                             
-Saving contents of cell M4_M3_CDNS_4066195314547                                
-Reading "M4_M3_CDNS_4066195314549".                                             
-Saving contents of cell M4_M3_CDNS_4066195314549                                
-Reading "M4_M3_CDNS_4066195314551".                                             
-Saving contents of cell M4_M3_CDNS_4066195314551                                
+Reading "M5_M4_HIER_4066195314553".                                             
+Reading "M5_M4_HIER_4066195314554".                                             
+Reading "M5_M4_HIER_4066195314555".                                             
+Reading "M5_M4_HIER_4066195314556".                                             
+Reading "M4_M3_HIER_4066195314546".                                             
+Reading "M4_M3_HIER_4066195314547".                                             
+Reading "M4_M3_HIER_4066195314549".                                             
+Reading "M4_M3_HIER_4066195314551".                                             
 Reading "M3_M2_CDNS_4066195314545".                                             
 Saving contents of cell M3_M2_CDNS_4066195314545                                
 Reading "M3_M2_CDNS_4066195314548".                                             
@@ -783,260 +737,133 @@ Reading "M3_M2_CDNS_4066195314552".
 Saving contents of cell M3_M2_CDNS_4066195314552                                
 Reading "POWER_RAIL_COR_1".                                                     
 CIF file read warning: Input off lambda grid by 4/5; snapped to grid.           
-Reading "M4_M3_CDNS_40661953145575".                                            
-Saving contents of cell M4_M3_CDNS_40661953145575                               
-Reading "M4_M3_CDNS_40661953145576".                                            
-Saving contents of cell M4_M3_CDNS_40661953145576                               
-Reading "M4_M3_CDNS_40661953145641".                                            
-Saving contents of cell M4_M3_CDNS_40661953145641                               
-Reading "M4_M3_CDNS_40661953145642".                                            
-Saving contents of cell M4_M3_CDNS_40661953145642                               
-Reading "M4_M3_CDNS_40661953145643".                                            
-Saving contents of cell M4_M3_CDNS_40661953145643                               
-Reading "M4_M3_CDNS_40661953145644".                                            
-Saving contents of cell M4_M3_CDNS_40661953145644                               
-Reading "M4_M3_CDNS_40661953145645".                                            
-Saving contents of cell M4_M3_CDNS_40661953145645                               
-Reading "M4_M3_CDNS_40661953145667".                                            
-Saving contents of cell M4_M3_CDNS_40661953145667                               
-Reading "M4_M3_CDNS_40661953145668".                                            
-Saving contents of cell M4_M3_CDNS_40661953145668                               
-Reading "M4_M3_CDNS_40661953145640".                                            
-Saving contents of cell M4_M3_CDNS_40661953145640                               
-Reading "M4_M3_CDNS_40661953145638".                                            
-Saving contents of cell M4_M3_CDNS_40661953145638                               
-Reading "M4_M3_CDNS_40661953145636".                                            
-Saving contents of cell M4_M3_CDNS_40661953145636                               
-Reading "M4_M3_CDNS_40661953145634".                                            
-Saving contents of cell M4_M3_CDNS_40661953145634                               
-Reading "M4_M3_CDNS_40661953145639".                                            
-Saving contents of cell M4_M3_CDNS_40661953145639                               
-Reading "M4_M3_CDNS_40661953145637".                                            
-Saving contents of cell M4_M3_CDNS_40661953145637                               
-Reading "M4_M3_CDNS_40661953145635".                                            
-Saving contents of cell M4_M3_CDNS_40661953145635                               
-Reading "M4_M3_CDNS_40661953145632".                                            
-Saving contents of cell M4_M3_CDNS_40661953145632                               
-Reading "M4_M3_CDNS_40661953145633".                                            
-Saving contents of cell M4_M3_CDNS_40661953145633                               
-Reading "M4_M3_CDNS_40661953145631".                                            
-Saving contents of cell M4_M3_CDNS_40661953145631                               
-Reading "M4_M3_CDNS_40661953145629".                                            
-Saving contents of cell M4_M3_CDNS_40661953145629                               
-Reading "M4_M3_CDNS_40661953145627".                                            
-Saving contents of cell M4_M3_CDNS_40661953145627                               
-Reading "M4_M3_CDNS_40661953145625".                                            
-Saving contents of cell M4_M3_CDNS_40661953145625                               
-Reading "M4_M3_CDNS_40661953145623".                                            
-Saving contents of cell M4_M3_CDNS_40661953145623                               
-Reading "M4_M3_CDNS_40661953145621".                                            
-Saving contents of cell M4_M3_CDNS_40661953145621                               
-Reading "M4_M3_CDNS_40661953145565".                                            
-Saving contents of cell M4_M3_CDNS_40661953145565                               
-Reading "M4_M3_CDNS_40661953145564".                                            
-Saving contents of cell M4_M3_CDNS_40661953145564                               
-Reading "M4_M3_CDNS_40661953145619".                                            
-Saving contents of cell M4_M3_CDNS_40661953145619                               
-Reading "M4_M3_CDNS_40661953145577".                                            
-Saving contents of cell M4_M3_CDNS_40661953145577                               
-Reading "M4_M3_CDNS_40661953145562".                                            
-Saving contents of cell M4_M3_CDNS_40661953145562                               
-Reading "M4_M3_CDNS_40661953145563".                                            
-Saving contents of cell M4_M3_CDNS_40661953145563                               
-Reading "M4_M3_CDNS_40661953145566".                                            
-Saving contents of cell M4_M3_CDNS_40661953145566                               
-Reading "M4_M3_CDNS_40661953145567".                                            
-Saving contents of cell M4_M3_CDNS_40661953145567                               
-Reading "M4_M3_CDNS_40661953145617".                                            
-Saving contents of cell M4_M3_CDNS_40661953145617                               
-Reading "M4_M3_CDNS_40661953145542".                                            
-Saving contents of cell M4_M3_CDNS_40661953145542                               
-Reading "M4_M3_CDNS_40661953145630".                                            
-Saving contents of cell M4_M3_CDNS_40661953145630                               
-Reading "M4_M3_CDNS_40661953145628".                                            
-Saving contents of cell M4_M3_CDNS_40661953145628                               
-Reading "M4_M3_CDNS_40661953145626".                                            
-Saving contents of cell M4_M3_CDNS_40661953145626                               
-Reading "M4_M3_CDNS_40661953145624".                                            
-Saving contents of cell M4_M3_CDNS_40661953145624                               
-Reading "M4_M3_CDNS_40661953145622".                                            
-Saving contents of cell M4_M3_CDNS_40661953145622                               
-Reading "M4_M3_CDNS_40661953145620".                                            
-Saving contents of cell M4_M3_CDNS_40661953145620                               
-Reading "M4_M3_CDNS_40661953145618".                                            
-Saving contents of cell M4_M3_CDNS_40661953145618                               
-Reading "M4_M3_CDNS_40661953145666".                                            
-Saving contents of cell M4_M3_CDNS_40661953145666                               
-Reading "M4_M3_CDNS_40661953145665".                                            
-Saving contents of cell M4_M3_CDNS_40661953145665                               
-Reading "M4_M3_CDNS_40661953145663".                                            
-Saving contents of cell M4_M3_CDNS_40661953145663                               
-Reading "M4_M3_CDNS_40661953145664".                                            
-Saving contents of cell M4_M3_CDNS_40661953145664                               
-Reading "M4_M3_CDNS_40661953145662".                                            
-Saving contents of cell M4_M3_CDNS_40661953145662                               
-Reading "M4_M3_CDNS_40661953145661".                                            
-Saving contents of cell M4_M3_CDNS_40661953145661                               
-Reading "M4_M3_CDNS_40661953145659".                                            
-Saving contents of cell M4_M3_CDNS_40661953145659                               
-Reading "M4_M3_CDNS_40661953145660".                                            
-Saving contents of cell M4_M3_CDNS_40661953145660                               
-Reading "M4_M3_CDNS_40661953145658".                                            
-Saving contents of cell M4_M3_CDNS_40661953145658                               
-Reading "M4_M3_CDNS_40661953145657".                                            
-Saving contents of cell M4_M3_CDNS_40661953145657                               
-Reading "M4_M3_CDNS_40661953145656".                                            
-Saving contents of cell M4_M3_CDNS_40661953145656                               
-Reading "M4_M3_CDNS_40661953145655".                                            
-Saving contents of cell M4_M3_CDNS_40661953145655                               
-Reading "M4_M3_CDNS_40661953145654".                                            
-Saving contents of cell M4_M3_CDNS_40661953145654                               
-Reading "M4_M3_CDNS_40661953145653".                                            
-Saving contents of cell M4_M3_CDNS_40661953145653                               
-Reading "M4_M3_CDNS_40661953145651".                                            
-Saving contents of cell M4_M3_CDNS_40661953145651                               
-Reading "M4_M3_CDNS_40661953145652".                                            
-Saving contents of cell M4_M3_CDNS_40661953145652                               
-Reading "M4_M3_CDNS_40661953145650".                                            
-Saving contents of cell M4_M3_CDNS_40661953145650                               
-Reading "M4_M3_CDNS_40661953145570".                                            
-Saving contents of cell M4_M3_CDNS_40661953145570                               
-Reading "M4_M3_CDNS_40661953145568".                                            
-Saving contents of cell M4_M3_CDNS_40661953145568                               
-Reading "M4_M3_CDNS_40661953145569".                                            
-Saving contents of cell M4_M3_CDNS_40661953145569                               
-Reading "M4_M3_CDNS_40661953145560".                                            
-Saving contents of cell M4_M3_CDNS_40661953145560                               
-Reading "M4_M3_CDNS_40661953145557".                                            
-Saving contents of cell M4_M3_CDNS_40661953145557                               
-Reading "M4_M3_CDNS_40661953145559".                                            
-Saving contents of cell M4_M3_CDNS_40661953145559                               
-Reading "M4_M3_CDNS_40661953145553".                                            
-Saving contents of cell M4_M3_CDNS_40661953145553                               
-Reading "M4_M3_CDNS_40661953145547".                                            
-Saving contents of cell M4_M3_CDNS_40661953145547                               
-Reading "M4_M3_CDNS_40661953145545".                                            
-Saving contents of cell M4_M3_CDNS_40661953145545                               
-Reading "M4_M3_CDNS_40661953145591".                                            
-Saving contents of cell M4_M3_CDNS_40661953145591                               
-Reading "M4_M3_CDNS_40661953145587".                                            
-Saving contents of cell M4_M3_CDNS_40661953145587                               
-Reading "M4_M3_CDNS_40661953145589".                                            
-Saving contents of cell M4_M3_CDNS_40661953145589                               
-Reading "M4_M3_CDNS_40661953145574".                                            
-Saving contents of cell M4_M3_CDNS_40661953145574                               
-Reading "M4_M3_CDNS_40661953145649".                                            
-Saving contents of cell M4_M3_CDNS_40661953145649                               
-Reading "M4_M3_CDNS_40661953145648".                                            
-Saving contents of cell M4_M3_CDNS_40661953145648                               
-Reading "M4_M3_CDNS_40661953145647".                                            
-Saving contents of cell M4_M3_CDNS_40661953145647                               
-Reading "M4_M3_CDNS_40661953145646".                                            
-Saving contents of cell M4_M3_CDNS_40661953145646                               
-Reading "M4_M3_CDNS_40661953145582".                                            
-Saving contents of cell M4_M3_CDNS_40661953145582                               
-Reading "M4_M3_CDNS_40661953145572".                                            
-Saving contents of cell M4_M3_CDNS_40661953145572                               
-Reading "M4_M3_CDNS_40661953145583".                                            
-Saving contents of cell M4_M3_CDNS_40661953145583                               
-Reading "M4_M3_CDNS_40661953145544".                                            
-Saving contents of cell M4_M3_CDNS_40661953145544                               
-Reading "M4_M3_CDNS_40661953145616".                                            
-Saving contents of cell M4_M3_CDNS_40661953145616                               
-Reading "M4_M3_CDNS_40661953145555".                                            
-Saving contents of cell M4_M3_CDNS_40661953145555                               
-Reading "M4_M3_CDNS_40661953145594".                                            
-Saving contents of cell M4_M3_CDNS_40661953145594                               
-Reading "M4_M3_CDNS_40661953145593".                                            
-Saving contents of cell M4_M3_CDNS_40661953145593                               
-Reading "M4_M3_CDNS_40661953145595".                                            
-Saving contents of cell M4_M3_CDNS_40661953145595                               
-Reading "M4_M3_CDNS_40661953145596".                                            
-Saving contents of cell M4_M3_CDNS_40661953145596                               
-Reading "M4_M3_CDNS_40661953145561".                                            
-Saving contents of cell M4_M3_CDNS_40661953145561                               
-Reading "M4_M3_CDNS_40661953145597".                                            
-Saving contents of cell M4_M3_CDNS_40661953145597                               
-Reading "M4_M3_CDNS_40661953145558".                                            
-Saving contents of cell M4_M3_CDNS_40661953145558                               
-Reading "M4_M3_CDNS_40661953145543".                                            
-Saving contents of cell M4_M3_CDNS_40661953145543                               
-Reading "M4_M3_CDNS_40661953145556".                                            
-Saving contents of cell M4_M3_CDNS_40661953145556                               
-Reading "M4_M3_CDNS_40661953145546".                                            
-Saving contents of cell M4_M3_CDNS_40661953145546                               
-Reading "M4_M3_CDNS_40661953145592".                                            
-Saving contents of cell M4_M3_CDNS_40661953145592                               
-Reading "M4_M3_CDNS_40661953145590".                                            
-Saving contents of cell M4_M3_CDNS_40661953145590                               
-Reading "M4_M3_CDNS_40661953145588".                                            
-Saving contents of cell M4_M3_CDNS_40661953145588                               
-Reading "M4_M3_CDNS_40661953145578".                                            
-Saving contents of cell M4_M3_CDNS_40661953145578                               
-Reading "M4_M3_CDNS_40661953145586".                                            
-Saving contents of cell M4_M3_CDNS_40661953145586                               
-Reading "M4_M3_CDNS_40661953145579".                                            
-Saving contents of cell M4_M3_CDNS_40661953145579                               
-Reading "M4_M3_CDNS_40661953145581".                                            
-Saving contents of cell M4_M3_CDNS_40661953145581                               
-Reading "M4_M3_CDNS_40661953145580".                                            
-Saving contents of cell M4_M3_CDNS_40661953145580                               
-Reading "M4_M3_CDNS_40661953145584".                                            
-Saving contents of cell M4_M3_CDNS_40661953145584                               
-Reading "M4_M3_CDNS_40661953145585".                                            
-Saving contents of cell M4_M3_CDNS_40661953145585                               
-Reading "M4_M3_CDNS_40661953145573".                                            
-Saving contents of cell M4_M3_CDNS_40661953145573                               
-Reading "M4_M3_CDNS_40661953145571".                                            
-Saving contents of cell M4_M3_CDNS_40661953145571                               
-Reading "M4_M3_CDNS_40661953145599".                                            
-Saving contents of cell M4_M3_CDNS_40661953145599                               
-Reading "M4_M3_CDNS_40661953145598".                                            
-Saving contents of cell M4_M3_CDNS_40661953145598                               
-Reading "M4_M3_CDNS_40661953145601".                                            
-Saving contents of cell M4_M3_CDNS_40661953145601                               
-Reading "M4_M3_CDNS_40661953145602".                                            
-Saving contents of cell M4_M3_CDNS_40661953145602                               
-Reading "M4_M3_CDNS_40661953145603".                                            
-Saving contents of cell M4_M3_CDNS_40661953145603                               
-Reading "M4_M3_CDNS_40661953145605".                                            
-Saving contents of cell M4_M3_CDNS_40661953145605                               
-Reading "M4_M3_CDNS_40661953145604".                                            
-Saving contents of cell M4_M3_CDNS_40661953145604                               
-Reading "M4_M3_CDNS_40661953145600".                                            
-Saving contents of cell M4_M3_CDNS_40661953145600                               
-Reading "M4_M3_CDNS_40661953145552".                                            
-Saving contents of cell M4_M3_CDNS_40661953145552                               
-Reading "M4_M3_CDNS_40661953145610".                                            
-Saving contents of cell M4_M3_CDNS_40661953145610                               
-Reading "M4_M3_CDNS_40661953145607".                                            
-Saving contents of cell M4_M3_CDNS_40661953145607                               
-Reading "M4_M3_CDNS_40661953145606".                                            
-Saving contents of cell M4_M3_CDNS_40661953145606                               
-Reading "M4_M3_CDNS_40661953145608".                                            
-Saving contents of cell M4_M3_CDNS_40661953145608                               
-Reading "M4_M3_CDNS_40661953145609".                                            
-Saving contents of cell M4_M3_CDNS_40661953145609                               
-Reading "M4_M3_CDNS_40661953145615".                                            
-Saving contents of cell M4_M3_CDNS_40661953145615                               
-Reading "M4_M3_CDNS_40661953145614".                                            
-Saving contents of cell M4_M3_CDNS_40661953145614                               
-Reading "M4_M3_CDNS_40661953145612".                                            
-Saving contents of cell M4_M3_CDNS_40661953145612                               
-Reading "M4_M3_CDNS_40661953145554".                                            
-Saving contents of cell M4_M3_CDNS_40661953145554                               
-Reading "M4_M3_CDNS_40661953145611".                                            
-Saving contents of cell M4_M3_CDNS_40661953145611                               
-Reading "M4_M3_CDNS_40661953145613".                                            
-Saving contents of cell M4_M3_CDNS_40661953145613                               
-Reading "M4_M3_CDNS_40661953145551".                                            
-Saving contents of cell M4_M3_CDNS_40661953145551                               
-Reading "M4_M3_CDNS_40661953145550".                                            
-Saving contents of cell M4_M3_CDNS_40661953145550                               
-Reading "M4_M3_CDNS_40661953145548".                                            
-Saving contents of cell M4_M3_CDNS_40661953145548                               
-Reading "M4_M3_CDNS_40661953145549".                                            
-Saving contents of cell M4_M3_CDNS_40661953145549                               
+Reading "M4_M3_HIER_40661953145575".                                            
+Reading "M4_M3_HIER_40661953145576".                                            
+Reading "M4_M3_HIER_40661953145641".                                            
+Reading "M4_M3_HIER_40661953145642".                                            
+Reading "M4_M3_HIER_40661953145643".                                            
+Reading "M4_M3_HIER_40661953145644".                                            
+Reading "M4_M3_HIER_40661953145645".                                            
+Reading "M4_M3_HIER_40661953145667".                                            
+Reading "M4_M3_HIER_40661953145668".                                            
+Reading "M4_M3_HIER_40661953145640".                                            
+Reading "M4_M3_HIER_40661953145638".                                            
+Reading "M4_M3_HIER_40661953145636".                                            
+Reading "M4_M3_HIER_40661953145634".                                            
+Reading "M4_M3_HIER_40661953145639".                                            
+Reading "M4_M3_HIER_40661953145637".                                            
+Reading "M4_M3_HIER_40661953145635".                                            
+Reading "M4_M3_HIER_40661953145632".                                            
+Reading "M4_M3_HIER_40661953145633".                                            
+Reading "M4_M3_HIER_40661953145631".                                            
+Reading "M4_M3_HIER_40661953145629".                                            
+Reading "M4_M3_HIER_40661953145627".                                            
+Reading "M4_M3_HIER_40661953145625".                                            
+Reading "M4_M3_HIER_40661953145623".                                            
+Reading "M4_M3_HIER_40661953145621".                                            
+Reading "M4_M3_HIER_40661953145565".                                            
+Reading "M4_M3_HIER_40661953145564".                                            
+Reading "M4_M3_HIER_40661953145619".                                            
+Reading "M4_M3_HIER_40661953145577".                                            
+Reading "M4_M3_HIER_40661953145562".                                            
+Reading "M4_M3_HIER_40661953145563".                                            
+Reading "M4_M3_HIER_40661953145566".                                            
+Reading "M4_M3_HIER_40661953145567".                                            
+Reading "M4_M3_HIER_40661953145617".                                            
+Reading "M4_M3_HIER_40661953145542".                                            
+Reading "M4_M3_HIER_40661953145630".                                            
+Reading "M4_M3_HIER_40661953145628".                                            
+Reading "M4_M3_HIER_40661953145626".                                            
+Reading "M4_M3_HIER_40661953145624".                                            
+Reading "M4_M3_HIER_40661953145622".                                            
+Reading "M4_M3_HIER_40661953145620".                                            
+Reading "M4_M3_HIER_40661953145618".                                            
+Reading "M4_M3_HIER_40661953145666".                                            
+Reading "M4_M3_HIER_40661953145665".                                            
+Reading "M4_M3_HIER_40661953145663".                                            
+Reading "M4_M3_HIER_40661953145664".                                            
+Reading "M4_M3_HIER_40661953145662".                                            
+Reading "M4_M3_HIER_40661953145661".                                            
+Reading "M4_M3_HIER_40661953145659".                                            
+Reading "M4_M3_HIER_40661953145660".                                            
+Reading "M4_M3_HIER_40661953145658".                                            
+Reading "M4_M3_HIER_40661953145657".                                            
+Reading "M4_M3_HIER_40661953145656".                                            
+Reading "M4_M3_HIER_40661953145655".                                            
+Reading "M4_M3_HIER_40661953145654".                                            
+Reading "M4_M3_HIER_40661953145653".                                            
+Reading "M4_M3_HIER_40661953145651".                                            
+Reading "M4_M3_HIER_40661953145652".                                            
+Reading "M4_M3_HIER_40661953145650".                                            
+Reading "M4_M3_HIER_40661953145570".                                            
+Reading "M4_M3_HIER_40661953145568".                                            
+Reading "M4_M3_HIER_40661953145569".                                            
+Reading "M4_M3_HIER_40661953145560".                                            
+Reading "M4_M3_HIER_40661953145557".                                            
+Reading "M4_M3_HIER_40661953145559".                                            
+Reading "M4_M3_HIER_40661953145553".                                            
+Reading "M4_M3_HIER_40661953145547".                                            
+Reading "M4_M3_HIER_40661953145545".                                            
+Reading "M4_M3_HIER_40661953145591".                                            
+Reading "M4_M3_HIER_40661953145587".                                            
+Reading "M4_M3_HIER_40661953145589".                                            
+Reading "M4_M3_HIER_40661953145574".                                            
+Reading "M4_M3_HIER_40661953145649".                                            
+Reading "M4_M3_HIER_40661953145648".                                            
+Reading "M4_M3_HIER_40661953145647".                                            
+Reading "M4_M3_HIER_40661953145646".                                            
+Reading "M4_M3_HIER_40661953145582".                                            
+Reading "M4_M3_HIER_40661953145572".                                            
+Reading "M4_M3_HIER_40661953145583".                                            
+Reading "M4_M3_HIER_40661953145544".                                            
+Reading "M4_M3_HIER_40661953145616".                                            
+Reading "M4_M3_HIER_40661953145555".                                            
+Reading "M4_M3_HIER_40661953145594".                                            
+Reading "M4_M3_HIER_40661953145593".                                            
+Reading "M4_M3_HIER_40661953145595".                                            
+Reading "M4_M3_HIER_40661953145596".                                            
+Reading "M4_M3_HIER_40661953145561".                                            
+Reading "M4_M3_HIER_40661953145597".                                            
+Reading "M4_M3_HIER_40661953145558".                                            
+Reading "M4_M3_HIER_40661953145543".                                            
+Reading "M4_M3_HIER_40661953145556".                                            
+Reading "M4_M3_HIER_40661953145546".                                            
+Reading "M4_M3_HIER_40661953145592".                                            
+Reading "M4_M3_HIER_40661953145590".                                            
+Reading "M4_M3_HIER_40661953145588".                                            
+Reading "M4_M3_HIER_40661953145578".                                            
+Reading "M4_M3_HIER_40661953145586".                                            
+Reading "M4_M3_HIER_40661953145579".                                            
+Reading "M4_M3_HIER_40661953145581".                                            
+Reading "M4_M3_HIER_40661953145580".                                            
+Reading "M4_M3_HIER_40661953145584".                                            
+Reading "M4_M3_HIER_40661953145585".                                            
+Reading "M4_M3_HIER_40661953145573".                                            
+Reading "M4_M3_HIER_40661953145571".                                            
+Reading "M4_M3_HIER_40661953145599".                                            
+Reading "M4_M3_HIER_40661953145598".                                            
+Reading "M4_M3_HIER_40661953145601".                                            
+Reading "M4_M3_HIER_40661953145602".                                            
+Reading "M4_M3_HIER_40661953145603".                                            
+Reading "M4_M3_HIER_40661953145605".                                            
+Reading "M4_M3_HIER_40661953145604".                                            
+Reading "M4_M3_HIER_40661953145600".                                            
+Reading "M4_M3_HIER_40661953145552".                                            
+Reading "M4_M3_HIER_40661953145610".                                            
+Reading "M4_M3_HIER_40661953145607".                                            
+Reading "M4_M3_HIER_40661953145606".                                            
+Reading "M4_M3_HIER_40661953145608".                                            
+Reading "M4_M3_HIER_40661953145609".                                            
+Reading "M4_M3_HIER_40661953145615".                                            
+Reading "M4_M3_HIER_40661953145614".                                            
+Reading "M4_M3_HIER_40661953145612".                                            
+Reading "M4_M3_HIER_40661953145554".                                            
+Reading "M4_M3_HIER_40661953145611".                                            
+Reading "M4_M3_HIER_40661953145613".                                            
+Reading "M4_M3_HIER_40661953145551".                                            
+Reading "M4_M3_HIER_40661953145550".                                            
+Reading "M4_M3_HIER_40661953145548".                                            
+Reading "M4_M3_HIER_40661953145549".                                            
 Reading "top_routing_cor".                                                      
 Reading "comp018green_esd_clamp_v5p0_2".                                        
 Reading "power_via_cor_5".                                                      
@@ -1302,29 +1129,18 @@ Reading "M2_M1_CDNS_40661953145120$1".
 Saving contents of cell M2_M1_CDNS_40661953145120$1                             
 Reading "M2_M1_CDNS_40661953145112$1".                                          
 Saving contents of cell M2_M1_CDNS_40661953145112$1                             
-Reading "M5_M4_CDNS_4066195314560$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314560$2                              
-Reading "M5_M4_CDNS_4066195314559$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314559$2                              
-Reading "M5_M4_CDNS_4066195314561$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314561$2                              
+Reading "M5_M4_HIER_4066195314560$2".                                           
+Reading "M5_M4_HIER_4066195314559$2".                                           
+Reading "M5_M4_HIER_4066195314561$2".                                           
 Reading "4LM_METAL_RAIL$2".                                                     
-Reading "M5_M4_CDNS_4066195314553$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314553$2                              
-Reading "M5_M4_CDNS_4066195314554$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314554$2                              
-Reading "M5_M4_CDNS_4066195314555$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314555$2                              
-Reading "M5_M4_CDNS_4066195314556$2".                                           
-Saving contents of cell M5_M4_CDNS_4066195314556$2                              
-Reading "M4_M3_CDNS_4066195314546$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314546$2                              
-Reading "M4_M3_CDNS_4066195314547$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314547$2                              
-Reading "M4_M3_CDNS_4066195314549$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314549$2                              
-Reading "M4_M3_CDNS_4066195314551$2".                                           
-Saving contents of cell M4_M3_CDNS_4066195314551$2                              
+Reading "M5_M4_HIER_4066195314553$2".                                           
+Reading "M5_M4_HIER_4066195314554$2".                                           
+Reading "M5_M4_HIER_4066195314555$2".                                           
+Reading "M5_M4_HIER_4066195314556$2".                                           
+Reading "M4_M3_HIER_4066195314546$2".                                           
+Reading "M4_M3_HIER_4066195314547$2".                                           
+Reading "M4_M3_HIER_4066195314549$2".                                           
+Reading "M4_M3_HIER_4066195314551$2".                                           
 Reading "M3_M2_CDNS_4066195314545$2".                                           
 Saving contents of cell M3_M2_CDNS_4066195314545$2                              
 Reading "M3_M2_CDNS_4066195314548$2".                                           
@@ -1385,29 +1201,18 @@ Reading "M2_M1_CDNS_40661953145112$2".
 Saving contents of cell M2_M1_CDNS_40661953145112$2                             
 Reading "M2_M1_CDNS_40661953145161$1".                                          
 Saving contents of cell M2_M1_CDNS_40661953145161$1                             
-Reading "M5_M4_CDNS_4066195314560$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314560$3                              
-Reading "M5_M4_CDNS_4066195314559$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314559$3                              
-Reading "M5_M4_CDNS_4066195314561$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314561$3                              
+Reading "M5_M4_HIER_4066195314560$3".                                           
+Reading "M5_M4_HIER_4066195314559$3".                                           
+Reading "M5_M4_HIER_4066195314561$3".                                           
 Reading "4LM_METAL_RAIL$3".                                                     
-Reading "M5_M4_CDNS_4066195314553$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314553$3                              
-Reading "M5_M4_CDNS_4066195314554$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314554$3                              
-Reading "M5_M4_CDNS_4066195314555$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314555$3                              
-Reading "M5_M4_CDNS_4066195314556$3".                                           
-Saving contents of cell M5_M4_CDNS_4066195314556$3                              
-Reading "M4_M3_CDNS_4066195314546$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314546$3                              
-Reading "M4_M3_CDNS_4066195314547$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314547$3                              
-Reading "M4_M3_CDNS_4066195314549$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314549$3                              
-Reading "M4_M3_CDNS_4066195314551$3".                                           
-Saving contents of cell M4_M3_CDNS_4066195314551$3                              
+Reading "M5_M4_HIER_4066195314553$3".                                           
+Reading "M5_M4_HIER_4066195314554$3".                                           
+Reading "M5_M4_HIER_4066195314555$3".                                           
+Reading "M5_M4_HIER_4066195314556$3".                                           
+Reading "M4_M3_HIER_4066195314546$3".                                           
+Reading "M4_M3_HIER_4066195314547$3".                                           
+Reading "M4_M3_HIER_4066195314549$3".                                           
+Reading "M4_M3_HIER_4066195314551$3".                                           
 Reading "M3_M2_CDNS_4066195314545$3".                                           
 Saving contents of cell M3_M2_CDNS_4066195314545$3                              
 Reading "M3_M2_CDNS_4066195314548$3".                                           
@@ -1554,260 +1359,133 @@ Error while reading cell "Bondpad_5LM" (byte position 11942456): Warning: cell
 Error while reading cell "Bondpad_5LM" (byte position 11942588): Warning: cell  
 "M3_M2_CDNS_4066195314552" placed on top of itself.  Ignoring the extra one.    
 Reading "POWER_RAIL_COR_0".                                                     
-Reading "M5_M4_CDNS_40661953145424".                                            
-Saving contents of cell M5_M4_CDNS_40661953145424                               
-Reading "M5_M4_CDNS_40661953145426".                                            
-Saving contents of cell M5_M4_CDNS_40661953145426                               
-Reading "M5_M4_CDNS_40661953145489".                                            
-Saving contents of cell M5_M4_CDNS_40661953145489                               
-Reading "M5_M4_CDNS_40661953145437".                                            
-Saving contents of cell M5_M4_CDNS_40661953145437                               
-Reading "M5_M4_CDNS_40661953145490".                                            
-Saving contents of cell M5_M4_CDNS_40661953145490                               
-Reading "M5_M4_CDNS_40661953145418".                                            
-Saving contents of cell M5_M4_CDNS_40661953145418                               
-Reading "M5_M4_CDNS_40661953145491".                                            
-Saving contents of cell M5_M4_CDNS_40661953145491                               
-Reading "M5_M4_CDNS_40661953145464".                                            
-Saving contents of cell M5_M4_CDNS_40661953145464                               
-Reading "M5_M4_CDNS_40661953145465".                                            
-Saving contents of cell M5_M4_CDNS_40661953145465                               
-Reading "M5_M4_CDNS_40661953145421".                                            
-Saving contents of cell M5_M4_CDNS_40661953145421                               
-Reading "M5_M4_CDNS_40661953145420".                                            
-Saving contents of cell M5_M4_CDNS_40661953145420                               
-Reading "M5_M4_CDNS_40661953145422".                                            
-Saving contents of cell M5_M4_CDNS_40661953145422                               
-Reading "M5_M4_CDNS_40661953145438".                                            
-Saving contents of cell M5_M4_CDNS_40661953145438                               
-Reading "M5_M4_CDNS_40661953145466".                                            
-Saving contents of cell M5_M4_CDNS_40661953145466                               
-Reading "M5_M4_CDNS_40661953145492".                                            
-Saving contents of cell M5_M4_CDNS_40661953145492                               
-Reading "M5_M4_CDNS_40661953145430".                                            
-Saving contents of cell M5_M4_CDNS_40661953145430                               
-Reading "M5_M4_CDNS_40661953145416".                                            
-Saving contents of cell M5_M4_CDNS_40661953145416                               
-Reading "M5_M4_CDNS_40661953145432".                                            
-Saving contents of cell M5_M4_CDNS_40661953145432                               
-Reading "M5_M4_CDNS_40661953145434".                                            
-Saving contents of cell M5_M4_CDNS_40661953145434                               
-Reading "M5_M4_CDNS_40661953145435".                                            
-Saving contents of cell M5_M4_CDNS_40661953145435                               
-Reading "M5_M4_CDNS_40661953145433".                                            
-Saving contents of cell M5_M4_CDNS_40661953145433                               
-Reading "M5_M4_CDNS_40661953145425".                                            
-Saving contents of cell M5_M4_CDNS_40661953145425                               
-Reading "M5_M4_CDNS_40661953145442".                                            
-Saving contents of cell M5_M4_CDNS_40661953145442                               
-Reading "M5_M4_CDNS_40661953145445".                                            
-Saving contents of cell M5_M4_CDNS_40661953145445                               
-Reading "M5_M4_CDNS_40661953145526".                                            
-Saving contents of cell M5_M4_CDNS_40661953145526                               
-Reading "M5_M4_CDNS_40661953145527".                                            
-Saving contents of cell M5_M4_CDNS_40661953145527                               
-Reading "M5_M4_CDNS_40661953145528".                                            
-Saving contents of cell M5_M4_CDNS_40661953145528                               
-Reading "M5_M4_CDNS_40661953145529".                                            
-Saving contents of cell M5_M4_CDNS_40661953145529                               
-Reading "M5_M4_CDNS_40661953145446".                                            
-Saving contents of cell M5_M4_CDNS_40661953145446                               
-Reading "M5_M4_CDNS_40661953145481".                                            
-Saving contents of cell M5_M4_CDNS_40661953145481                               
-Reading "M5_M4_CDNS_40661953145520".                                            
-Saving contents of cell M5_M4_CDNS_40661953145520                               
-Reading "M5_M4_CDNS_40661953145450".                                            
-Saving contents of cell M5_M4_CDNS_40661953145450                               
-Reading "M5_M4_CDNS_40661953145428".                                            
-Saving contents of cell M5_M4_CDNS_40661953145428                               
-Reading "M5_M4_CDNS_40661953145419".                                            
-Saving contents of cell M5_M4_CDNS_40661953145419                               
-Reading "M5_M4_CDNS_40661953145423".                                            
-Saving contents of cell M5_M4_CDNS_40661953145423                               
-Reading "M5_M4_CDNS_40661953145417".                                            
-Saving contents of cell M5_M4_CDNS_40661953145417                               
-Reading "M5_M4_CDNS_40661953145447".                                            
-Saving contents of cell M5_M4_CDNS_40661953145447                               
-Reading "M5_M4_CDNS_40661953145449".                                            
-Saving contents of cell M5_M4_CDNS_40661953145449                               
-Reading "M5_M4_CDNS_40661953145427".                                            
-Saving contents of cell M5_M4_CDNS_40661953145427                               
-Reading "M5_M4_CDNS_40661953145494".                                            
-Saving contents of cell M5_M4_CDNS_40661953145494                               
-Reading "M5_M4_CDNS_40661953145436".                                            
-Saving contents of cell M5_M4_CDNS_40661953145436                               
-Reading "M5_M4_CDNS_40661953145471".                                            
-Saving contents of cell M5_M4_CDNS_40661953145471                               
-Reading "M5_M4_CDNS_40661953145472".                                            
-Saving contents of cell M5_M4_CDNS_40661953145472                               
-Reading "M5_M4_CDNS_40661953145473".                                            
-Saving contents of cell M5_M4_CDNS_40661953145473                               
-Reading "M5_M4_CDNS_40661953145474".                                            
-Saving contents of cell M5_M4_CDNS_40661953145474                               
-Reading "M5_M4_CDNS_40661953145475".                                            
-Saving contents of cell M5_M4_CDNS_40661953145475                               
-Reading "M5_M4_CDNS_40661953145476".                                            
-Saving contents of cell M5_M4_CDNS_40661953145476                               
-Reading "M5_M4_CDNS_40661953145477".                                            
-Saving contents of cell M5_M4_CDNS_40661953145477                               
-Reading "M5_M4_CDNS_40661953145478".                                            
-Saving contents of cell M5_M4_CDNS_40661953145478                               
-Reading "M5_M4_CDNS_40661953145479".                                            
-Saving contents of cell M5_M4_CDNS_40661953145479                               
-Reading "M5_M4_CDNS_40661953145480".                                            
-Saving contents of cell M5_M4_CDNS_40661953145480                               
-Reading "M5_M4_CDNS_40661953145502".                                            
-Saving contents of cell M5_M4_CDNS_40661953145502                               
-Reading "M5_M4_CDNS_40661953145482".                                            
-Saving contents of cell M5_M4_CDNS_40661953145482                               
-Reading "M5_M4_CDNS_40661953145483".                                            
-Saving contents of cell M5_M4_CDNS_40661953145483                               
-Reading "M5_M4_CDNS_40661953145467".                                            
-Saving contents of cell M5_M4_CDNS_40661953145467                               
-Reading "M5_M4_CDNS_40661953145525".                                            
-Saving contents of cell M5_M4_CDNS_40661953145525                               
-Reading "M5_M4_CDNS_40661953145524".                                            
-Saving contents of cell M5_M4_CDNS_40661953145524                               
-Reading "M5_M4_CDNS_40661953145523".                                            
-Saving contents of cell M5_M4_CDNS_40661953145523                               
-Reading "M5_M4_CDNS_40661953145522".                                            
-Saving contents of cell M5_M4_CDNS_40661953145522                               
-Reading "M5_M4_CDNS_40661953145521".                                            
-Saving contents of cell M5_M4_CDNS_40661953145521                               
-Reading "M5_M4_CDNS_40661953145452".                                            
-Saving contents of cell M5_M4_CDNS_40661953145452                               
-Reading "M5_M4_CDNS_40661953145439".                                            
-Saving contents of cell M5_M4_CDNS_40661953145439                               
-Reading "M5_M4_CDNS_40661953145453".                                            
-Saving contents of cell M5_M4_CDNS_40661953145453                               
-Reading "M5_M4_CDNS_40661953145429".                                            
-Saving contents of cell M5_M4_CDNS_40661953145429                               
-Reading "M5_M4_CDNS_40661953145451".                                            
-Saving contents of cell M5_M4_CDNS_40661953145451                               
-Reading "M5_M4_CDNS_40661953145431".                                            
-Saving contents of cell M5_M4_CDNS_40661953145431                               
-Reading "M5_M4_CDNS_40661953145455".                                            
-Saving contents of cell M5_M4_CDNS_40661953145455                               
-Reading "M5_M4_CDNS_40661953145457".                                            
-Saving contents of cell M5_M4_CDNS_40661953145457                               
-Reading "M5_M4_CDNS_40661953145461".                                            
-Saving contents of cell M5_M4_CDNS_40661953145461                               
-Reading "M5_M4_CDNS_40661953145444".                                            
-Saving contents of cell M5_M4_CDNS_40661953145444                               
-Reading "M5_M4_CDNS_40661953145415".                                            
-Saving contents of cell M5_M4_CDNS_40661953145415                               
-Reading "M5_M4_CDNS_40661953145541".                                            
-Saving contents of cell M5_M4_CDNS_40661953145541                               
-Reading "M5_M4_CDNS_40661953145540".                                            
-Saving contents of cell M5_M4_CDNS_40661953145540                               
-Reading "M5_M4_CDNS_40661953145539".                                            
-Saving contents of cell M5_M4_CDNS_40661953145539                               
-Reading "M5_M4_CDNS_40661953145538".                                            
-Saving contents of cell M5_M4_CDNS_40661953145538                               
-Reading "M5_M4_CDNS_40661953145463".                                            
-Saving contents of cell M5_M4_CDNS_40661953145463                               
-Reading "M5_M4_CDNS_40661953145440".                                            
-Saving contents of cell M5_M4_CDNS_40661953145440                               
-Reading "M5_M4_CDNS_40661953145458".                                            
-Saving contents of cell M5_M4_CDNS_40661953145458                               
-Reading "M5_M4_CDNS_40661953145537".                                            
-Saving contents of cell M5_M4_CDNS_40661953145537                               
-Reading "M5_M4_CDNS_40661953145536".                                            
-Saving contents of cell M5_M4_CDNS_40661953145536                               
-Reading "M5_M4_CDNS_40661953145535".                                            
-Saving contents of cell M5_M4_CDNS_40661953145535                               
-Reading "M5_M4_CDNS_40661953145533".                                            
-Saving contents of cell M5_M4_CDNS_40661953145533                               
-Reading "M5_M4_CDNS_40661953145534".                                            
-Saving contents of cell M5_M4_CDNS_40661953145534                               
-Reading "M5_M4_CDNS_40661953145500".                                            
-Saving contents of cell M5_M4_CDNS_40661953145500                               
-Reading "M5_M4_CDNS_40661953145499".                                            
-Saving contents of cell M5_M4_CDNS_40661953145499                               
-Reading "M5_M4_CDNS_40661953145498".                                            
-Saving contents of cell M5_M4_CDNS_40661953145498                               
-Reading "M5_M4_CDNS_40661953145497".                                            
-Saving contents of cell M5_M4_CDNS_40661953145497                               
-Reading "M5_M4_CDNS_40661953145448".                                            
-Saving contents of cell M5_M4_CDNS_40661953145448                               
-Reading "M5_M4_CDNS_40661953145486".                                            
-Saving contents of cell M5_M4_CDNS_40661953145486                               
-Reading "M5_M4_CDNS_40661953145488".                                            
-Saving contents of cell M5_M4_CDNS_40661953145488                               
-Reading "M5_M4_CDNS_40661953145454".                                            
-Saving contents of cell M5_M4_CDNS_40661953145454                               
-Reading "M5_M4_CDNS_40661953145456".                                            
-Saving contents of cell M5_M4_CDNS_40661953145456                               
-Reading "M5_M4_CDNS_40661953145459".                                            
-Saving contents of cell M5_M4_CDNS_40661953145459                               
-Reading "M5_M4_CDNS_40661953145487".                                            
-Saving contents of cell M5_M4_CDNS_40661953145487                               
-Reading "M5_M4_CDNS_40661953145443".                                            
-Saving contents of cell M5_M4_CDNS_40661953145443                               
-Reading "M5_M4_CDNS_40661953145460".                                            
-Saving contents of cell M5_M4_CDNS_40661953145460                               
-Reading "M5_M4_CDNS_40661953145484".                                            
-Saving contents of cell M5_M4_CDNS_40661953145484                               
-Reading "M5_M4_CDNS_40661953145485".                                            
-Saving contents of cell M5_M4_CDNS_40661953145485                               
-Reading "M5_M4_CDNS_40661953145468".                                            
-Saving contents of cell M5_M4_CDNS_40661953145468                               
-Reading "M5_M4_CDNS_40661953145469".                                            
-Saving contents of cell M5_M4_CDNS_40661953145469                               
-Reading "M5_M4_CDNS_40661953145470".                                            
-Saving contents of cell M5_M4_CDNS_40661953145470                               
-Reading "M5_M4_CDNS_40661953145462".                                            
-Saving contents of cell M5_M4_CDNS_40661953145462                               
-Reading "M5_M4_CDNS_40661953145441".                                            
-Saving contents of cell M5_M4_CDNS_40661953145441                               
-Reading "M5_M4_CDNS_40661953145496".                                            
-Saving contents of cell M5_M4_CDNS_40661953145496                               
-Reading "M5_M4_CDNS_40661953145501".                                            
-Saving contents of cell M5_M4_CDNS_40661953145501                               
-Reading "M5_M4_CDNS_40661953145518".                                            
-Saving contents of cell M5_M4_CDNS_40661953145518                               
-Reading "M5_M4_CDNS_40661953145516".                                            
-Saving contents of cell M5_M4_CDNS_40661953145516                               
-Reading "M5_M4_CDNS_40661953145517".                                            
-Saving contents of cell M5_M4_CDNS_40661953145517                               
-Reading "M5_M4_CDNS_40661953145519".                                            
-Saving contents of cell M5_M4_CDNS_40661953145519                               
-Reading "M5_M4_CDNS_40661953145515".                                            
-Saving contents of cell M5_M4_CDNS_40661953145515                               
-Reading "M5_M4_CDNS_40661953145514".                                            
-Saving contents of cell M5_M4_CDNS_40661953145514                               
-Reading "M5_M4_CDNS_40661953145495".                                            
-Saving contents of cell M5_M4_CDNS_40661953145495                               
-Reading "M5_M4_CDNS_40661953145511".                                            
-Saving contents of cell M5_M4_CDNS_40661953145511                               
-Reading "M5_M4_CDNS_40661953145509".                                            
-Saving contents of cell M5_M4_CDNS_40661953145509                               
-Reading "M5_M4_CDNS_40661953145510".                                            
-Saving contents of cell M5_M4_CDNS_40661953145510                               
-Reading "M5_M4_CDNS_40661953145513".                                            
-Saving contents of cell M5_M4_CDNS_40661953145513                               
-Reading "M5_M4_CDNS_40661953145512".                                            
-Saving contents of cell M5_M4_CDNS_40661953145512                               
-Reading "M5_M4_CDNS_40661953145506".                                            
-Saving contents of cell M5_M4_CDNS_40661953145506                               
-Reading "M5_M4_CDNS_40661953145504".                                            
-Saving contents of cell M5_M4_CDNS_40661953145504                               
-Reading "M5_M4_CDNS_40661953145503".                                            
-Saving contents of cell M5_M4_CDNS_40661953145503                               
-Reading "M5_M4_CDNS_40661953145508".                                            
-Saving contents of cell M5_M4_CDNS_40661953145508                               
-Reading "M5_M4_CDNS_40661953145507".                                            
-Saving contents of cell M5_M4_CDNS_40661953145507                               
-Reading "M5_M4_CDNS_40661953145505".                                            
-Saving contents of cell M5_M4_CDNS_40661953145505                               
-Reading "M5_M4_CDNS_40661953145532".                                            
-Saving contents of cell M5_M4_CDNS_40661953145532                               
-Reading "M5_M4_CDNS_40661953145493".                                            
-Saving contents of cell M5_M4_CDNS_40661953145493                               
-Reading "M5_M4_CDNS_40661953145530".                                            
-Saving contents of cell M5_M4_CDNS_40661953145530                               
-Reading "M5_M4_CDNS_40661953145531".                                            
-Saving contents of cell M5_M4_CDNS_40661953145531                               
+Reading "M5_M4_HIER_40661953145424".                                            
+Reading "M5_M4_HIER_40661953145426".                                            
+Reading "M5_M4_HIER_40661953145489".                                            
+Reading "M5_M4_HIER_40661953145437".                                            
+Reading "M5_M4_HIER_40661953145490".                                            
+Reading "M5_M4_HIER_40661953145418".                                            
+Reading "M5_M4_HIER_40661953145491".                                            
+Reading "M5_M4_HIER_40661953145464".                                            
+Reading "M5_M4_HIER_40661953145465".                                            
+Reading "M5_M4_HIER_40661953145421".                                            
+Reading "M5_M4_HIER_40661953145420".                                            
+Reading "M5_M4_HIER_40661953145422".                                            
+Reading "M5_M4_HIER_40661953145438".                                            
+Reading "M5_M4_HIER_40661953145466".                                            
+Reading "M5_M4_HIER_40661953145492".                                            
+Reading "M5_M4_HIER_40661953145430".                                            
+Reading "M5_M4_HIER_40661953145416".                                            
+Reading "M5_M4_HIER_40661953145432".                                            
+Reading "M5_M4_HIER_40661953145434".                                            
+Reading "M5_M4_HIER_40661953145435".                                            
+Reading "M5_M4_HIER_40661953145433".                                            
+Reading "M5_M4_HIER_40661953145425".                                            
+Reading "M5_M4_HIER_40661953145442".                                            
+Reading "M5_M4_HIER_40661953145445".                                            
+Reading "M5_M4_HIER_40661953145526".                                            
+Reading "M5_M4_HIER_40661953145527".                                            
+Reading "M5_M4_HIER_40661953145528".                                            
+Reading "M5_M4_HIER_40661953145529".                                            
+Reading "M5_M4_HIER_40661953145446".                                            
+Reading "M5_M4_HIER_40661953145481".                                            
+Reading "M5_M4_HIER_40661953145520".                                            
+Reading "M5_M4_HIER_40661953145450".                                            
+Reading "M5_M4_HIER_40661953145428".                                            
+Reading "M5_M4_HIER_40661953145419".                                            
+Reading "M5_M4_HIER_40661953145423".                                            
+Reading "M5_M4_HIER_40661953145417".                                            
+Reading "M5_M4_HIER_40661953145447".                                            
+Reading "M5_M4_HIER_40661953145449".                                            
+Reading "M5_M4_HIER_40661953145427".                                            
+Reading "M5_M4_HIER_40661953145494".                                            
+Reading "M5_M4_HIER_40661953145436".                                            
+Reading "M5_M4_HIER_40661953145471".                                            
+Reading "M5_M4_HIER_40661953145472".                                            
+Reading "M5_M4_HIER_40661953145473".                                            
+Reading "M5_M4_HIER_40661953145474".                                            
+Reading "M5_M4_HIER_40661953145475".                                            
+Reading "M5_M4_HIER_40661953145476".                                            
+Reading "M5_M4_HIER_40661953145477".                                            
+Reading "M5_M4_HIER_40661953145478".                                            
+Reading "M5_M4_HIER_40661953145479".                                            
+Reading "M5_M4_HIER_40661953145480".                                            
+Reading "M5_M4_HIER_40661953145502".                                            
+Reading "M5_M4_HIER_40661953145482".                                            
+Reading "M5_M4_HIER_40661953145483".                                            
+Reading "M5_M4_HIER_40661953145467".                                            
+Reading "M5_M4_HIER_40661953145525".                                            
+Reading "M5_M4_HIER_40661953145524".                                            
+Reading "M5_M4_HIER_40661953145523".                                            
+Reading "M5_M4_HIER_40661953145522".                                            
+Reading "M5_M4_HIER_40661953145521".                                            
+Reading "M5_M4_HIER_40661953145452".                                            
+Reading "M5_M4_HIER_40661953145439".                                            
+Reading "M5_M4_HIER_40661953145453".                                            
+Reading "M5_M4_HIER_40661953145429".                                            
+Reading "M5_M4_HIER_40661953145451".                                            
+Reading "M5_M4_HIER_40661953145431".                                            
+Reading "M5_M4_HIER_40661953145455".                                            
+Reading "M5_M4_HIER_40661953145457".                                            
+Reading "M5_M4_HIER_40661953145461".                                            
+Reading "M5_M4_HIER_40661953145444".                                            
+Reading "M5_M4_HIER_40661953145415".                                            
+Reading "M5_M4_HIER_40661953145541".                                            
+Reading "M5_M4_HIER_40661953145540".                                            
+Reading "M5_M4_HIER_40661953145539".                                            
+Reading "M5_M4_HIER_40661953145538".                                            
+Reading "M5_M4_HIER_40661953145463".                                            
+Reading "M5_M4_HIER_40661953145440".                                            
+Reading "M5_M4_HIER_40661953145458".                                            
+Reading "M5_M4_HIER_40661953145537".                                            
+Reading "M5_M4_HIER_40661953145536".                                            
+Reading "M5_M4_HIER_40661953145535".                                            
+Reading "M5_M4_HIER_40661953145533".                                            
+Reading "M5_M4_HIER_40661953145534".                                            
+Reading "M5_M4_HIER_40661953145500".                                            
+Reading "M5_M4_HIER_40661953145499".                                            
+Reading "M5_M4_HIER_40661953145498".                                            
+Reading "M5_M4_HIER_40661953145497".                                            
+Reading "M5_M4_HIER_40661953145448".                                            
+Reading "M5_M4_HIER_40661953145486".                                            
+Reading "M5_M4_HIER_40661953145488".                                            
+Reading "M5_M4_HIER_40661953145454".                                            
+Reading "M5_M4_HIER_40661953145456".                                            
+Reading "M5_M4_HIER_40661953145459".                                            
+Reading "M5_M4_HIER_40661953145487".                                            
+Reading "M5_M4_HIER_40661953145443".                                            
+Reading "M5_M4_HIER_40661953145460".                                            
+Reading "M5_M4_HIER_40661953145484".                                            
+Reading "M5_M4_HIER_40661953145485".                                            
+Reading "M5_M4_HIER_40661953145468".                                            
+Reading "M5_M4_HIER_40661953145469".                                            
+Reading "M5_M4_HIER_40661953145470".                                            
+Reading "M5_M4_HIER_40661953145462".                                            
+Reading "M5_M4_HIER_40661953145441".                                            
+Reading "M5_M4_HIER_40661953145496".                                            
+Reading "M5_M4_HIER_40661953145501".                                            
+Reading "M5_M4_HIER_40661953145518".                                            
+Reading "M5_M4_HIER_40661953145516".                                            
+Reading "M5_M4_HIER_40661953145517".                                            
+Reading "M5_M4_HIER_40661953145519".                                            
+Reading "M5_M4_HIER_40661953145515".                                            
+Reading "M5_M4_HIER_40661953145514".                                            
+Reading "M5_M4_HIER_40661953145495".                                            
+Reading "M5_M4_HIER_40661953145511".                                            
+Reading "M5_M4_HIER_40661953145509".                                            
+Reading "M5_M4_HIER_40661953145510".                                            
+Reading "M5_M4_HIER_40661953145513".                                            
+Reading "M5_M4_HIER_40661953145512".                                            
+Reading "M5_M4_HIER_40661953145506".                                            
+Reading "M5_M4_HIER_40661953145504".                                            
+Reading "M5_M4_HIER_40661953145503".                                            
+Reading "M5_M4_HIER_40661953145508".                                            
+Reading "M5_M4_HIER_40661953145507".                                            
+Reading "M5_M4_HIER_40661953145505".                                            
+Reading "M5_M4_HIER_40661953145532".                                            
+Reading "M5_M4_HIER_40661953145493".                                            
+Reading "M5_M4_HIER_40661953145530".                                            
+Reading "M5_M4_HIER_40661953145531".                                            
 Reading "M1_PSUB_CDNS_40661953145677".                                          
 Saving contents of cell M1_PSUB_CDNS_40661953145677                             
 Reading "ESD_CLAMP_COR".                                                        
@@ -2508,12 +2186,9 @@ Error while reading cell "Bondpad_5LM$3" (byte position 18280372): Warning: cell
 "M3_M2_CDNS_4066195314552$3" placed on top of itself.  Ignoring the extra one.  
 Error while reading cell "Bondpad_5LM$3" (byte position 18280508): Warning: cell
 "M3_M2_CDNS_4066195314552$3" placed on top of itself.  Ignoring the extra one.  
-Reading "M4_M3_CDNS_4066195314522".                                             
-Saving contents of cell M4_M3_CDNS_4066195314522                                
-Reading "M4_M3_CDNS_4066195314523".                                             
-Saving contents of cell M4_M3_CDNS_4066195314523                                
-Reading "M4_M3_CDNS_4066195314524".                                             
-Saving contents of cell M4_M3_CDNS_4066195314524                                
+Reading "M4_M3_HIER_4066195314522".                                             
+Reading "M4_M3_HIER_4066195314523".                                             
+Reading "M4_M3_HIER_4066195314524".                                             
 Reading "GF_NI_FILL1_1".                                                        
 Reading "GF_NI_ASIG_5P0_BASE".                                                  
 Reading "5LM_METAL_RAIL_PAD_60".                                                
@@ -2524,12 +2199,9 @@ Reading "5LM_METAL_RAIL_PAD_60$2".
 Reading "GF_NI_DVSS_BASE".                                                      
 Reading "5LM_METAL_RAIL_PAD_60$3".                                              
 Reading "GF_NI_FILL1_0".                                                        
-Reading "M5_M4_CDNS_4066195314521".                                             
-Saving contents of cell M5_M4_CDNS_4066195314521                                
-Reading "M5_M4_CDNS_4066195314520".                                             
-Saving contents of cell M5_M4_CDNS_4066195314520                                
-Reading "M5_M4_CDNS_4066195314519".                                             
-Saving contents of cell M5_M4_CDNS_4066195314519                                
+Reading "M5_M4_HIER_4066195314521".                                             
+Reading "M5_M4_HIER_4066195314520".                                             
+Reading "M5_M4_HIER_4066195314519".                                             
 Reading "via_dev$2$1$1".                                                        
 Reading "ppolyf_u_9H3LNU$1$1".                                                  
 Reading "diode_pd2nw_06v0_5DG9HC$1$1".                                          
@@ -2539,11 +2211,11 @@ Reading "gf180mcu_fd_io__cor".
 Reading "gf180mcu_fd_io__dvdd".                                                 
 Reading "gf180mcu_fd_io__dvss".                                                 
 Reading "gf180mcu_fd_io__fill1".                                                
-Error while reading cell "gf180mcu_fd_io__fill1" (byte position 18875278):      
-Warning: cell "M5_M4_CDNS_4066195314519" placed on top of itself.  Ignoring the 
+Error while reading cell "gf180mcu_fd_io__fill1" (byte position 18875470):      
+Warning: cell "M5_M4_HIER_4066195314519" placed on top of itself.  Ignoring the 
 extra one.                                                                      
-Error while reading cell "gf180mcu_fd_io__fill1" (byte position 18875710):      
-Warning: cell "M5_M4_CDNS_4066195314519" placed on top of itself.  Ignoring the 
+Error while reading cell "gf180mcu_fd_io__fill1" (byte position 18875902):      
+Warning: cell "M5_M4_HIER_4066195314519" placed on top of itself.  Ignoring the 
 extra one.                                                                      
 Reading "cdm".                                                                  
 Reading "gf180mcu_fd_io__asig_5p0_mod".                                         
@@ -5390,225 +5062,30 @@ Reading "chip_top".
                                                                                 
 DRC style is now "drc(full)"                                                    
 Loading DRC CIF style.                                                          
-[INFO] COUNT: 271                                                               
+No errors found.                                                                
+[INFO] COUNT: 0                                                                 
 [INFO] Should be divided by 3 or 4                                              
 [INFO] DRC Checking DONE                                                        
-(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_20
-26-07-15_17-53-26/12-magic-drc/reports/drc.magic.rpt)                           
+(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_
+FIX_2026-07-16/12-magic-drc/reports/drc.magic.rpt)                              
 [INFO] Saving mag view with DRC errors                                          
-(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_20
-26-07-15_17-53-26/12-magic-drc/views/chip_top.drc.mag)                          
+(/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/MAGIC_
+FIX_2026-07-16/12-magic-drc/views/chip_top.drc.mag)                             
 [INFO] Saved                                                                    
 ────────────────────────── Magic Design Rule Checker ───────────────────────────
-[18:04:22] VERBOSE  Running 'Checker.MagicDRC' at                   step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/13-checker-magicdrc'…                                  
-[18:04:22] WARNING  271 Magic DRC errors found.                   checker.py:122
-───────────────────────── Design Rule Check (KLayout) ──────────────────────────
-[18:04:22] VERBOSE  Running 'KLayout.DRC' at                        step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/14-klayout-drc'…                                       
-[18:04:22] INFO     Running KLayout DRC with 1 threads…           klayout.py:668
-[18:04:22] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/14-klayout-drc/klayout-drc.log'…                       
-2026-07-15 18:04:23 +0000: Memory Usage (427400K) : Starting running GF180MCU   
-Klayout DRC runset on                                                           
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/04-klayout-generateid/chip_top.gds                             
-2026-07-15 18:04:23 +0000: Memory Usage (427400K) : Ruby Version for klayout:   
-3.3.10                                                                          
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Loading database to memory  
-is complete.                                                                    
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : GF180MCU Klayout DRC runset 
-output at:                                                                      
-/home/flow/Vibe/tapeout/gf180characterization/.signoff/precheck-run/runs/RUN_202
-6-07-15_17-53-26/14-klayout-drc/reports/drc.klayout.lyrdb                       
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Evaluate switches.          
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : table_name selected  main   
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : CONNECTIVITY_RULES enabled: 
-false                                                                           
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Wedge enabled: false        
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Ball enabled: false         
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Gold enabled: false         
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : MIM Option selected: B      
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Offgrid enabled:  false     
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Number of threads to use    
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Verbose mode:               
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : flat  mode is enabled for   
-main table                                                                      
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : METAL_TOP Selected is 11K   
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : METAL_STACK Selected is 5LM 
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : FEOL enabled: false         
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : BEOL enabled: false         
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : DUMMY enabled: false        
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : DUMMY_SUB_PREV enabled: true
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : SLOW_VIA enabled: false     
-2026-07-15 18:04:23 +0000: Memory Usage (480756K) : Read in polygons from       
-layers.                                                                         
-2026-07-15 18:04:23 +0000: Memory Usage (487796K) : comp has 7907 polygons      
-2026-07-15 18:04:23 +0000: Memory Usage (487796K) : dnwell has 3 polygons       
-2026-07-15 18:04:23 +0000: Memory Usage (487796K) : nwell has 525 polygons      
-2026-07-15 18:04:23 +0000: Memory Usage (487924K) : lvpwell has 3948 polygons   
-2026-07-15 18:04:23 +0000: Memory Usage (488052K) : dualgate has 2321 polygons  
-2026-07-15 18:04:23 +0000: Memory Usage (488052K) : poly2 has 4099 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (488052K) : nplus has 5471 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : pplus has 1748 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : sab has 104 polygons        
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : esd has 0 polygons          
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : resistor has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : fhres has 0 polygons        
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : fusetop has 8 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : fusewindow_d has 0 polygons 
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : polyfuse has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : mvsd has 0 polygons         
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : mvpsd has 0 polygons        
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : nat has 2 polygons          
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : comp_dummy has 0 polygons   
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : poly2_dummy has 0 polygons  
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : schottky_diode has 0        
-polygons                                                                        
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : zener has 0 polygons        
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : res_mk has 238 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : opc_drc has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : v5_xtor has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : cap_mk has 8 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : mos_cap_mk has 3711 polygons
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : ind_mk has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : diode_mk has 1890 polygons  
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : drc_bjt has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : lvs_bjt has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : mim_l_mk has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : latchup_mk has 736 polygons 
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : guard_ring_mk has 1 polygons
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : otp_mk has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : mtpmark has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : neo_ee_mk has 0 polygons    
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : sramcore has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : lvs_rf has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : lvs_drain has 0 polygons    
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : ind_mk has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : hvpolyrs has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (493940K) : lvs_io has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (494068K) : probe_mk has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (494196K) : esd_mk has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (494324K) : lvs_source has 0 polygons   
-2026-07-15 18:04:24 +0000: Memory Usage (494452K) : well_diode_mk has 3 polygons
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : ldmos_xtor has 0 polygons   
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : plfuse has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : efuse_mk has 0 polygons     
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : mcell_feol_mk has 0 polygons
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : ymtp_mk has 0 polygons      
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : dev_wf_mk has 0 polygons    
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : comp_label has 0 polygons   
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : poly2_label has 0 polygons  
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : mdiode has 0 polygons       
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : ndmy has 0 polygons         
-2026-07-15 18:04:24 +0000: Memory Usage (494580K) : pmndmy has 0 polygons       
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : contact has 4743368        
-polygons                                                                        
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : metal1_drawn has 8018      
-polygons                                                                        
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : metal1_dummy has 0 polygons
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : metal1_label has 0 polygons
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : metal1_slot has 0 polygons 
-2026-07-15 18:04:35 +0000: Memory Usage (1208080K) : metal1_blk has 0 polygons  
-2026-07-15 18:04:38 +0000: Memory Usage (1235876K) : via1 has 1147443 polygons  
-2026-07-15 18:04:39 +0000: Memory Usage (1235876K) : metal2_drawn has 3283      
-polygons                                                                        
-2026-07-15 18:04:39 +0000: Memory Usage (1235876K) : metal2_dummy has 0 polygons
-2026-07-15 18:04:39 +0000: Memory Usage (1235876K) : metal2_label has 494       
-polygons                                                                        
-2026-07-15 18:04:39 +0000: Memory Usage (1235876K) : metal2_slot has 0 polygons 
-2026-07-15 18:04:39 +0000: Memory Usage (1235876K) : metal2_blk has 0 polygons  
-2026-07-15 18:04:47 +0000: Memory Usage (1560328K) : via2 has 3579511 polygons  
-2026-07-15 18:04:48 +0000: Memory Usage (1560328K) : metal3_drawn has 436       
-polygons                                                                        
-2026-07-15 18:04:48 +0000: Memory Usage (1560328K) : metal3_dummy has 0 polygons
-2026-07-15 18:04:48 +0000: Memory Usage (1560328K) : metal3_label has 0 polygons
-2026-07-15 18:04:48 +0000: Memory Usage (1560328K) : metal3_slot has 0 polygons 
-2026-07-15 18:04:48 +0000: Memory Usage (1560328K) : metal3_blk has 0 polygons  
-2026-07-15 18:05:07 +0000: Memory Usage (2300936K) : via3 has 7322621 polygons  
-2026-07-15 18:05:09 +0000: Memory Usage (2300936K) : metal4_drawn has 352       
-polygons                                                                        
-2026-07-15 18:05:09 +0000: Memory Usage (2300936K) : metal4_dummy has 0 polygons
-2026-07-15 18:05:09 +0000: Memory Usage (2300936K) : metal4_label has 0 polygons
-2026-07-15 18:05:09 +0000: Memory Usage (2300936K) : metal4_slot has 0 polygons 
-2026-07-15 18:05:09 +0000: Memory Usage (2300936K) : metal4_blk has 0 polygons  
-2026-07-15 18:05:25 +0000: Memory Usage (3103736K) : via4 has 7329116 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_drawn has 352       
-polygons                                                                        
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_dummy has 0 polygons
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_label has 0 polygons
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_slot has 0 polygons 
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_blk has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : pad has 315 polygons       
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : ubmpperi has 0 polygons    
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : ubmparray has 0 polygons   
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : ubmeplate has 0 polygons   
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal1_res has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal2_res has 2 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal3_res has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal4_res has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal5_res has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : metal6_res has 0 polygons  
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : pr_bndry has 1 polygons    
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : border has 0 polygons      
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : Total no. of polygons in   
-the design is 24168035                                                          
-2026-07-15 18:05:26 +0000: Memory Usage (3103736K) : Starting deriving base     
-layers.                                                                         
-2026-07-15 18:05:27 +0000: Memory Usage (3104760K) : Total area of the design is
-9951892.0 um^2.                                                                 
-2026-07-15 18:05:27 +0000: Memory Usage (3104760K) : Starting GF180MCU DRC      
-rules.                                                                          
-2026-07-15 18:05:27 +0000: Memory Usage (3104760K) : MIM Capacitor Option B     
-section                                                                         
-2026-07-15 18:05:27 +0000: Memory Usage (3104760K) : Executing rule MIMTM.1     
-2026-07-15 18:05:27 +0000: Memory Usage (3105440K) : Executing rule MIMTM.2     
-2026-07-15 18:05:32 +0000: Memory Usage (3105440K) : Executing rule MIMTM.3     
-2026-07-15 18:05:32 +0000: Memory Usage (3105440K) : Executing rule MIMTM.4     
-2026-07-15 18:05:32 +0000: Memory Usage (3105440K) : Executing rule MIMTM.5     
-2026-07-15 18:19:19 +0000: Memory Usage (7787508K) : Executing rule MIMTM.6     
-2026-07-15 18:19:20 +0000: Memory Usage (7654536K) : Executing rule MIMTM.7     
-2026-07-15 18:19:20 +0000: Memory Usage (7654536K) : Executing rule MIMTM.8a    
-2026-07-15 18:19:20 +0000: Memory Usage (7654536K) : Executing rule MIMTM.8b    
-2026-07-15 18:19:20 +0000: Memory Usage (7654536K) : Executing rule MIMTM.9     
-2026-07-15 18:19:20 +0000: Memory Usage (7654536K) : Executing rule MIMTM.10    
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) : Executing rule MIMTM.11    
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) :  DRC Total Run time        
-909.738139545 seconds                                                           
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) : Executing rule DE.2        
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) : Executing rule DE.3        
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) : Executing rule DE.4        
-2026-07-15 18:19:33 +0000: Memory Usage (7654148K) :  DRC Total Run time        
-909.742113727 seconds                                                           
-[18:19:34] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/14-klayout-drc/xml_drc_report_to_json.log'             
-                    …                                                           
-───────────────────────── KLayout Design Rule Checker ──────────────────────────
-[18:19:35] VERBOSE  Running 'Checker.KLayoutDRC' at                 step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/15-checker-klayoutdrc'…                                
-[18:19:35] INFO     Check for KLayout DRC errors clear.           checker.py:131
-─────────────────────────────── Write the Layout ───────────────────────────────
-[18:19:35] VERBOSE  Running 'KLayout.WriteLayout' at                step.py:1138
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/16-klayout-writelayout'…                               
-[18:19:35] VERBOSE  Logging subprocess to                           step.py:1338
-                    '.signoff/precheck-run/runs/RUN_2026-07-15_17-5             
-                    3-26/16-klayout-writelayout/klayout-writelayout             
-                    .log'…                                                      
-[18:19:36] INFO     Saving views to                                 state.py:209
+[16:25:52] VERBOSE  Running 'Checker.MagicDRC' at                   step.py:1138
+                    '.signoff/precheck-run/runs/MAGIC_FIX_2026-07-1             
+                    6/13-checker-magicdrc'…                                     
+[16:25:52] INFO     Check for Magic DRC errors clear.             checker.py:131
+[16:25:52] INFO     Skipping step 'Design Rule Check           sequential.py:370
+                    (KLayout)'…                                                 
+[16:25:52] INFO     Skipping step 'KLayout DRC Checker'…       sequential.py:370
+[16:25:52] INFO     Skipping step 'Write the Layout'…          sequential.py:370
+[16:25:52] INFO     Saving views to                                 state.py:209
                     '/home/flow/Vibe/tapeout/gf180characterization/             
-                    .signoff/precheck-run/runs/RUN_2026-07-15_17-53             
-                    -26/final'…                                                 
-PrecheckFlow - Stage 16 - Write the Layout ━━━━━━━━━━━━━━━━━━━━━━━ 16/16 0:26:09
-[18:19:36] WARNING  The following warnings were generated by the     flow.py:699
-                    flow:                                                       
-[18:19:36] WARNING  [Checker.MagicDRC] 271 Magic DRC errors found.   flow.py:701
+                    .signoff/precheck-run/runs/MAGIC_FIX_2026-07-16             
+                    /final'…                                                    
+PrecheckFlow - Stage 16 - Write the Layout ━━━━━━━━━━━━━━━━━━━━━━━ 16/16 0:10:32
 Error: The precheck failed with the following exception: 
 One or more deferred errors were encountered:
 2 KLayout density errors found.
-make: *** [Makefile:175: signoff-final] Error 1
