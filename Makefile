@@ -55,7 +55,9 @@ FINAL_GDS_TOP ?= chip_top
 FINAL_GDS_SLOT ?= 1x0p5
 FINAL_DIE_WIDTH = $(if $(filter 1x1 1x0p5,$(FINAL_GDS_SLOT)),3932,1936)
 FINAL_DIE_HEIGHT = $(if $(filter 1x1 0p5x1,$(FINAL_GDS_SLOT)),5122,2531)
-FINAL_DIR ?= $(MAKEFILE_DIR)/final
+LIBRELANE_FINAL_DIR ?= $(MAKEFILE_DIR)/final/librelane
+FINAL_DIR ?= $(MAKEFILE_DIR)/final/gds
+FINAL_GDS_REPO_PATH = $(patsubst $(MAKEFILE_DIR)/%,%,$(FINAL_DIR))/$(FINAL_GDS_TOP).gds
 SIGNOFF_DIR ?= $(MAKEFILE_DIR)/.signoff
 PRECHECK_RUN_DIR ?= $(SIGNOFF_DIR)/precheck-run
 KLAYOUT_DRC_VARIANT ?= D
@@ -114,23 +116,25 @@ defines:
 .PHONY: defines
 
 librelane: clone-pdk defines ## Run LibreLane flow (synthesis, PnR, verification)
-	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final
+	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(LIBRELANE_FINAL_DIR)
 .PHONY: librelane
 
-librelane-condensed: clone-pdk defines ## Run LibreLane flow (synthesis, PnR, verification)
-	SRAM_DEFINE=${SRAM_DEFINE} librelane --condensed ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final
+librelane-condensed: verify-final-gds clone-pdk defines ## Run LibreLane flow (synthesis, PnR, verification)
+	SRAM_DEFINE=${SRAM_DEFINE} librelane --condensed ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(LIBRELANE_FINAL_DIR)
+	mkdir -p $(MAKEFILE_DIR)/final/render
+	cp $(LIBRELANE_FINAL_DIR)/render/*.png $(MAKEFILE_DIR)/final/render/
 .PHONY: librelane-condensed
 
 librelane-nodrc: clone-pdk defines ## Run LibreLane flow without DRC checks
-	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final --skip KLayout.Antenna --skip KLayout.DRC --skip Magic.DRC
+	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(LIBRELANE_FINAL_DIR) --skip KLayout.Antenna --skip KLayout.DRC --skip Magic.DRC
 .PHONY: librelane-nodrc
 
 librelane-klayoutdrc: clone-pdk defines ## Run LibreLane flow without magic DRC checks
-	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final --skip Magic.DRC
+	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(LIBRELANE_FINAL_DIR) --skip Magic.DRC
 .PHONY: librelane-klayoutdrc
 
 librelane-magicdrc: clone-pdk defines ## Run LibreLane flow without KLayout DRC checks
-	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(MAKEFILE_DIR)/final --skip KLayout.DRC
+	SRAM_DEFINE=${SRAM_DEFINE} librelane ${LIBRELANE_CONFIGS} ${LIBRELANE_OPTS} --save-views-to $(LIBRELANE_FINAL_DIR) --skip KLayout.DRC
 .PHONY: librelane-magicdrc
 
 librelane-openroad: clone-pdk defines ## Open the last run in OpenROAD
@@ -147,7 +151,7 @@ librelane-padring: clone-pdk defines ## Only create the padring
 
 check-nix-signoff-tools: ## Refuse host tools for final-GDS and sign-off work
 	python3 scripts/signoff_env.py \
-		--tool python3 --tool git --tool klayout
+		--tool python3 --tool git --tool git-lfs --tool klayout
 .PHONY: check-nix-signoff-tools
 
 $(SIGNOFF_DIR)/pdk/.git: | check-nix-signoff-tools
@@ -193,6 +197,20 @@ final-gds: check-final-gds-env ## Apply validated GF180 DRC repairs and add only
 		--source-original $(FINAL_GDS_SOURCE) \
 		--pdk-commit $(WS_PDK_COMMIT)
 .PHONY: final-gds
+
+materialize-final-gds: check-nix-signoff-tools ## Fetch the committed LFS GDS for workflows that skip LFS checkout
+	git lfs pull --include="$(FINAL_GDS_REPO_PATH)" --exclude=""
+	git lfs checkout "$(FINAL_GDS_REPO_PATH)"
+.PHONY: materialize-final-gds
+
+verify-final-gds: materialize-final-gds ## Verify the committed sealed GDS without rebuilding it
+	python3 scripts/final_gds.py verify \
+		--input $(FINAL_DIR)/$(FINAL_GDS_TOP).gds \
+		--manifest $(FINAL_DIR)/manifest.json \
+		--top $(FINAL_GDS_TOP) \
+		--slot $(FINAL_GDS_SLOT)
+	md5sum -c $(FINAL_DIR)/$(FINAL_GDS_TOP).gds.md5
+.PHONY: verify-final-gds
 
 klayout-drc-final: check-signoff-env ## Run the pinned PDK's complete KLayout main DRC on KLAYOUT_DRC_INPUT
 	python3 scripts/klayout_drc.py \
@@ -242,7 +260,7 @@ sim: clone-pdk defines ## Run RTL simulation with cocotb
 .PHONY: sim
 
 sim-gl: clone-pdk defines ## Run gate-level simulation with cocotb (after copy-final)
-	cd cocotb; GL=1 PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} PAD=${PAD} SCL=${SCL} SRAM=${SRAM} python3 chip_top_tb.py
+	cd cocotb; GL=1 FINAL_VIEWS_DIR=$(LIBRELANE_FINAL_DIR) PDK_ROOT=${PDK_ROOT} PDK=${PDK} SLOT=${SLOT} PAD=${PAD} SCL=${SCL} SRAM=${SRAM} python3 chip_top_tb.py
 .PHONY: sim-gl
 
 sim-view: ## View simulation waveforms in GTKWave

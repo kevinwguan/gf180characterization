@@ -22,5 +22,5 @@ Result: every non-timestamp GDS record presented to precheck is identical.
 
 Reproduce the comparison from the repository root while the raw run exists:
 
-  nix develop --accept-flake-config --no-write-lock-file --command python3 .signoff/precheck/scripts/klayout/read_layout.py final/chip_top.gds .signoff/current-readlayout.gds
+  nix develop --accept-flake-config --no-write-lock-file --command python3 .signoff/precheck/scripts/klayout/read_layout.py final/gds/chip_top.gds .signoff/current-readlayout.gds
   nix develop --accept-flake-config --no-write-lock-file --command python3 scripts/gds_normalized_sha256.py .signoff/precheck-run/runs/KLAYOUT_FIX_2026-07-16/01-klayout-readlayout/chip_top.gds .signoff/current-readlayout.gds

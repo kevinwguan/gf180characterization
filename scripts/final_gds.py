@@ -756,6 +756,84 @@ def finish(args: argparse.Namespace) -> None:
     print(f"final sealed GDS: {output} sha256={record['artifact_sha256']}")
 
 
+def verify(args: argparse.Namespace) -> None:
+    """Verify a committed sealed artifact without its external source GDS."""
+
+    artifact = Path(args.input).resolve()
+    manifest_path = Path(args.manifest).resolve()
+    if not artifact.is_file():
+        raise SystemExit(f"final GDS does not exist: {artifact}")
+    if not manifest_path.is_file():
+        raise SystemExit(f"final manifest does not exist: {manifest_path}")
+    with artifact.open("rb") as stream:
+        header = stream.read(4)
+    if header[:2] == b"\x1f\x8b":
+        raise SystemExit(f"final GDS must remain uncompressed: {artifact}")
+    if header != b"\x00\x06\x00\x02":
+        raise SystemExit(
+            f"final GDS has an invalid HEADER record (or is an LFS pointer): "
+            f"{artifact}"
+        )
+
+    record = json.loads(manifest_path.read_text())
+    artifact_relative = os.path.relpath(artifact)
+    if record.get("artifact") != artifact_relative:
+        raise SystemExit(
+            f"manifest artifact is {record.get('artifact')}, expected "
+            f"{artifact_relative}"
+        )
+    artifact_sha256 = sha256(artifact)
+    artifact_md5 = md5(artifact)
+    if record.get("artifact_sha256") != artifact_sha256:
+        raise SystemExit("final GDS SHA-256 does not match the manifest")
+    if record.get("sealed_uncompressed_sha256") != artifact_sha256:
+        raise SystemExit("final GDS does not match the sealed artifact hash")
+    if record.get("artifact_md5") != artifact_md5:
+        raise SystemExit("final GDS MD5 does not match the manifest")
+
+    checksum_relative = record.get("md5_file")
+    checksum_path = Path(checksum_relative).resolve() if checksum_relative else None
+    if checksum_path is None or not checksum_path.is_file():
+        raise SystemExit(f"manifest MD5 file does not exist: {checksum_relative}")
+    expected_checksum = f"{artifact_md5}  {artifact_relative}\n"
+    if checksum_path.read_text() != expected_checksum:
+        raise SystemExit(f"invalid final GDS checksum file: {checksum_path}")
+
+    layout = load(artifact)
+    top = sole_top(layout)
+    if top.name != args.top:
+        raise SystemExit(f"final GDS top is {top.name}, expected {args.top}")
+    if layout.dbu != 0.001:
+        raise SystemExit(f"final GDS dbu must be 0.001 um, got {layout.dbu}")
+    expected_slot = SLOTS[args.slot]
+    box = bbox_um(top, layout.dbu)
+    expected_box = (0.0, 0.0, expected_slot[0], expected_slot[1])
+    if box != expected_box:
+        raise SystemExit(f"final GDS bbox {box} does not equal {expected_box}")
+    marker_index = layout.find_layer(*GUARD_RING_MK)
+    if marker_index is None or db.Region(
+        top.begin_shapes_rec(marker_index)
+    ).is_empty():
+        raise SystemExit("final GDS has no GUARD_RING_MK 167/5 geometry")
+    if record.get("top") != args.top or record.get("slot") != args.slot:
+        raise SystemExit("manifest top or slot does not match the final GDS")
+    if tuple(record.get("bbox_um", ())) != box:
+        raise SystemExit("manifest bbox does not match the final GDS")
+    if record.get("guard_ring_marker") != list(GUARD_RING_MK):
+        raise SystemExit("manifest seal-ring marker does not match the final GDS")
+    if record.get("source_geometry_preserved") is not True:
+        raise SystemExit("manifest does not prove source-geometry preservation")
+    if record.get("padring_source") != (
+        "external GDS only; no gf180characterization padring flow used"
+    ):
+        raise SystemExit("manifest does not exclude the repository padring flow")
+
+    print(
+        f"verified final GDS: {artifact_relative}; top={top.name}; "
+        f"bbox={box}; sha256={artifact_sha256}; md5={artifact_md5}"
+    )
+
+
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser()
     commands = root.add_subparsers(dest="command", required=True)
@@ -775,6 +853,12 @@ def parser() -> argparse.ArgumentParser:
     p.add_argument("--source-original", required=True)
     p.add_argument("--pdk-commit", required=True)
     p.set_defaults(func=finish)
+    p = commands.add_parser("verify")
+    p.add_argument("--input", required=True)
+    p.add_argument("--manifest", required=True)
+    p.add_argument("--top", required=True)
+    p.add_argument("--slot", choices=SLOTS, required=True)
+    p.set_defaults(func=verify)
     return root
 
 

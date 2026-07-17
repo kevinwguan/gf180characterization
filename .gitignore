@@ -4,9 +4,12 @@ gf180mcu/
 gf180_drc.lyrdb
 sim_build/
 final/*.oas
-!final/*.gds
-!final/*.json
-!final/README.md
+final/librelane/
+final/render/
+!final/gds/
+!final/gds/*.gds
+!final/gds/*.json
+!final/gds/*.md
 .signoff/
 img/
 *.lyrdb

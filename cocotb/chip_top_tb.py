@@ -19,6 +19,11 @@ scl = os.getenv("SCL", "gf180mcu_fd_sc_mcu7t5v0")
 pad = os.getenv("PAD", "gf180mcu_fd_io")
 sram = os.getenv("SRAM", "gf180mcu_fd_ip_sram")
 slot = os.getenv("SLOT", "1x1")
+final_views_dir = Path(
+    os.getenv(
+        "FINAL_VIEWS_DIR", Path(__file__).resolve().parent / "../final/librelane"
+    )
+)
 
 hdl_toplevel = "chip_top"
 
@@ -110,7 +115,7 @@ def chip_top_runner():
             sources.append(Path(pdk_root) / pdk / "libs.ref" / scl / "verilog" / "primitives.v")
 
         # We use the powered netlist
-        sources.append(proj_path / f"../final/pnl/{hdl_toplevel}.pnl.v")
+        sources.append(final_views_dir / "pnl" / f"{hdl_toplevel}.pnl.v")
 
         defines.update({"FUNCTIONAL": True, "USE_POWER_PINS": True})
     else:

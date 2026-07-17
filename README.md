@@ -54,7 +54,9 @@ make sim-gl
 ```
 
 > [!NOTE]
-> You need to have the latest implementation of your design in the `final/` folder. After a run has completed without errors, the final views will be copied to `final/`.
+> You need to have the latest implementation of your design under
+> `final/librelane/`. After a run completes, the LibreLane views are copied
+> there without touching the sealed deliverable under `final/gds/`.
 
 In both cases, a waveform file will be generated under `cocotb/sim_build/chip_top.fst`.
 You can view it using a waveform viewer, for example, [GTKWave](https://gtkwave.github.io/gtkwave/).
@@ -146,7 +148,7 @@ nix develop --accept-flake-config --command make signoff-final
 ```
 
 The default input is `../gds/padring_test_structures.gds`, the slot is `1x0p5`,
-and the output is `final/chip_top.gds`. The Wafer.Space PDK and precheck are
+and the output is `final/gds/chip_top.gds`. The Wafer.Space PDK and precheck are
 cloned at pinned commits under the ignored `.signoff/` directory, and raw
 precheck runs are kept under `.signoff/precheck-run/`. The import
 step is fail-closed: it requires one top cell, 0.001 µm DBU, centers that layout
@@ -157,7 +159,7 @@ generators across Magic import and closes three documented same-net Metal1
 notches. It covers the two smooth Metal1 characterization bends on the GF180
 5 nm Manhattan grid and closes two same-polygon Metal5 logo transitions. Every
 repair is source-preserving and guarded by exact source-geometry checks; the
-details are recorded in `final/manifest.json`.
+details are recorded in `final/gds/manifest.json`.
 
 These targets fail closed outside this repository's root Nix shell and verify
 that the Wafer.Space PDK and precheck clones are at the commits pinned in the
@@ -167,6 +169,16 @@ that deck with its native switches: variant D (11K/5LM/MIM-B), deep mode,
 FEOL/BEOL/off-grid enabled, connectivity disabled, and CUP/antenna/density
 excluded. The exact command, marker database, JSON summary, and logs are kept
 under `final/signoff/`.
+
+LibreLane implementation views are kept separately under `final/librelane/`,
+so `make librelane` and GitHub Actions cannot overwrite the sealed deliverable
+under `final/gds/`.
+
+The unchanged GitHub Actions workflow calls `make librelane-condensed`. That
+target fetches the Git LFS object with the pinned Nix `git-lfs`, runs
+`verify-final-gds`, and keeps the verified artifact under `final/gds/` for the
+workflow's existing hash and upload steps. It also mirrors rendered images to
+the workflow's legacy `final/render/` path.
 
 The committed current-artifact evidence reports zero Magic DRC markers and zero
 KLayout main-DRC markers across 649 categories. Antenna and zero-area checks are

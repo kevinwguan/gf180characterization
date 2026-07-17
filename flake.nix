@@ -55,6 +55,7 @@
               gnumake
               gnugrep
               gawk
+              git-lfs
               # Required by the GF180 density deck.
               procps
 

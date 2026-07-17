@@ -1,8 +1,8 @@
 {
-  "artifact": "final/chip_top.gds",
+  "artifact": "final/gds/chip_top.gds",
   "artifact_sha256": "53b33f39fad23fa581bc7a9fd5e4adc875a57fa6ad75d29084dbf9b3e74b1bf9",
   "artifact_md5": "1c5109d6a668de69250925b70ce00889",
-  "md5_file": "final/chip_top.gds.md5",
+  "md5_file": "final/gds/chip_top.gds.md5",
   "source_original": "../gds/padring_test_structures.gds",
   "source_original_sha256": "80df6cfa0137b981c988d9ea09a01d3969b7e14cd1207c4ae21dd485064cb7e7",
   "prepared_sha256": "96b10ab3035d391ff7b6d84193738ad83830974fabf1d26c4f53bb4727263f77",

@@ -2,7 +2,9 @@
 
 Run date: 2026-07-16 UTC
 
-Input: `final/chip_top.gds`, top cell `chip_top`, Wafer.Space slot `1x0p5`.
+Current artifact: `final/gds/chip_top.gds`, top cell `chip_top`, Wafer.Space
+slot `1x0p5`. The recorded sign-off commands ran before the byte-identical file
+was relocated from `final/chip_top.gds`; their historical paths are preserved.
 The run used Wafer.Space precheck commit
 `59207bbebaf2f5e5bb5f3e9441199a71948b1fdc`, Wafer.Space PDK commit
 `ac7d8696de96a4d708e768b607ae37f02207a354`, and LibreLane commit
@@ -10,7 +12,7 @@ The run used Wafer.Space precheck commit
 `flake.lock`.
 
 The authoritative Magic verification was the pinned precheck flow through its
-checker stage:
+checker stage before that path-only relocation:
 
 ```sh
 nix develop --accept-flake-config --no-write-lock-file --command \
@@ -91,7 +93,7 @@ angle, grid, and minimum-width markers.
 The two `MT.2b` markers came from staircase transitions on one Metal5 polygon
 in `gdsfactory_logo`. Two 45-degree triangles of `1.125 µm²` each close those
 transitions. The builder proves that they do not overlap prior Metal5 or join
-separate components. `final/manifest.json` records every addition, and the
+separate components. `final/gds/manifest.json` records every addition, and the
 finish phase independently proves that no original mask geometry was removed
 and that no other Metal1 or Metal5 geometry was added in the repaired cells.
 
@@ -117,8 +119,8 @@ The six M1.2b markers were two instances of three 0.28 µm notches in the
 same already-connected foundry corner power rail. The build fills those three
 notches only after proving both bridge sides belong to one merged Metal1
 polygon. It also checks the expected corner-cell bbox and bounds every Metal1
-addition to the three recorded boxes. `final/manifest.json` records the repair
-count and coordinates.
+addition to the three recorded boxes. `final/gds/manifest.json` records the
+repair count and coordinates.
 
 The pinned wrapper report is `magic-drc.rpt`, and `magic-drc.lyrdb` contains no
 categories or items. `magic-drc.log` ends with `No errors found` and
